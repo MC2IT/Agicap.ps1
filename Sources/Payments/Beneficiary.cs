@@ -61,8 +61,8 @@ public class Beneficiary: IEquatable<Beneficiary> {
 	/// <returns>The beneficiary corresponding to the specified JSON entity.</returns>
 	public static explicit operator Beneficiary(PSObject psObject) {
 		var json = (dynamic) psObject;
-		var bankAccount = (BankAccount) (json.bankAccount is PSObject psBankAccount ? psBankAccount : new PSObject());
-		var postalAddress = (PostalAddress) (json.postalAddress is PSObject psPostalAddress ? psPostalAddress : new PSObject());
+		var bankAccount = json.bankAccount is PSObject psBankAccount ? (BankAccount) psBankAccount : new BankAccount();
+		var postalAddress = json.postalAddress is PSObject psPostalAddress ? (PostalAddress) psPostalAddress : new PostalAddress();
 
 		return new Beneficiary() {
 			BankAccount = bankAccount.IsEmpty ? null : bankAccount,
