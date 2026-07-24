@@ -12,6 +12,7 @@
 
 	AliasesToExport = @()
 	CmdletsToExport = @()
+	RequiredAssemblies = , "Binaries/Mc2it.Agicap.dll"
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
