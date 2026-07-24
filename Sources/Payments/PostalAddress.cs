@@ -16,6 +16,17 @@ public class PostalAddress {
 	public string Country { get; set; } = "";
 
 	/// <summary>
+	/// Value indicating whether this postal address is empty.
+	/// </summary>
+	public bool IsEmpty =>
+		string.IsNullOrWhiteSpace(City) &&
+		string.IsNullOrWhiteSpace(Country) &&
+		string.IsNullOrWhiteSpace(Number) &&
+		string.IsNullOrWhiteSpace(State) &&
+		string.IsNullOrWhiteSpace(StreetName) &&
+		string.IsNullOrWhiteSpace(ZipCode);
+
+	/// <summary>
 	/// The number of the building.
 	/// </summary>
 	public string Number { get; set; } = "";

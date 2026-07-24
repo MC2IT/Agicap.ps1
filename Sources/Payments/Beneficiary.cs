@@ -8,37 +8,32 @@ public class Beneficiary {
 	/// <summary>
 	/// The bank account of the beneficiary.
 	/// </summary>
-	[BankAccount] $BankAccount { get; set; }
+	public BankAccount? BankAccount { get; set; }
 
 	/// <summary>
 	/// The unique identifier of the beneficiary.
 	/// </summary>
-	[guid] $Guid { get; set; } = (New-Guid -Empty)
+	public Guid Id { get; set; } = Guid.Empty;
 
 	/// <summary>
 	/// The name of the beneficiary.
 	/// </summary>
-	public string Name { get; set; } = ""
+	public string Name { get; set; } = "";
 
 	/// <summary>
 	/// The postal address of the beneficiary.
 	/// </summary>
-	[PostalAddress] $PostalAddress { get; set; }
-
-	/// <summary>
-	/// The key of the associated Sage third-party account.
-	/// </summary>
-	public string ThirdPartyKey { get; set; } = ""
+	public PostalAddress? PostalAddress { get; set; }
 
 	/// <summary>
 	/// The uncertainty status.
 	/// </summary>
-	[UncertaintyStatus] $UncertaintyStatus { get; set; } = [UncertaintyStatus]::Uncertain
+	public UncertaintyStatus UncertaintyStatus { get; set; } = UncertaintyStatus.Uncertain;
 
 	/// <summary>
 	/// The validation status.
 	/// </summary>
-	[ValidationStatus] $ValidationStatus { get; set; } = [ValidationStatus]::PendingValidation
+	public ValidationStatus ValidationStatus { get; set; } = ValidationStatus.PendingValidation;
 
 	/// <summary>
 	/// Creates a new beneficiary from the specified JSON entity.
@@ -47,12 +42,16 @@ public class Beneficiary {
 	/// <returns>The beneficiary corresponding to the specified JSON entity.</returns>
 	public static explicit operator Beneficiary(PSObject psObject) {
 		var json = (dynamic) psObject;
+		var bankAccount = (BankAccount) (json.bankAccount is PSObject psBankAccount ? psBankAccount : new PSObject());
+		var postalAddress = (PostalAddress) (json.postalAddress is PSObject psPostalAddress ? psPostalAddress : new PSObject());
+
 		return new Beneficiary() {
-			CurrentPageItemsCount = json.currentPageItemsCount is int currentPageItemsCount ? currentPageItemsCount : 0,
-			CurrentPageNumber = json.currentPageNumber is int currentPageNumber ? currentPageNumber : 1,
-			PagesCount = json.pagesCount is int pagesCount ? pagesCount : 0,
-			PageSize = json.pageSize is int pageSize ? pageSize : 1_000,
-			TotalItemsCount = json.totalItemsCount is int totalItemsCount ? totalItemsCount : 0
+			BankAccount = bankAccount.IsEmpty ? null : bankAccount,
+			Id = json.id is string id ? Guid.Parse(id) : Guid.Empty,
+			Name = json.name is string name ? name : "",
+			PostalAddress = postalAddress.IsEmpty ? null : postalAddress,
+			UncertaintyStatus = json.uncertaintyStatus is string uncertaintyStatus ? Enum.Parse<UncertaintyStatus>(uncertaintyStatus, ignoreCase: true) : UncertaintyStatus.Uncertain,
+			ValidationStatus = json.validationStatus is string validationStatus ? Enum.Parse<ValidationStatus>(validationStatus, ignoreCase: true) : ValidationStatus.PendingValidation
 		};
 	}
 }

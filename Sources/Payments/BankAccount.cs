@@ -26,6 +26,17 @@ public class BankAccount {
 	public string Identifier { get; set; } = "";
 
 	/// <summary>
+	/// Value indicating whether this bank account is empty.
+	/// </summary>
+	public bool IsEmpty =>
+		string.IsNullOrWhiteSpace(BankName) &&
+		string.IsNullOrWhiteSpace(Bic) &&
+		string.IsNullOrWhiteSpace(Country) &&
+		string.IsNullOrWhiteSpace(Identifier) &&
+		string.IsNullOrWhiteSpace(IntermediaryBankBic) &&
+		string.IsNullOrWhiteSpace(LocalClearingCode);
+
+	/// <summary>
 	/// The bank identifier code of the intermediary bank processing the payments.
 	/// </summary>
 	public string IntermediaryBankBic { get; set; } = "";
