@@ -1,6 +1,5 @@
 ﻿using namespace Mc2it.Agicap.Authentication
 using namespace System.Management.Automation
-using module ./AuthenticationToken.psm1
 
 <#
 .SYNOPSIS
