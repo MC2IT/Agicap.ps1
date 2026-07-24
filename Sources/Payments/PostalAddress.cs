@@ -6,11 +6,6 @@ namespace Mc2it.Agicap.Payments;
 public class PostalAddress {
 
 	/// <summary>
-	/// The row identifier of the associated beneficiary.
-	/// </summary>
-	public int BeneficiaryId { get; set; }
-
-	/// <summary>
 	/// The name of the city.
 	/// </summary>
 	public string City { get; set; } = "";
@@ -48,11 +43,12 @@ public class PostalAddress {
 	public static explicit operator PostalAddress(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new PostalAddress() {
-			CurrentPageItemsCount = json.currentPageItemsCount is int currentPageItemsCount ? currentPageItemsCount : 0,
-			CurrentPageNumber = json.currentPageNumber is int currentPageNumber ? currentPageNumber : 1,
-			PagesCount = json.pagesCount is int pagesCount ? pagesCount : 0,
-			PageSize = json.pageSize is int pageSize ? pageSize : 1_000,
-			TotalItemsCount = json.totalItemsCount is int totalItemsCount ? totalItemsCount : 0
+			City = json.city is string city ? city : "",
+			Country = json.country is string country ? country : "",
+			Number = json.number is string number ? number : "",
+			State = json.state is string state ? state : "",
+			StreetName = json.streetName is string streetName ? streetName : "",
+			ZipCode = json.zipCode is string zipCode ? zipCode : ""
 		};
 	}
 }
