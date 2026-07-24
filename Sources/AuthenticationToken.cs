@@ -1,4 +1,4 @@
-namespace Mc2it.Agicap.Authentication;
+namespace Mc2it.Agicap;
 
 using Microsoft.PowerShell.Commands;
 using System.Security;
@@ -50,7 +50,7 @@ public sealed class AuthenticationToken {
 		return new AuthenticationToken() {
 			ExpiresOn = DateTime.Now.AddSeconds(json.expires_in is int expiresIn ? expiresIn : 0),
 			Scopes = json.scope is string scope ? [.. scope.Split(' ')] : new List<string>(),
-			Type = json.token_type is string tokenType ? Enum.Parse<WebAuthenticationType>(tokenType) : WebAuthenticationType.Bearer,
+			Type = json.token_type is string tokenType ? Enum.Parse<WebAuthenticationType>(tokenType, ignoreCase: true) : WebAuthenticationType.Bearer,
 			Value = secureString
 		};
 	}

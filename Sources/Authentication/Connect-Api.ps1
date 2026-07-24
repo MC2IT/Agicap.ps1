@@ -1,4 +1,5 @@
-﻿using namespace System.Management.Automation
+﻿using namespace Mc2it.Agicap
+using namespace System.Management.Automation
 using module ./AuthenticationToken.psm1
 
 <#
@@ -9,7 +10,7 @@ using module ./AuthenticationToken.psm1
 #>
 function Connect-Api {
 	[CmdletBinding()]
-	[OutputType([AuthenticationToken])]
+	[OutputType([Mc2it.Agicap.AuthenticationToken])]
 	param (
 		# The client identifier and secret.
 		[Parameter(Mandatory, Position = 1)]
@@ -17,6 +18,7 @@ function Connect-Api {
 		[pscredential] $Credential,
 
 		# The delegated permissions to consent to.
+		[Parameter(Position = 2)]
 		[ValidateNotNullOrEmpty()]
 		[string[]] $Scope = @("agicap:public-api")
 	)
