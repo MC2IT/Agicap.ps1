@@ -22,7 +22,7 @@ function Connect-Api {
 		[string[]] $Scope = @("agicap:public-api")
 	)
 
-	[Token] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
+	return [Token] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
 		client_id = $Credential.UserName
 		client_secret = $Credential.GetNetworkCredential().Password
 		grant_type = "client_credentials"

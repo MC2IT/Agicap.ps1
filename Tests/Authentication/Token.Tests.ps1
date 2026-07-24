@@ -7,15 +7,15 @@ using module ../../Agicap.psd1
 #>
 Describe "Token" {
 	Context "FromJson" {
-		It "TODO" {
+		It "should create an authentication token from the specified JSON payload" {
 			$token = [Mc2it.Agicap.Authentication.Token] (ConvertFrom-Json '{
 				"access_token": "a1704b4b-7662-432e-a68e-77f414fb836c",
-				"expires_in": 0,
+				"expires_in": 3600,
 				"scope": "agicap:public-api public-api:import_payment_files public-api:manage-payment-beneficiaries",
 				"token_type": "Bearer"
 			}')
 
-			Should-BeTrue $token.HasExpired
+			Should-BeFalse $token.HasExpired
 			Should-BeCollection "agicap:public-api", "public-api:import_payment_files", "public-api:manage-payment-beneficiaries" $token.Scopes
 			Should-Be ([WebAuthenticationType]::Bearer) $token.Type
 			Should-BeString "a1704b4b-7662-432e-a68e-77f414fb836c" (ConvertFrom-SecureString $token.Value -AsPlainText) -CaseSensitive
