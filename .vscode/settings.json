@@ -7,5 +7,14 @@
 	"files.trimTrailingWhitespace": true,
 	"[markdown]": {"files.trimTrailingWhitespace": false},
 	"[powershell]": {"files.encoding": "utf8bom"},
-	"[yaml]": {"editor.insertSpaces": true}
+	"[yaml]": {"editor.insertSpaces": true},
+	"rest-client.environmentVariables": {
+		"Development": {
+			"baseUrl": "https://api.agicap.com/public",
+			"clientId": "AGICAP_CLIENT_ID",
+			"clientSecret": "AGICAP_CLIENT_SECRET",
+			"entity": "AGICAP_ENTITY",
+			"organization": "AGICAP_ORGANIZATION"
+		}
+	}
 }
