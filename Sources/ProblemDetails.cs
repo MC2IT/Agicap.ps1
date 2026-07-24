@@ -42,8 +42,9 @@ public sealed class ProblemDetails {
 	/// <returns>The problem details corresponding to the specified JSON entity.</returns>
 	public static explicit operator ProblemDetails(PSObject psObject) {
 		var exclusions = new[] { "detail", "instance", "status", "title", "type" };
-		var extensions = new Dictionary<string, object?>();
-		foreach (var property in psObject.Properties.Where(entry => !exclusions.Contains(entry.Name))) extensions[property.Name] = property.Value;
+		var extensions = psObject.Properties
+			.Where(property => !exclusions.Contains(property.Name))
+			.ToDictionary(property => property.Name, property => (object?) property.Value);
 
 		var json = (dynamic) psObject;
 		return new ProblemDetails() {
