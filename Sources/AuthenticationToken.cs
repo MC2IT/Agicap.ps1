@@ -40,8 +40,8 @@ public sealed class AuthenticationToken {
 	/// <returns>The access token corresponding to the specified JSON entity.</returns>
 	public static explicit operator AuthenticationToken(PSObject psObject) {
 		var json = (dynamic) psObject;
-		var secureString = new SecureString();
 
+		var secureString = new SecureString();
 		if (json.access_token is string accessToken) {
 			Array.ForEach(accessToken.ToCharArray(), secureString.AppendChar);
 			secureString.MakeReadOnly();
