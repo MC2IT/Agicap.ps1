@@ -15,7 +15,7 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
-		# TODO
+		"Connect-Api"
 	)
 
 	PrivateData = @{
