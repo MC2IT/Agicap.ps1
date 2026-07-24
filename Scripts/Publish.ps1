@@ -1,6 +1,7 @@
+using module ./Cmdlets.psm1
 & "$PSScriptRoot/Default.ps1"
 
 "Publishing the package..."
 $version = (Import-PowerShellDataFile Agicap.psd1).ModuleVersion
-git tag "v$version"
-git push origin "v$version"
+New-GitTag "v$version"
+Publish-PSGalleryModule
