@@ -9,8 +9,8 @@
 	"[powershell]": {"files.encoding": "utf8bom"},
 	"[yaml]": {"editor.insertSpaces": true},
 	"rest-client.environmentVariables": {
+		"$shared": {"baseUrl": "https://api.agicap.com/public"},
 		"Development": {
-			"baseUrl": "https://api.agicap.com/public",
 			"clientId": "AGICAP_CLIENT_ID",
 			"clientSecret": "AGICAP_CLIENT_SECRET",
 			"entity": "AGICAP_ENTITY",
