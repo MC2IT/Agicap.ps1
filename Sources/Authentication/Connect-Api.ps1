@@ -16,15 +16,15 @@ function Connect-Api {
 		[Credential()]
 		[pscredential] $Credential,
 
-		# An array of delegated permissions to consent to.
+		# The delegated permissions to consent to.
 		[ValidateNotNullOrEmpty()]
-		[string[]] $Scopes = @("agicap:public-api")
+		[string[]] $Scope = @("agicap:public-api")
 	)
 
 	[AuthenticationToken] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
 		client_id = $Credential.UserName
 		client_secret = $Credential.GetNetworkCredential().Password
 		grant_type = "client_credentials"
-		scope = $Scopes -join " "
+		scope = $Scope -join " "
 	})
 }
