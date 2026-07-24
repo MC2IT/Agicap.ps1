@@ -1,5 +1,7 @@
 namespace Mc2it.Agicap.ChartOfAccounts;
 
+using System.Collections;
+
 /// <summary>
 /// Represents an accounting account.
 /// </summary>
@@ -51,6 +53,20 @@ public class AccountingAccount: IEquatable<AccountingAccount> {
 	/// <param name="object2">The second object.</param>
 	/// <returns><see langword="true"/> if <c>object1</c> does not equal <c>object2</c>, otherwise <see langword="false"/>.</returns>
 	public static bool operator !=(AccountingAccount? object1, AccountingAccount? object2) => !(object1 == object2);
+
+	/// <summary>
+	/// Converts the specified accounting account to a hash table.
+	/// </summary>
+	/// <param name="accountingAccount">The accounting account to convert.</param>
+	/// <returns>The hash table corresponding to the specified accounting account.</returns>
+	public static explicit operator Hashtable(AccountingAccount accountingAccount) => new() {
+		["accountingAccountName"] = accountingAccount.AccountingAccountName.Length > 0 ? accountingAccount.AccountingAccountName : null,
+		["accountingAccountNumber"] = accountingAccount.AccountingAccountNumber.Length > 0 ? accountingAccount.AccountingAccountNumber : null,
+		["accountingAccountType"] = accountingAccount.AccountingAccountType.ToString(),
+		["externalId"] = accountingAccount.ExternalId.Length > 0 ? accountingAccount.ExternalId : null,
+		["taxKey"] = accountingAccount.TaxKey.Length > 0 ? accountingAccount.TaxKey : null,
+		["vatRate"] = accountingAccount.VatRate > 0 || accountingAccount.AccountingAccountType == AccountingAccountType.Vat ? accountingAccount.VatRate : null
+	};
 
 	/// <summary>
 	/// Determines whether the specified object is equal to this object.

@@ -1,5 +1,7 @@
 namespace Mc2it.Agicap.ChartOfAccounts;
 
+using System.Collections;
+
 /// <summary>
 /// Represents a third-party.
 /// </summary>
@@ -41,6 +43,18 @@ public class ThirdParty: IEquatable<ThirdParty> {
 	/// <param name="object2">The second object.</param>
 	/// <returns><see langword="true"/> if <c>object1</c> does not equal <c>object2</c>, otherwise <see langword="false"/>.</returns>
 	public static bool operator !=(ThirdParty? object1, ThirdParty? object2) => !(object1 == object2);
+
+	/// <summary>
+	/// Converts the specified third-party to a hash table.
+	/// </summary>
+	/// <param name="thirdParty">The third-party to convert.</param>
+	/// <returns>The hash table corresponding to the specified third-party.</returns>
+	public static explicit operator Hashtable(ThirdParty thirdParty) => new() {
+		["accountingAccountNumber"] = thirdParty.AccountingAccountNumber.Length > 0 ? thirdParty.AccountingAccountNumber : null,
+		["externalId"] = thirdParty.ExternalId.Length > 0 ? thirdParty.ExternalId : null,
+		["thirdPartyCode"] = thirdParty.ThirdPartyCode.Length > 0 ? thirdParty.ThirdPartyCode : null,
+		["thirdPartyName"] = thirdParty.ThirdPartyName.Length > 0 ? thirdParty.ThirdPartyName : null
+	};
 
 	/// <summary>
 	/// Determines whether the specified object is equal to this object.
