@@ -1,7 +1,8 @@
 #!/usr/bin/env pwsh
+using module ./Agicap.psd1
+
 $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $true
 
-Import-Module "$PSScriptRoot/Agicap.psd1"
 try { <# Insert the command to be debugged here. #> }
 catch { Write-Error "$_`n$($_.ScriptStackTrace)" }
