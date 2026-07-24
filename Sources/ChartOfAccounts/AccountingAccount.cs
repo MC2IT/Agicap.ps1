@@ -60,11 +60,11 @@ public class AccountingAccount: IEquatable<AccountingAccount> {
 	/// <param name="accountingAccount">The accounting account to convert.</param>
 	/// <returns>The hash table corresponding to the specified accounting account.</returns>
 	public static explicit operator Hashtable(AccountingAccount accountingAccount) => new() {
-		["accountingAccountName"] = string.IsNullOrWhiteSpace(accountingAccount.AccountingAccountName) ? accountingAccount.AccountingAccountName : null,
-		["accountingAccountNumber"] = string.IsNullOrWhiteSpace(accountingAccount.AccountingAccountNumber) ? accountingAccount.AccountingAccountNumber : null,
+		["accountingAccountName"] = string.IsNullOrWhiteSpace(accountingAccount.AccountingAccountName) ? null : accountingAccount.AccountingAccountName,
+		["accountingAccountNumber"] = string.IsNullOrWhiteSpace(accountingAccount.AccountingAccountNumber) ? null : accountingAccount.AccountingAccountNumber,
 		["accountingAccountType"] = accountingAccount.AccountingAccountType.ToString(),
-		["externalId"] = string.IsNullOrWhiteSpace(accountingAccount.ExternalId) ? accountingAccount.ExternalId : null,
-		["taxKey"] = string.IsNullOrWhiteSpace(accountingAccount.TaxKey) ? accountingAccount.TaxKey : null,
+		["externalId"] = string.IsNullOrWhiteSpace(accountingAccount.ExternalId) ? null : accountingAccount.ExternalId,
+		["taxKey"] = string.IsNullOrWhiteSpace(accountingAccount.TaxKey) ? null : accountingAccount.TaxKey,
 		["vatRate"] = accountingAccount.VatRate > 0 || accountingAccount.AccountingAccountType == AccountingAccountType.Vat ? accountingAccount.VatRate : null
 	};
 
