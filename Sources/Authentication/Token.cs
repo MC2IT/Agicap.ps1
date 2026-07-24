@@ -1,4 +1,4 @@
-namespace Mc2it.Agicap;
+namespace Mc2it.Agicap.Authentication;
 
 using Microsoft.PowerShell.Commands;
 using System.Security;
@@ -6,7 +6,7 @@ using System.Security;
 /// <summary>
 ///	Represents an OAuth token and its metadata.
 /// </summary>
-public sealed class AuthenticationToken {
+public sealed class Token {
 
 	/// <summary>
 	/// The time when the provided token expires.
@@ -38,7 +38,7 @@ public sealed class AuthenticationToken {
 	/// </summary>
 	/// <param name="psObject">The JSON entity.</param>
 	/// <returns>The access token corresponding to the specified JSON entity.</returns>
-	public static explicit operator AuthenticationToken(PSObject psObject) {
+	public static explicit operator Token(PSObject psObject) {
 		var json = (dynamic) psObject;
 
 		var secureString = new SecureString();
@@ -47,7 +47,7 @@ public sealed class AuthenticationToken {
 			secureString.MakeReadOnly();
 		}
 
-		return new AuthenticationToken() {
+		return new Token() {
 			ExpiresOn = DateTime.Now.AddSeconds(json.expires_in is int expiresIn ? expiresIn : 0),
 			Scopes = json.scope is string scope ? [.. scope.Split(' ')] : new List<string>(),
 			Type = json.token_type is string tokenType ? Enum.Parse<WebAuthenticationType>(tokenType, ignoreCase: true) : WebAuthenticationType.Bearer,

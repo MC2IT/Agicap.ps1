@@ -1,4 +1,4 @@
-﻿using namespace Mc2it.Agicap
+﻿using namespace Mc2it.Agicap.Authentication
 using namespace System.Management.Automation
 using module ./AuthenticationToken.psm1
 
@@ -10,7 +10,7 @@ using module ./AuthenticationToken.psm1
 #>
 function Connect-Api {
 	[CmdletBinding()]
-	[OutputType([Mc2it.Agicap.AuthenticationToken])]
+	[OutputType([Mc2it.Agicap.Authentication.Token])]
 	param (
 		# The client identifier and secret.
 		[Parameter(Mandatory, Position = 1)]
@@ -23,7 +23,7 @@ function Connect-Api {
 		[string[]] $Scope = @("agicap:public-api")
 	)
 
-	[AuthenticationToken] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
+	[Token] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
 		client_id = $Credential.UserName
 		client_secret = $Credential.GetNetworkCredential().Password
 		grant_type = "client_credentials"
