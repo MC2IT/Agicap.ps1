@@ -73,12 +73,12 @@ public class BankAccount: IEquatable<BankAccount> {
 	public static explicit operator BankAccount(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new BankAccount() {
-			BankName = Convert.ToString(json.bankName),
-			Bic = Convert.ToString(json.bic),
-			Country = Convert.ToString(json.country),
-			Identifier = Convert.ToString(json.identifier),
-			IntermediaryBankBic = Convert.ToString(json.intermediaryBankBic),
-			LocalClearingCode = Convert.ToString(json.localClearingCode)
+			BankName = Convert.ToString(json.bankName) ?? "",
+			Bic = Convert.ToString(json.bic) ?? "",
+			Country = Convert.ToString(json.country) ?? "",
+			Identifier = Convert.ToString(json.identifier) ?? "",
+			IntermediaryBankBic = Convert.ToString(json.intermediaryBankBic) ?? "",
+			LocalClearingCode = Convert.ToString(json.localClearingCode) ?? ""
 		};
 	}
 

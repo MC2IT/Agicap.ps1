@@ -18,7 +18,7 @@ public class PurchaseJournal {
 	/// <summary>
 	/// The billing date of the document.
 	/// </summary>
-	public DateTime BillingDate { get; set; }
+	public DateTime BillingDate { get; set; } = DateTime.MinValue;
 
 	/// <summary>
 	/// The date when the payment is due.
@@ -99,22 +99,22 @@ public class PurchaseJournal {
 		var json = (dynamic) psObject;
 		return new PurchaseJournal() {
 			AccountingLines = Convert.ToList<AccountingLine>(json.accountingLines),
-			AgicapUniqueId = json.agicapUniqueId is string agicapUniqueId ? Guid.Parse(agicapUniqueId) : Guid.Empty,
-			BillingDate = json.billingDate is string billingDate ? DateTime.Parse(billingDate) : DateTime.MinValue,
-			DueDate = json.dueDate is string dueDate ? DateTime.Parse(dueDate) : null,
-			InvoiceOrReceiptNumber = json.invoiceOrReceiptNumber as string ?? "",
-			Note = json.note as string ?? "",
+			AgicapUniqueId = Convert.ToGuid(json.agicapUniqueId) ?? Guid.Empty,
+			BillingDate = Convert.ToDateTime(json.billingDate) ?? DateTime.MinValue,
+			DueDate = Convert.ToDateTime(json.dueDate),
+			InvoiceOrReceiptNumber = Convert.ToString(json.invoiceOrReceiptNumber) ?? "",
+			Note = Convert.ToString(json.note) ?? "",
 			OrderNumbers = Convert.ToList<string>(json.orderNumbers),
-			OriginalFileExtension = json.originalFileExtension as string ?? "",
-			OriginalFileUrl = json.originalFileUrl is string originalFileUrl ? new Uri(originalFileUrl, UriKind.Absolute) : null,
-			PaymentMethod = Convert.ToEnum<PaymentMethod>(json.accountType, PaymentMethod.None),
-			PerformanceDate = json.performanceDate is string performanceDate ? DateTime.Parse(performanceDate) : null,
-			PrepaidExpenseEndDate = json.prepaidExpenseEndDate is string prepaidExpenseEndDate ? DateTime.Parse(prepaidExpenseEndDate) : null,
-			PrepaidExpenseStartDate = json.prepaidExpenseStartDate is string prepaidExpenseStartDate ? DateTime.Parse(prepaidExpenseStartDate) : null,
-			SupplierOrMerchant = json.supplierOrMerchant as string ?? "",
-			Title = json.title as string ?? "",
-			Typology = Convert.ToEnum<Typology>(json.accountType, Typology.OwedInvoice),
-			UniqueId = json.uniqueId as string ?? ""
+			OriginalFileExtension = Convert.ToString(json.originalFileExtension) ?? "",
+			OriginalFileUrl = Convert.ToUri(json.originalFileUrl),
+			PaymentMethod = Convert.ToEnum<PaymentMethod>(json.accountType) ?? PaymentMethod.None,
+			PerformanceDate = Convert.ToDateTime(json.performanceDate),
+			PrepaidExpenseEndDate = Convert.ToDateTime(json.prepaidExpenseEndDate),
+			PrepaidExpenseStartDate = Convert.ToDateTime(json.prepaidExpenseStartDate),
+			SupplierOrMerchant = Convert.ToString(json.supplierOrMerchant) ?? "",
+			Title = Convert.ToString(json.title) ?? "",
+			Typology = Convert.ToEnum<Typology>(json.accountType) ?? Typology.OwedInvoice,
+			UniqueId = Convert.ToString(json.uniqueId) ?? ""
 		};
 	}
 }

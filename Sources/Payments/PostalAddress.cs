@@ -73,12 +73,12 @@ public class PostalAddress: IEquatable<PostalAddress> {
 	public static explicit operator PostalAddress(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new PostalAddress() {
-			City = Convert.ToString(json.city),
-			Country = Convert.ToString(json.country),
-			Number = Convert.ToString(json.number),
-			State = Convert.ToString(json.state),
-			StreetName = Convert.ToString(json.streetName),
-			ZipCode = Convert.ToString(json.zipCode)
+			City = Convert.ToString(json.city) ?? "",
+			Country = Convert.ToString(json.country) ?? "",
+			Number = Convert.ToString(json.number) ?? "",
+			State = Convert.ToString(json.state) ?? "",
+			StreetName = Convert.ToString(json.streetName) ?? "",
+			ZipCode = Convert.ToString(json.zipCode) ?? ""
 		};
 	}
 

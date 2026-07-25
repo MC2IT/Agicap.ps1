@@ -47,17 +47,17 @@ public sealed class ProblemDetails {
 	/// <returns>The problem details corresponding to the specified JSON payload.</returns>
 	public static explicit operator ProblemDetails(PSObject psObject) {
 		var extensions = psObject.Properties
-			.Where(property => !excludedProperties.Contains(property.Name))
+			.Where(property => !excludedProperties.Contains(property.Name.ToLowerInvariant()))
 			.ToDictionary(property => property.Name, property => (object?) property.Value);
 
 		var json = (dynamic) psObject;
 		return new ProblemDetails() {
-			Detail = Convert.ToString(json.detail),
+			Detail = Convert.ToString(json.detail) ?? "",
 			Extensions = extensions,
-			Instance = Convert.ToString(json.instance),
-			Status = Convert.ToInt32(json.status, 400),
-			Title = Convert.ToString(json.title),
-			Type = Convert.ToString(json.type)
+			Instance = Convert.ToString(json.instance) ?? "",
+			Status = Convert.ToInt32(json.status) ?? 400,
+			Title = Convert.ToString(json.title) ?? "",
+			Type = Convert.ToString(json.type) ?? ""
 		};
 	}
 }

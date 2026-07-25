@@ -1,5 +1,7 @@
 namespace Mc2it.Agicap.PurchaseJournal;
 
+using System.Globalization;
+
 /// <summary>
 /// Represents an accounting line of a purchase journal.
 /// </summary>
@@ -8,7 +10,7 @@ public class AccountingLine {
 	/// <summary>
 	/// The accounting currency
 	/// </summary>
-	public string AccountingCurrency { get; set; } = "EUR";
+	public string AccountingCurrency { get; set; } = RegionInfo.CurrentRegion.ISOCurrencySymbol;
 
 	/// <summary>
 	/// The number of the account posted.
@@ -53,7 +55,7 @@ public class AccountingLine {
 	/// <summary>
 	/// The currency of the document provided.
 	/// </summary>
-	public string Currency { get; set; } = "EUR";
+	public string Currency { get; set; } = RegionInfo.CurrentRegion.ISOCurrencySymbol;
 
 	/// <summary>
 	/// The amount applied to the debit column.
@@ -93,22 +95,22 @@ public class AccountingLine {
 	public static explicit operator AccountingLine(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new AccountingLine() {
-			AccountingCurrency = json.accountingCurrency as string ?? "EUR",
-			AccountNumber = json.accountNumber as string ?? "",
-			AccountType = Convert.ToEnum<AccountingLineAccountType>(json.accountType, AccountingLineAccountType.ExpenseAccount),
+			AccountingCurrency = Convert.ToString(json.accountingCurrency) ?? RegionInfo.CurrentRegion.ISOCurrencySymbol,
+			AccountNumber = Convert.ToString(json.accountNumber) ?? "",
+			AccountType = Convert.ToEnum<AccountingLineAccountType>(json.accountType) ?? AccountingLineAccountType.ExpenseAccount,
 			AdditionalAnalyticalCodes = Convert.ToDictionary<string>(json.additionalAnalyticalCodes),
 			AnalyticalCodes = Convert.ToDictionary<string>(json.analyticalCodes),
-			ConversionRate = Convert.ToDouble(json.conversionRate),
-			ConvertedCreditAmount = Convert.ToDecimal(json.convertedCreditAmount),
-			ConvertedDebitAmount = Convert.ToDecimal(json.convertedDebitAmount),
-			Credit = Convert.ToDecimal(json.credit),
-			Currency = json.currency as string ?? "EUR",
-			Debit = Convert.ToDecimal(json.debit),
-			LineItemId = json.lineItemId is string lineItemId ? Guid.Parse(lineItemId) : Guid.Empty,
-			TaxKey = json.taxKey as string ?? "",
-			ThirdPartyAccount = json.thirdPartyAccount as string ?? "",
-			Type = json.type as string ?? "G",
-			VatAccountName = json.vatAccountName as string ?? ""
+			ConversionRate = Convert.ToDouble(json.conversionRate) ?? 0,
+			ConvertedCreditAmount = Convert.ToDecimal(json.convertedCreditAmount) ?? 0,
+			ConvertedDebitAmount = Convert.ToDecimal(json.convertedDebitAmount) ?? 0,
+			Credit = Convert.ToDecimal(json.credit) ?? 0,
+			Currency = Convert.ToString(json.currency) ?? RegionInfo.CurrentRegion.ISOCurrencySymbol,
+			Debit = Convert.ToDecimal(json.debit) ?? 0,
+			LineItemId = Convert.ToGuid(json.lineItemId) ?? Guid.Empty,
+			TaxKey = Convert.ToString(json.taxKey) ?? "",
+			ThirdPartyAccount = Convert.ToString(json.thirdPartyAccount) ?? "",
+			Type = Convert.ToString(json.type) ?? "G",
+			VatAccountName = Convert.ToString(json.vatAccountName) ?? ""
 		};
 	}
 }

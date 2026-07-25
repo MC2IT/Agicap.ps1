@@ -9,25 +9,36 @@ using System.Globalization;
 internal static class Convert {
 
 	/// <summary>
+	/// Converts the specified value to a date and time.
+	/// </summary>
+	/// <param name="value">The value to convert.</param>
+	/// <returns>A date and time that is equivalent to the specified value, or <see langword="null"/> if the conversion is not supported.</returns>
+	public static DateTime? ToDateTime(object? value) => value switch {
+		string dateTime => DateTime.TryParse(dateTime, CultureInfo.InvariantCulture, out var result) ? result : null,
+		DateTime dateTime => dateTime,
+		PSObject psObject => ToDateTime(psObject.BaseObject),
+		_ => null
+	};
+
+	/// <summary>
 	/// Converts the specified value to a decimal floating-point number.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
-	/// <param name="defaultValue">The default value to return when the conversion is not supported.</param>
-	/// <returns>A decimal floating-point number that is equivalent to the specified value.</returns>
-	public static decimal ToDecimal(object? value, decimal defaultValue = 0) => value switch {
-		PSObject psObject => ToDecimal(psObject.BaseObject, defaultValue),
+	/// <returns>A decimal floating-point number that is equivalent to the specified value, or <see langword="null"/> if the conversion is not supported.</returns>
+	public static decimal? ToDecimal(object? value) => value switch {
 		decimal number => number,
-		float f32 => f32 >= (float) decimal.MinValue && f32 <= (float) decimal.MaxValue ? (decimal) f32 : defaultValue,
-		double f64 => f64 >= (double) decimal.MinValue && f64 <= (double) decimal.MaxValue ? (decimal) f64 : defaultValue,
-		sbyte int8 => int8,
-		short int16 => int16,
-		int int32 => int32,
-		long int64 => int64,
-		byte uint8 => uint8,
-		ushort uint16 => uint16,
-		uint uint32 => uint32,
-		ulong uint64 => uint64,
-		_ => defaultValue
+		float number => number >= (float) decimal.MinValue && number <= (float) decimal.MaxValue ? (decimal) number : null,
+		double number => number >= (double) decimal.MinValue && number <= (double) decimal.MaxValue ? (decimal) number : null,
+		sbyte number => number,
+		short number => number,
+		int number => number,
+		long number => number,
+		byte number => number,
+		ushort number => number,
+		uint number => number,
+		ulong number => number,
+		PSObject psObject => ToDecimal(psObject.BaseObject),
+		_ => null
 	};
 
 	/// <summary>
@@ -38,7 +49,7 @@ internal static class Convert {
 	/// <returns>A dictionary that is equivalent to the specified value.</returns>
 	public static IDictionary<string, T> ToDictionary<T>(object? value) => value switch {
 		Hashtable hashtable => hashtable.Cast<DictionaryEntry>().ToDictionary(
-			entry => ToString(entry.Key),
+			entry => ToString(entry.Key) ?? "",
 			entry => entry.Value is T expected ? expected : default!
 		),
 		PSObject psObject => psObject.Properties.ToDictionary(
@@ -52,78 +63,87 @@ internal static class Convert {
 	/// Converts the specified value to a double-precision floating-point number.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
-	/// <param name="defaultValue">The default value to return when the conversion is not supported.</param>
-	/// <returns>A double-precision floating-point number that is equivalent to the specified value.</returns>
-	public static double ToDouble(object? value, double defaultValue = 0) => value switch {
-		PSObject psObject => ToDouble(psObject.BaseObject, defaultValue),
+	/// <returns>A double-precision floating-point number that is equivalent to the specified value, or <see langword="null"/> if the conversion is not supported.</returns>
+	public static double? ToDouble(object? value) => value switch {
+		sbyte number => number,
+		short number => number,
+		int number => number,
+		long number => number,
+		byte number => number,
+		ushort number => number,
+		uint number => number,
+		ulong number => number,
 		decimal number => decimal.ToDouble(number),
-		float f32 => f32,
-		double f64 => f64,
-		sbyte int8 => int8,
-		short int16 => int16,
-		int int32 => int32,
-		long int64 => int64,
-		byte uint8 => uint8,
-		ushort uint16 => uint16,
-		uint uint32 => uint32,
-		ulong uint64 => uint64,
-		_ => defaultValue
+		float number => number,
+		double number => number,
+		PSObject psObject => ToDouble(psObject.BaseObject),
+		_ => null
 	};
 
 	/// <summary>
 	/// Converts the specified value to a enumerated value.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
-	/// <param name="defaultValue">The default value to return when the conversion is not supported.</param>
-	/// <returns>An enumerated value that is equivalent to the specified value.</returns>
-	public static T ToEnum<T>(object? value, T defaultValue = default) where T: struct, Enum => value switch {
-		PSObject psObject => ToEnum<T>(psObject.BaseObject, defaultValue),
-		string name => Enum.TryParse<T>(name, ignoreCase: true, out var result) ? result : defaultValue,
-		_ => defaultValue
+	/// <returns>An enumerated value that is equivalent to the specified value, or <see langword="null"/> if the conversion is not supported.</returns>
+	public static T? ToEnum<T>(object? value) where T: struct, Enum => value switch {
+		T enumValue => enumValue,
+		string name => Enum.TryParse<T>(name, ignoreCase: true, out var result) ? result : null,
+		PSObject psObject => ToEnum<T>(psObject.BaseObject),
+		_ => null
+	};
+
+	/// <summary>
+	/// Converts the specified value to a globally unique identifier (GUID).
+	/// </summary>
+	/// <param name="value">The value to convert.</param>
+	/// <returns>A globally unique identifier (GUID) that is equivalent to the specified value.</returns>
+	public static Guid? ToGuid(object? value) => value switch {
+		string guid => Guid.TryParse(guid, CultureInfo.InvariantCulture, out var result) ? result : null,
+		Guid guid => guid,
+		PSObject psObject => ToGuid(psObject.BaseObject),
+		_ => null
 	};
 
 	/// <summary>
 	/// Converts the specified value to a 32-bit signed integer.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
-	/// <param name="defaultValue">The default value to return when the conversion is not supported.</param>
-	/// <returns>A 32-bit signed integer that is equivalent to the specified value.</returns>
-	public static int ToInt32(object? value, int defaultValue = 0) => value switch {
-		PSObject psObject => ToInt32(psObject.BaseObject, defaultValue),
-		decimal number => decimal.IsInteger(number) && number >= int.MinValue && number <= int.MaxValue ? (int) number : defaultValue,
-		float f32 => float.IsInteger(f32) && f32 >= int.MinValue && f32 <= int.MaxValue ? (int) f32 : defaultValue,
-		double f64 => double.IsInteger(f64) && f64 >= int.MinValue && f64 <= int.MaxValue ? (int) f64 : defaultValue,
-		sbyte int8 => int8,
-		short int16 => int16,
-		int int32 => int32,
-		long int64 => int64 >= int.MinValue && int64 <= int.MaxValue ? (int) int64 : defaultValue,
-		byte uint8 => uint8,
-		ushort uint16 => uint16,
-		uint uint32 => uint32 <= int.MaxValue ? (int) uint32 : defaultValue,
-		ulong uint64 => uint64 <= int.MaxValue ? (int) uint64 : defaultValue,
-		_ => defaultValue
+	/// <returns>A 32-bit signed integer that is equivalent to the specified value, or <see langword="null"/> if the conversion is not supported.</returns>
+	public static int? ToInt32(object? value) => value switch {
+		sbyte number => number,
+		short number => number,
+		int number => number,
+		long number => number >= int.MinValue && number <= int.MaxValue ? (int) number : null,
+		byte number => number,
+		ushort number => number,
+		uint number => number <= int.MaxValue ? (int) number : null,
+		ulong number => number <= int.MaxValue ? (int) number : null,
+		decimal number => decimal.IsInteger(number) && number >= int.MinValue && number <= int.MaxValue ? (int) number : null,
+		float number => float.IsInteger(number) && number >= int.MinValue && number <= int.MaxValue ? (int) number : null,
+		double number => double.IsInteger(number) && number >= int.MinValue && number <= int.MaxValue ? (int) number : null,
+		PSObject psObject => ToInt32(psObject.BaseObject),
+		_ => null
 	};
 
 	/// <summary>
 	/// Converts the specified value to a 64-bit signed integer.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
-	/// <param name="defaultValue">The default value to return when the conversion is not supported.</param>
-	/// <returns>A 64-bit signed integer that is equivalent to the specified value.</returns>
-	public static long ToInt64(object? value, long defaultValue = 0) => value switch {
-		PSObject psObject => ToInt64(psObject.BaseObject, defaultValue),
-		decimal number => decimal.IsInteger(number) && number >= long.MinValue && number <= long.MaxValue ? (long) number : defaultValue,
-		float f32 => float.IsInteger(f32) && f32 >= long.MinValue && f32 <= long.MaxValue ? (long) f32 : defaultValue,
-		double f64 => double.IsInteger(f64) && f64 >= long.MinValue && f64 <= long.MaxValue ? (long) f64 : defaultValue,
-		sbyte int8 => int8,
-		short int16 => int16,
-		int int32 => int32,
-		long int64 => int64,
-		byte uint8 => uint8,
-		ushort uint16 => uint16,
-		uint uint32 => uint32,
-		ulong uint64 => uint64 <= long.MaxValue ? (long) uint64 : defaultValue,
-		_ => defaultValue
+	/// <returns>A 64-bit signed integer that is equivalent to the specified value, or <see langword="null"/> if the conversion is not supported.</returns>
+	public static long? ToInt64(object? value) => value switch {
+		sbyte number => number,
+		short number => number,
+		int number => number,
+		long number => number,
+		byte number => number,
+		ushort number => number,
+		uint number => number,
+		ulong number => number <= long.MaxValue ? (long) number : null,
+		decimal number => decimal.IsInteger(number) && number >= long.MinValue && number <= long.MaxValue ? (long) number : null,
+		float number => float.IsInteger(number) && number >= long.MinValue && number <= long.MaxValue ? (long) number : null,
+		double number => double.IsInteger(number) && number >= long.MinValue && number <= long.MaxValue ? (long) number : null,
+		PSObject psObject => ToInt64(psObject.BaseObject),
+		_ => null
 	};
 
 	/// <summary>
@@ -133,7 +153,7 @@ internal static class Convert {
 	/// <param name="value">The value to convert.</param>
 	/// <returns>A list that is equivalent to the specified value.</returns>
 	public static IList<T> ToList<T>(object? value) => value switch {
-		object[] array => array.Select(item => item switch {
+		object[] list => list.Select(item => item switch {
 			PSObject psObject => (T) System.Convert.ChangeType(psObject, typeof(T)),
 			_ => item is T expected ? expected : default!
 		}).ToList(),
@@ -144,12 +164,24 @@ internal static class Convert {
 	/// Converts the specified value to a string.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
-	/// <param name="defaultValue">The default value to return when the conversion is not supported.</param>
 	/// <returns>A string that is equivalent to the specified value.</returns>
-	public static string ToString(object? value, string defaultValue = "") => value switch {
-		null => defaultValue,
+	public static string? ToString(object? value) => value switch {
+		null => null,
 		string stringValue => stringValue,
-		PSObject psObject => ToString(psObject.BaseObject, defaultValue),
-		_ => System.Convert.ToString(value, CultureInfo.InvariantCulture) ?? defaultValue
+		PSObject psObject => ToString(psObject.BaseObject),
+		_ => System.Convert.ToString(value, CultureInfo.InvariantCulture)
+	};
+
+	/// <summary>
+	/// Converts the specified value to a URI.
+	/// </summary>
+	/// <param name="value">The value to convert.</param>
+	/// <param name="uriKind">The type of the URI.</param>
+	/// <returns>A URI that is equivalent to the specified value.</returns>
+	public static Uri? ToUri(object? value, UriKind uriKind = UriKind.Absolute) => value switch {
+		string uri => Uri.TryCreate(uri, uriKind, out var result) ? result : null,
+		Uri uri => uri,
+		PSObject psObject => ToUri(psObject.BaseObject),
+		_ => null
 	};
 }

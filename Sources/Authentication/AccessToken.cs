@@ -46,9 +46,9 @@ public sealed class AccessToken {
 		secureString.MakeReadOnly();
 
 		return new AccessToken() {
-			ExpiresOn = DateTime.Now.AddSeconds(Convert.ToInt32(json.expires_in)),
-			Scopes = json.scope is string scope ? [.. scope.Split(' ')] : new List<string>(),
-			Type = Convert.ToEnum<WebAuthenticationType>(json.token_type, WebAuthenticationType.Bearer),
+			ExpiresOn = DateTime.Now.AddSeconds(Convert.ToInt32(json.expires_in) ?? 0),
+			Scopes = json.scope is string scope && scope.Length > 0 ? [.. scope.Split(' ')] : new List<string>(),
+			Type = Convert.ToEnum<WebAuthenticationType>(json.token_type) ?? WebAuthenticationType.Bearer,
 			Value = secureString
 		};
 	}
