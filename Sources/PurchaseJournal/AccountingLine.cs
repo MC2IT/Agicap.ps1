@@ -95,7 +95,7 @@ public class AccountingLine {
 		return new AccountingLine() {
 			AccountingCurrency = json.accountingCurrency as string ?? "EUR",
 			AccountNumber = json.accountNumber as string ?? "",
-			AccountType = Enum.Parse<AccountingLineAccountType>(json.accountType as string ?? nameof(AccountingLineAccountType.ExpenseAccount), ignoreCase: true),
+			AccountType = Convert.AsEnum<AccountingLineAccountType>(json.accountType, AccountingLineAccountType.ExpenseAccount),
 			AdditionalAnalyticalCodes = Convert.AsDictionary<string>(json.additionalAnalyticalCodes),
 			AnalyticalCodes = Convert.AsDictionary<string>(json.analyticalCodes),
 			ConversionRate = Convert.AsDouble(json.conversionRate),

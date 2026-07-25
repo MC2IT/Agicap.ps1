@@ -69,8 +69,8 @@ public class Beneficiary: IEquatable<Beneficiary> {
 			Id = json.id is string id ? Guid.Parse(id) : Guid.Empty,
 			Name = json.name as string ?? "",
 			PostalAddress = postalAddress.IsEmpty ? null : postalAddress,
-			UncertaintyStatus = Enum.Parse<UncertaintyStatus>(json.uncertaintyStatus as string ?? nameof(UncertaintyStatus.Uncertain), ignoreCase: true),
-			ValidationStatus = Enum.Parse<ValidationStatus>(json.validationStatus as string ?? nameof(ValidationStatus.PendingValidation), ignoreCase: true)
+			UncertaintyStatus = Convert.AsEnum<UncertaintyStatus>(json.uncertaintyStatus, UncertaintyStatus.Uncertain),
+			ValidationStatus = Convert.AsEnum<ValidationStatus>(json.validationStatus, ValidationStatus.PendingValidation)
 		};
 	}
 

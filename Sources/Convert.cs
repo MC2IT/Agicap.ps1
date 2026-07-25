@@ -41,6 +41,17 @@ internal static class Convert {
 	};
 
 	/// <summary>
+	/// Converts the specified value to a enumerated value.
+	/// </summary>
+	/// <param name="value">The value to convert.</param>
+	/// <param name="defaultValue">The default value to return when the conversion is not supported.</param>
+	/// <returns>An enumerated value that is equivalent to the specified value.</returns>
+	public static T AsEnum<T>(object? value, T defaultValue = default) where T: struct, Enum => value switch {
+		string name => Enum.TryParse<T>(name, ignoreCase: true, out var result) ? result : defaultValue,
+		_ => defaultValue
+	};
+
+	/// <summary>
 	/// Converts the specified value to a double-precision floating-point number.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
