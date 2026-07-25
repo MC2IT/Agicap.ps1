@@ -67,7 +67,7 @@ public class Beneficiary: IEquatable<Beneficiary> {
 		return new Beneficiary() {
 			BankAccount = bankAccount.IsEmpty ? null : bankAccount,
 			Id = json.id is string id ? Guid.Parse(id) : Guid.Empty,
-			Name = json.name as string ?? "",
+			Name = Convert.ToString(json.name),
 			PostalAddress = postalAddress.IsEmpty ? null : postalAddress,
 			UncertaintyStatus = Convert.ToEnum<UncertaintyStatus>(json.uncertaintyStatus, UncertaintyStatus.Uncertain),
 			ValidationStatus = Convert.ToEnum<ValidationStatus>(json.validationStatus, ValidationStatus.PendingValidation)

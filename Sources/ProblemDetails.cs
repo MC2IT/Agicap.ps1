@@ -6,6 +6,11 @@ namespace Mc2it.Agicap;
 public sealed class ProblemDetails {
 
 	/// <summary>
+	/// The list of properties to exclude from the extension members.
+	/// </summary>
+	private static readonly string[] excludedProperties = ["detail", "instance", "status", "title", "type"];
+
+	/// <summary>
 	/// A human-readable explanation specific to this occurrence of the problem.
 	/// </summary>
 	public string Detail { get; set; } = "";
@@ -41,19 +46,18 @@ public sealed class ProblemDetails {
 	/// <param name="psObject">The JSON payload.</param>
 	/// <returns>The problem details corresponding to the specified JSON payload.</returns>
 	public static explicit operator ProblemDetails(PSObject psObject) {
-		var exclusions = new[] { "detail", "instance", "status", "title", "type" };
 		var extensions = psObject.Properties
-			.Where(property => !exclusions.Contains(property.Name))
+			.Where(property => !excludedProperties.Contains(property.Name))
 			.ToDictionary(property => property.Name, property => (object?) property.Value);
 
 		var json = (dynamic) psObject;
 		return new ProblemDetails() {
-			Detail = json.detail as string ?? "",
+			Detail = Convert.ToString(json.detail),
 			Extensions = extensions,
-			Instance = json.instance as string ?? "",
+			Instance = Convert.ToString(json.instance),
 			Status = Convert.ToInt32(json.status, 400),
-			Title = json.title as string ?? "",
-			Type = json.type as string ?? ""
+			Title = Convert.ToString(json.title),
+			Type = Convert.ToString(json.type)
 		};
 	}
 }

@@ -98,13 +98,13 @@ public class PurchaseJournal {
 	public static explicit operator PurchaseJournal(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new PurchaseJournal() {
-			// TODO AccountingLines = json.accountingLines is object?[] accountingLines ? accountingLines.Select(item => (AccountingLine) (PSObject) item).ToList() : [],
+			AccountingLines = Convert.ToList<AccountingLine>(json.accountingLines),
 			AgicapUniqueId = json.agicapUniqueId is string agicapUniqueId ? Guid.Parse(agicapUniqueId) : Guid.Empty,
 			BillingDate = json.billingDate is string billingDate ? DateTime.Parse(billingDate) : DateTime.MinValue,
 			DueDate = json.dueDate is string dueDate ? DateTime.Parse(dueDate) : null,
 			InvoiceOrReceiptNumber = json.invoiceOrReceiptNumber as string ?? "",
 			Note = json.note as string ?? "",
-			// TODO OrderNumbers = json.orderNumbers is object?[] orderNumbers ? orderNumbers.Select(item => item as string ?? "").ToList() : [],
+			OrderNumbers = Convert.ToList<string>(json.orderNumbers),
 			OriginalFileExtension = json.originalFileExtension as string ?? "",
 			OriginalFileUrl = json.originalFileUrl is string originalFileUrl ? new Uri(originalFileUrl, UriKind.Absolute) : null,
 			PaymentMethod = Convert.ToEnum<PaymentMethod>(json.accountType, PaymentMethod.None),
