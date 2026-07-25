@@ -107,13 +107,13 @@ public class PurchaseJournal {
 			// TODO OrderNumbers = json.orderNumbers is object?[] orderNumbers ? orderNumbers.Select(item => item as string ?? "").ToList() : [],
 			OriginalFileExtension = json.originalFileExtension as string ?? "",
 			OriginalFileUrl = json.originalFileUrl is string originalFileUrl ? new Uri(originalFileUrl, UriKind.Absolute) : null,
-			PaymentMethod = Convert.AsEnum<PaymentMethod>(json.accountType, PaymentMethod.None),
+			PaymentMethod = Convert.ToEnum<PaymentMethod>(json.accountType, PaymentMethod.None),
 			PerformanceDate = json.performanceDate is string performanceDate ? DateTime.Parse(performanceDate) : null,
 			PrepaidExpenseEndDate = json.prepaidExpenseEndDate is string prepaidExpenseEndDate ? DateTime.Parse(prepaidExpenseEndDate) : null,
 			PrepaidExpenseStartDate = json.prepaidExpenseStartDate is string prepaidExpenseStartDate ? DateTime.Parse(prepaidExpenseStartDate) : null,
 			SupplierOrMerchant = json.supplierOrMerchant as string ?? "",
 			Title = json.title as string ?? "",
-			Typology = Convert.AsEnum<Typology>(json.accountType, Typology.OwedInvoice),
+			Typology = Convert.ToEnum<Typology>(json.accountType, Typology.OwedInvoice),
 			UniqueId = json.uniqueId as string ?? ""
 		};
 	}

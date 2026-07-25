@@ -51,7 +51,7 @@ public sealed class ProblemDetails {
 			Detail = json.detail as string ?? "",
 			Extensions = extensions,
 			Instance = json.instance as string ?? "",
-			Status = Convert.AsInt32(json.status, 400),
+			Status = Convert.ToInt32(json.status, 400),
 			Title = json.title as string ?? "",
 			Type = json.type as string ?? ""
 		};
