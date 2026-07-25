@@ -3,7 +3,7 @@ namespace Mc2it.Agicap;
 /// <summary>
 /// Provides helper methods to convert numeric values.
 /// </summary>
-public static class Number {
+internal static class Number {
 
 	/// <summary>
 	/// Converts the specified value to a decimal floating-point number.
