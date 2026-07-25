@@ -53,7 +53,7 @@ public class PostalAddress: IEquatable<PostalAddress> {
 	/// </summary>
 	/// <param name="object1">The first object.</param>
 	/// <param name="object2">The second object.</param>
-	/// <returns><see langword="true"/> if <c>object1</c> equals <c>object2</c>, otherwise <see langword="false"/>.</returns>
+	/// <returns><see langword="true"/> if <paramref name="object1"/> equals <paramref name="object2"/>, otherwise <see langword="false"/>.</returns>
 	public static bool operator ==(PostalAddress? object1, PostalAddress? object2) =>
 		ReferenceEquals(object1, object2) || (object1?.Equals(object2) ?? false);
 
@@ -62,7 +62,7 @@ public class PostalAddress: IEquatable<PostalAddress> {
 	/// </summary>
 	/// <param name="object1">The first object.</param>
 	/// <param name="object2">The second object.</param>
-	/// <returns><see langword="true"/> if <c>object1</c> does not equal <c>object2</c>, otherwise <see langword="false"/>.</returns>
+	/// <returns><see langword="true"/> if <paramref name="object1"/> does not equal <paramref name="object2"/>, otherwise <see langword="false"/>.</returns>
 	public static bool operator !=(PostalAddress? object1, PostalAddress? object2) => !(object1 == object2);
 
 	/// <summary>
