@@ -12,12 +12,12 @@ Describe "AccessToken" {
 				"access_token": "a1704b4b-7662-432e-a68e-77f414fb836c",
 				"expires_in": 3600,
 				"scope": "agicap:public-api public-api:import_payment_files public-api:manage-payment-beneficiaries",
-				"token_type": "Bearer"
+				"token_type": "OAuth"
 			}')
 
 			Should-BeFalse $token.HasExpired
 			Should-BeCollection "agicap:public-api", "public-api:import_payment_files", "public-api:manage-payment-beneficiaries" $token.Scopes
-			Should-Be ([WebAuthenticationType]::Bearer) $token.Type
+			Should-Be ([WebAuthenticationType]::OAuth) $token.Type
 			Should-BeString "a1704b4b-7662-432e-a68e-77f414fb836c" (ConvertFrom-SecureString $token.Value -AsPlainText) -CaseSensitive
 		}
 	}

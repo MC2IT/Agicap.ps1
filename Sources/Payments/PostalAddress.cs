@@ -73,12 +73,12 @@ public class PostalAddress: IEquatable<PostalAddress> {
 	public static explicit operator PostalAddress(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new PostalAddress() {
-			City = json.city is string city ? city : "",
-			Country = json.country is string country ? country : "",
-			Number = json.number is string number ? number : "",
-			State = json.state is string state ? state : "",
-			StreetName = json.streetName is string streetName ? streetName : "",
-			ZipCode = json.zipCode is string zipCode ? zipCode : ""
+			City = json.city as string ?? "",
+			Country = json.country as string ?? "",
+			Number = json.number as string ?? "",
+			State = json.state as string ?? "",
+			StreetName = json.streetName as string ?? "",
+			ZipCode = json.zipCode as string ?? ""
 		};
 	}
 
@@ -88,11 +88,11 @@ public class PostalAddress: IEquatable<PostalAddress> {
 	/// <param name="postalAddress">The postal address to convert.</param>
 	/// <returns>The hash table corresponding to the specified postal address.</returns>
 	public static explicit operator Hashtable(PostalAddress postalAddress) => new() {
-		["city"] = string.IsNullOrWhiteSpace(postalAddress.City) ? null : postalAddress.City,
-		["country"] = string.IsNullOrWhiteSpace(postalAddress.Country) ? null : postalAddress.Country,
+		["city"] = postalAddress.City,
+		["country"] = postalAddress.Country,
 		["number"] = string.IsNullOrWhiteSpace(postalAddress.Number) ? null : postalAddress.Number,
 		["state"] = string.IsNullOrWhiteSpace(postalAddress.State) ? null : postalAddress.State,
-		["streetName"] = string.IsNullOrWhiteSpace(postalAddress.StreetName) ? null : postalAddress.StreetName,
+		["streetName"] = postalAddress.StreetName,
 		["zipCode"] = string.IsNullOrWhiteSpace(postalAddress.ZipCode) ? null : postalAddress.ZipCode
 	};
 

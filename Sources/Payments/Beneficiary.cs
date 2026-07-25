@@ -67,10 +67,10 @@ public class Beneficiary: IEquatable<Beneficiary> {
 		return new Beneficiary() {
 			BankAccount = bankAccount.IsEmpty ? null : bankAccount,
 			Id = json.id is string id ? Guid.Parse(id) : Guid.Empty,
-			Name = json.name is string name ? name : "",
+			Name = json.name as string ?? "",
 			PostalAddress = postalAddress.IsEmpty ? null : postalAddress,
-			UncertaintyStatus = json.uncertaintyStatus is string uncertaintyStatus ? Enum.Parse<UncertaintyStatus>(uncertaintyStatus, ignoreCase: true) : UncertaintyStatus.Uncertain,
-			ValidationStatus = json.validationStatus is string validationStatus ? Enum.Parse<ValidationStatus>(validationStatus, ignoreCase: true) : ValidationStatus.PendingValidation
+			UncertaintyStatus = Enum.Parse<UncertaintyStatus>(json.uncertaintyStatus as string ?? nameof(UncertaintyStatus.Uncertain), ignoreCase: true),
+			ValidationStatus = Enum.Parse<ValidationStatus>(json.validationStatus as string ?? nameof(ValidationStatus.PendingValidation), ignoreCase: true)
 		};
 	}
 
@@ -81,7 +81,7 @@ public class Beneficiary: IEquatable<Beneficiary> {
 	/// <returns>The hash table corresponding to the specified beneficiary.</returns>
 	public static explicit operator Hashtable(Beneficiary beneficiary) => new() {
 		["bankAccount"] = beneficiary.BankAccount is null ? null : (Hashtable) beneficiary.BankAccount,
-		["name"] = string.IsNullOrWhiteSpace(beneficiary.Name) ? null : beneficiary.Name,
+		["name"] = beneficiary.Name,
 		["postalAddress"] = beneficiary.PostalAddress is null ? null : (Hashtable) beneficiary.PostalAddress,
 	};
 

@@ -48,12 +48,12 @@ public sealed class ProblemDetails {
 
 		var json = (dynamic) psObject;
 		return new ProblemDetails() {
-			Detail = json.detail is string detail ? detail : "",
+			Detail = json.detail as string ?? "",
 			Extensions = extensions,
-			Instance = json.instance is string instance ? instance : "",
-			Status = json.status is int status ? status : 400,
-			Title = json.title is string title ? title : "",
-			Type = json.type is string type ? type : ""
+			Instance = json.instance as string ?? "",
+			Status = Number.AsInt32(json.status) ?? 400,
+			Title = json.title as string ?? "",
+			Type = json.type as string ?? ""
 		};
 	}
 }

@@ -48,11 +48,11 @@ public sealed class Pagination {
 	public static explicit operator Pagination(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new Pagination() {
-			CurrentPageItemsCount = json.currentPageItemsCount is int currentPageItemsCount ? currentPageItemsCount : 0,
-			CurrentPageNumber = json.currentPageNumber is int currentPageNumber ? currentPageNumber : 1,
-			PagesCount = json.pagesCount is int pagesCount ? pagesCount : 0,
-			PageSize = json.pageSize is int pageSize ? pageSize : 1_000,
-			TotalItemsCount = json.totalItemsCount is int totalItemsCount ? totalItemsCount : 0
+			CurrentPageItemsCount = Number.AsInt32(json.currentPageItemsCount) ?? 0,
+			CurrentPageNumber = Number.AsInt32(json.currentPageNumber) ?? 1,
+			PagesCount = Number.AsInt32(json.pagesCount) ?? 0,
+			PageSize = Number.AsInt32(json.pageSize) ?? 1_000,
+			TotalItemsCount = Number.AsInt32(json.totalItemsCount) ?? 0
 		};
 	}
 }

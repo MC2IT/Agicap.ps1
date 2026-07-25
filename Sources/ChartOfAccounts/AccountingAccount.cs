@@ -60,8 +60,8 @@ public class AccountingAccount: IEquatable<AccountingAccount> {
 	/// <param name="accountingAccount">The accounting account to convert.</param>
 	/// <returns>The hash table corresponding to the specified accounting account.</returns>
 	public static explicit operator Hashtable(AccountingAccount accountingAccount) => new() {
-		["accountingAccountName"] = string.IsNullOrWhiteSpace(accountingAccount.AccountingAccountName) ? null : accountingAccount.AccountingAccountName,
-		["accountingAccountNumber"] = string.IsNullOrWhiteSpace(accountingAccount.AccountingAccountNumber) ? null : accountingAccount.AccountingAccountNumber,
+		["accountingAccountName"] = accountingAccount.AccountingAccountName,
+		["accountingAccountNumber"] = accountingAccount.AccountingAccountNumber,
 		["accountingAccountType"] = accountingAccount.AccountingAccountType.ToString(),
 		["externalId"] = string.IsNullOrWhiteSpace(accountingAccount.ExternalId) ? null : accountingAccount.ExternalId,
 		["taxKey"] = string.IsNullOrWhiteSpace(accountingAccount.TaxKey) ? null : accountingAccount.TaxKey,

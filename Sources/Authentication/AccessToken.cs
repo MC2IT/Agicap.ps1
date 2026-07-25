@@ -42,15 +42,13 @@ public sealed class AccessToken {
 		var json = (dynamic) psObject;
 
 		var secureString = new SecureString();
-		if (json.access_token is string accessToken) {
-			Array.ForEach(accessToken.ToCharArray(), secureString.AppendChar);
-			secureString.MakeReadOnly();
-		}
+		if (json.access_token is string accessToken) Array.ForEach(accessToken.ToCharArray(), secureString.AppendChar);
+		secureString.MakeReadOnly();
 
 		return new AccessToken() {
-			ExpiresOn = DateTime.Now.AddSeconds(json.expires_in is long expiresIn ? expiresIn : 0),
+			ExpiresOn = DateTime.Now.AddSeconds(Number.AsInt32(json.expires_in) ?? 0),
 			Scopes = json.scope is string scope ? [.. scope.Split(' ')] : new List<string>(),
-			Type = json.token_type is string tokenType ? Enum.Parse<WebAuthenticationType>(tokenType, ignoreCase: true) : WebAuthenticationType.Bearer,
+			Type = Enum.Parse<WebAuthenticationType>(json.token_type as string ?? nameof(WebAuthenticationType.Bearer), ignoreCase: true),
 			Value = secureString
 		};
 	}

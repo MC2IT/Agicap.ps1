@@ -50,10 +50,10 @@ public class ThirdParty: IEquatable<ThirdParty> {
 	/// <param name="thirdParty">The third-party to convert.</param>
 	/// <returns>The hash table corresponding to the specified third-party.</returns>
 	public static explicit operator Hashtable(ThirdParty thirdParty) => new() {
-		["accountingAccountNumber"] = string.IsNullOrWhiteSpace(thirdParty.AccountingAccountNumber) ? null : thirdParty.AccountingAccountNumber,
+		["accountingAccountNumber"] = thirdParty.AccountingAccountNumber,
 		["externalId"] = string.IsNullOrWhiteSpace(thirdParty.ExternalId) ? null : thirdParty.ExternalId,
-		["thirdPartyCode"] = string.IsNullOrWhiteSpace(thirdParty.ThirdPartyCode) ? null : thirdParty.ThirdPartyCode,
-		["thirdPartyName"] = string.IsNullOrWhiteSpace(thirdParty.ThirdPartyName) ? null : thirdParty.ThirdPartyName
+		["thirdPartyCode"] = thirdParty.ThirdPartyCode,
+		["thirdPartyName"] = thirdParty.ThirdPartyName
 	};
 
 	/// <summary>
