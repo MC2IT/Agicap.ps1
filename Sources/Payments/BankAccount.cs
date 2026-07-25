@@ -66,10 +66,10 @@ public class BankAccount: IEquatable<BankAccount> {
 	public static bool operator !=(BankAccount? object1, BankAccount? object2) => !(object1 == object2);
 
 	/// <summary>
-	/// Creates a new bank account from the specified JSON entity.
+	/// Creates a new bank account from the specified JSON payload.
 	/// </summary>
-	/// <param name="psObject">The JSON entity.</param>
-	/// <returns>The bank account corresponding to the specified JSON entity.</returns>
+	/// <param name="psObject">The JSON payload.</param>
+	/// <returns>The bank account corresponding to the specified JSON payload.</returns>
 	public static explicit operator BankAccount(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new BankAccount() {

@@ -41,10 +41,10 @@ public sealed class Pagination {
 	public int TotalItemsCount { get; set => field = Math.Max(0, value); }
 
 	/// <summary>
-	/// Creates a new pagination from the specified JSON entity.
+	/// Creates a new pagination from the specified JSON payload.
 	/// </summary>
-	/// <param name="psObject">The JSON entity.</param>
-	/// <returns>The pagination corresponding to the specified JSON entity.</returns>
+	/// <param name="psObject">The JSON payload.</param>
+	/// <returns>The pagination corresponding to the specified JSON payload.</returns>
 	public static explicit operator Pagination(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new Pagination() {

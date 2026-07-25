@@ -55,10 +55,10 @@ public class Beneficiary: IEquatable<Beneficiary> {
 	public static bool operator !=(Beneficiary? object1, Beneficiary? object2) => !(object1 == object2);
 
 	/// <summary>
-	/// Creates a new beneficiary from the specified JSON entity.
+	/// Creates a new beneficiary from the specified JSON payload.
 	/// </summary>
-	/// <param name="psObject">The JSON entity.</param>
-	/// <returns>The beneficiary corresponding to the specified JSON entity.</returns>
+	/// <param name="psObject">The JSON payload.</param>
+	/// <returns>The beneficiary corresponding to the specified JSON payload.</returns>
 	public static explicit operator Beneficiary(PSObject psObject) {
 		var json = (dynamic) psObject;
 		var bankAccount = json.bankAccount is PSObject psBankAccount ? (BankAccount) psBankAccount : new BankAccount();

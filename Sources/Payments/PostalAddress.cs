@@ -66,10 +66,10 @@ public class PostalAddress: IEquatable<PostalAddress> {
 	public static bool operator !=(PostalAddress? object1, PostalAddress? object2) => !(object1 == object2);
 
 	/// <summary>
-	/// Creates a new postal address from the specified JSON entity.
+	/// Creates a new postal address from the specified JSON payload.
 	/// </summary>
-	/// <param name="psObject">The JSON entity.</param>
-	/// <returns>The postal address corresponding to the specified JSON entity.</returns>
+	/// <param name="psObject">The JSON payload.</param>
+	/// <returns>The postal address corresponding to the specified JSON payload.</returns>
 	public static explicit operator PostalAddress(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new PostalAddress() {

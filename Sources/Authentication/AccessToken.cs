@@ -34,10 +34,10 @@ public sealed class AccessToken {
 	public SecureString Value { get; init; } = new();
 
 	/// <summary>
-	/// Creates a new access token from the specified JSON entity.
+	/// Creates a new access token from the specified JSON payload.
 	/// </summary>
-	/// <param name="psObject">The JSON entity.</param>
-	/// <returns>The access token corresponding to the specified JSON entity.</returns>
+	/// <param name="psObject">The JSON payload.</param>
+	/// <returns>The access token corresponding to the specified JSON payload.</returns>
 	public static explicit operator AccessToken(PSObject psObject) {
 		var json = (dynamic) psObject;
 

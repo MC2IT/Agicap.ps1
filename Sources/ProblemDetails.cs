@@ -36,10 +36,10 @@ public sealed class ProblemDetails {
 	public string Type { get; set; } = "";
 
 	/// <summary>
-	/// Creates new problem details from the specified JSON entity.
+	/// Creates new problem details from the specified JSON payload.
 	/// </summary>
-	/// <param name="psObject">The JSON entity.</param>
-	/// <returns>The problem details corresponding to the specified JSON entity.</returns>
+	/// <param name="psObject">The JSON payload.</param>
+	/// <returns>The problem details corresponding to the specified JSON payload.</returns>
 	public static explicit operator ProblemDetails(PSObject psObject) {
 		var exclusions = new[] { "detail", "instance", "status", "title", "type" };
 		var extensions = psObject.Properties
