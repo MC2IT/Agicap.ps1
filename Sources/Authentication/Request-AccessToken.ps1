@@ -3,11 +3,11 @@ using namespace System.Management.Automation
 
 <#
 .SYNOPSIS
-	Connects to Agicap API with an authenticated account.
+	Requests a new access token.
 .OUTPUTS
-	The generated authentication token.
+	The generated access token.
 #>
-function Connect-Api {
+function Request-AccessToken {
 	[CmdletBinding()]
 	[OutputType([Mc2it.Agicap.Authentication.AccessToken])]
 	param (

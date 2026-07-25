@@ -16,7 +16,7 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
-		"Connect-Api"
+		"Request-AccessToken"
 	)
 
 	PrivateData = @{

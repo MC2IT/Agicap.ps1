@@ -7,7 +7,7 @@ using module ../../Agicap.psd1
 #>
 Describe "AccessToken" {
 	Context "FromJson" {
-		It "should create an authentication token from the specified JSON payload" {
+		It "should create an access token from the specified JSON payload" {
 			$token = [Mc2it.Agicap.Authentication.AccessToken] (ConvertFrom-Json '{
 				"access_token": "a1704b4b-7662-432e-a68e-77f414fb836c",
 				"expires_in": 3600,
