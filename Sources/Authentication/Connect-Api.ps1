@@ -9,7 +9,7 @@ using namespace System.Management.Automation
 #>
 function Connect-Api {
 	[CmdletBinding()]
-	[OutputType([Mc2it.Agicap.Authentication.Token])]
+	[OutputType([Mc2it.Agicap.Authentication.AccessToken])]
 	param (
 		# The client identifier and secret.
 		[Parameter(Mandatory, Position = 1)]
@@ -22,7 +22,7 @@ function Connect-Api {
 		[string[]] $Scope = @("agicap:public-api")
 	)
 
-	return [Token] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
+	return [AccessToken] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
 		client_id = $Credential.UserName
 		client_secret = $Credential.GetNetworkCredential().Password
 		grant_type = "client_credentials"

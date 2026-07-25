@@ -6,7 +6,7 @@ using System.Security;
 /// <summary>
 ///	Represents an OAuth token and its metadata.
 /// </summary>
-public sealed class Token {
+public sealed class AccessToken {
 
 	/// <summary>
 	/// The time when the provided token expires.
@@ -38,7 +38,7 @@ public sealed class Token {
 	/// </summary>
 	/// <param name="psObject">The JSON entity.</param>
 	/// <returns>The access token corresponding to the specified JSON entity.</returns>
-	public static explicit operator Token(PSObject psObject) {
+	public static explicit operator AccessToken(PSObject psObject) {
 		var json = (dynamic) psObject;
 
 		var secureString = new SecureString();
@@ -47,8 +47,8 @@ public sealed class Token {
 			secureString.MakeReadOnly();
 		}
 
-		return new Token() {
-			ExpiresOn = DateTime.Now.AddSeconds(json.expires_in is int expiresIn ? expiresIn : 0),
+		return new AccessToken() {
+			ExpiresOn = DateTime.Now.AddSeconds(json.expires_in is long expiresIn ? expiresIn : 0),
 			Scopes = json.scope is string scope ? [.. scope.Split(' ')] : new List<string>(),
 			Type = json.token_type is string tokenType ? Enum.Parse<WebAuthenticationType>(tokenType, ignoreCase: true) : WebAuthenticationType.Bearer,
 			Value = secureString

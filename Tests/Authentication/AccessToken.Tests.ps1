@@ -3,12 +3,12 @@ using module ../../Agicap.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `Token` class.
+	Tests the features of the `AccessToken` class.
 #>
-Describe "Token" {
+Describe "AccessToken" {
 	Context "FromJson" {
 		It "should create an authentication token from the specified JSON payload" {
-			$token = [Mc2it.Agicap.Authentication.Token] (ConvertFrom-Json '{
+			$token = [Mc2it.Agicap.Authentication.AccessToken] (ConvertFrom-Json '{
 				"access_token": "a1704b4b-7662-432e-a68e-77f414fb836c",
 				"expires_in": 3600,
 				"scope": "agicap:public-api public-api:import_payment_files public-api:manage-payment-beneficiaries",
