@@ -3,7 +3,7 @@ namespace Mc2it.Agicap.TreasuryBankJournal;
 /// <summary>
 ///	Represents a reference to a previously exported journal entry linked to a counterpart.
 /// </summary>
-public class LinkedExportedEntry {
+public class LinkedEntry {
 
 	/// <summary>
 	/// The unique identifier of the linked entry.
@@ -20,9 +20,9 @@ public class LinkedExportedEntry {
 	/// </summary>
 	/// <param name="psObject">The JSON payload.</param>
 	/// <returns>The linked entry corresponding to the specified JSON payload.</returns>
-	public static explicit operator LinkedExportedEntry(PSObject psObject) {
+	public static explicit operator LinkedEntry(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new LinkedExportedEntry() {
+		return new LinkedEntry() {
 			AgicapUniqueId = Convert.ToGuid(json.agicapUniqueId) ?? Guid.Empty,
 			ExportEntryReference = Convert.ToString(json.exportEntryReference) ?? ""
 		};
