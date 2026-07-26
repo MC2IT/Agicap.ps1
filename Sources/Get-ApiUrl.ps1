@@ -9,5 +9,5 @@ function Get-ApiUrl {
 	[OutputType([string])]
 	param ()
 
-	"https://api.agicap.com"
+	"https://api.agicap.com/public"
 }
