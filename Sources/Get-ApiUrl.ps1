@@ -9,6 +9,7 @@
 function Get-ApiUrl {
 	[CmdletBinding()]
 	[OutputType([string])]
+	[OutputType([uri])]
 	param (
 		# Value indicating whether to return a `[uri]` instance instead of a string.
 		[switch] $AsUri
