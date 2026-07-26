@@ -2,12 +2,18 @@
 .SYNOPSIS
 	Gets the base URL of the Agicap public API.
 .OUTPUTS
-	The base URL of the Agicap public API.
+	[string] The base URL of the Agicap public API.
+.OUTPUTS
+	[uri] The base URL of the Agicap public API.
 #>
 function Get-ApiUrl {
 	[CmdletBinding()]
 	[OutputType([string])]
-	param ()
+	param (
+		# Value indicating whether to return a `[uri]` instance instead of a string.
+		[switch] $AsUri
+	)
 
-	"https://api.agicap.com/public"
+	$url = "https://api.agicap.com/public"
+	$AsUri ? [uri]::new("$url/") : $url
 }
