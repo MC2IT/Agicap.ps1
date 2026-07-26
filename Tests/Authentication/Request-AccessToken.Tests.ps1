@@ -6,7 +6,7 @@ using module ../../Agicap.psd1
 	Tests the features of the `Request-AccessToken` cmdlet.
 #>
 Describe "Request-AccessToken" {
-	It "should return a new access token" -Skip:($Env:CI) {
+	It "should return a new access token" -Skip:($Env:CI -eq "true") {
 		$credential = [pscredential]::new($Env:AGICAP_CLIENT_ID, (ConvertTo-SecureString $Env:AGICAP_CLIENT_SECRET -AsPlainText))
 		$scopes = "agicap:public-api", "public-api:import_payment_files", "public-api:manage-payment-beneficiaries"
 
