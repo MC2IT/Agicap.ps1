@@ -152,13 +152,23 @@ internal static class Convert {
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="value">The value to convert.</param>
 	/// <returns>A list that is equivalent to the specified value.</returns>
-	public static IList<T> ToList<T>(object? value) => value switch {
-		object[] list => list.Select(item => item switch {
-			PSObject psObject => (T) System.Convert.ChangeType(psObject, typeof(T)),
-			_ => item is T expected ? expected : default!
-		}).ToList(),
-		_ => []
-	};
+	public static IList<T> ToList<T>(object? value) {
+		// TODO: to be removed!
+		var type = value?.GetType();
+		Console.WriteLine(type?.FullName ?? "<NULL>");
+		Console.WriteLine(type?.IsArray.ToString() ?? "<NULL>");
+		// TODO: to be removed!
+
+		return [];
+
+		// return value switch {
+		// 	object[] list => list.Select(item => item switch {
+		// 		PSObject psObject => (T) System.Convert.ChangeType(psObject, typeof(T)),
+		// 		_ => item is T expected ? expected : default!
+		// 	}).ToList(),
+		// 	_ => []
+		// };
+	}
 
 	/// <summary>
 	/// Converts the specified value to a string.
