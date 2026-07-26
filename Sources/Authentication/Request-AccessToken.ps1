@@ -1,6 +1,5 @@
 ﻿using namespace Mc2it.Agicap.Authentication
 using namespace System.Management.Automation
-using namespace System.Net.Http
 
 <#
 .SYNOPSIS
@@ -23,16 +22,10 @@ function Request-AccessToken {
 		[string[]] $Scope = @("agicap:public-api")
 	)
 
-	$response = Invoke-RestMethod "$(Get-ApiUrl)/auth/v1/token" -Method Post -SkipHttpErrorCheck -StatusCodeVariable statusCode -Body @{
+	return [AccessToken] (Invoke-RestMethod "$(Get-ApiUrl)/auth/v1/token" -Method Post -Body @{
 		client_id = $Credential.UserName
 		client_secret = $Credential.GetNetworkCredential().Password
 		grant_type = "client_credentials"
 		scope = $Scope -join " "
-	}
-
-	switch ($statusCode) {
-		200 { return [AccessToken] $response }
-		400 { Write-Error ([BadRequest] $response).Error -Category AuthenticationError -TargetObject $response; break }
-		default { Write-Error ([HttpRequestException]::new("TODO", $null, $statusCode)) -TargetObject $response }
-	}
+	})
 }

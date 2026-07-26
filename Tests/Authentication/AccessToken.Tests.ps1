@@ -12,7 +12,7 @@ Describe "AccessToken" {
 		$json = ConvertFrom-Json (Get-Content "$PSScriptRoot/../../Resources/Authentication/AccessToken.json" -Raw)
 	}
 
-	Context "FromJson" {
+	Context "FromPSObject" {
 		It "should create an access token from the specified JSON payload" {
 			$accessToken = [Mc2it.Agicap.Authentication.AccessToken] $json
 			Should-BeFalse $accessToken.HasExpired

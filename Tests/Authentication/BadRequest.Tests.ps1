@@ -11,7 +11,7 @@ Describe "BadRequest" {
 		$json = ConvertFrom-Json (Get-Content "$PSScriptRoot/../../Resources/Authentication/BadRequest.json" -Raw)
 	}
 
-	Context "FromJson" {
+	Context "FromPSObject" {
 		It "should create a bad request from the specified JSON payload" {
 			$badRequest = [Mc2it.Agicap.Authentication.BadRequest] $json
 			Should-BeString "An error occurred." $badRequest.Error -CaseSensitive

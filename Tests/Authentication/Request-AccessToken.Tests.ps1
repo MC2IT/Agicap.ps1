@@ -16,4 +16,9 @@ Describe "Request-AccessToken" {
 		Should-Be ([WebAuthenticationType]::Bearer) $accessToken.Type
 		Should-MatchString "^[A-Z\d]{64,}" (ConvertFrom-SecureString $accessToken.Value -AsPlainText) -CaseSensitive
 	}
+
+	It "should throw an exception when the credentials are invalid" {
+		$credential = [pscredential]::new("FooBar", (ConvertTo-SecureString "BazQux" -AsPlainText))
+		Should-Throw -ScriptBlock { Request-AgicapAccessToken $credential -ErrorAction Stop }
+	}
 }
