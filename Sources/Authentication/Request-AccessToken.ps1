@@ -22,7 +22,7 @@ function Request-AccessToken {
 		[string[]] $Scope = @("agicap:public-api")
 	)
 
-	return [AccessToken] (Invoke-RestMethod "$ApiUrl/auth/v1/token" -Method Post -Body @{
+	return [AccessToken] (Invoke-RestMethod "$(Get-ApiUrl)/auth/v1/token" -Method Post -Body @{
 		client_id = $Credential.UserName
 		client_secret = $Credential.GetNetworkCredential().Password
 		grant_type = "client_credentials"
