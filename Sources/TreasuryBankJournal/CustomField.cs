@@ -22,7 +22,7 @@ public class CustomField {
 	/// <returns>The custom field corresponding to the specified JSON payload.</returns>
 	public static explicit operator CustomField(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new CustomField() {
+		return new() {
 			Name = Convert.ToString(json.name) ?? "",
 			Value = Convert.ToString(json.value) ?? ""
 		};

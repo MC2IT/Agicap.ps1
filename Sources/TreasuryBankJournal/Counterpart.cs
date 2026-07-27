@@ -114,7 +114,7 @@ public class Counterpart {
 	/// <returns>The counterpart corresponding to the specified JSON payload.</returns>
 	public static explicit operator Counterpart(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new Counterpart() {
+		return new() {
 			AccountingAccountExternalId = Convert.ToString(json.accountingAccountExternalId) ?? "",
 			AccountingAccountNumber = Convert.ToString(json.accountingAccountNumber) ?? "",
 			AccountingAccountType = Convert.ToEnum<CounterpartAccountingAccountType>(json.accountingAccountType) ?? CounterpartAccountingAccountType.OTHER,

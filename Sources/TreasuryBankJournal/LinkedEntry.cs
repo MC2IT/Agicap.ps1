@@ -22,7 +22,7 @@ public class LinkedEntry {
 	/// <returns>The linked entry corresponding to the specified JSON payload.</returns>
 	public static explicit operator LinkedEntry(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new LinkedEntry() {
+		return new() {
 			AgicapUniqueId = Convert.ToGuid(json.agicapUniqueId) ?? Guid.Empty,
 			ExportEntryReference = Convert.ToString(json.exportEntryReference) ?? ""
 		};

@@ -119,7 +119,7 @@ public class BankJournalEntry {
 	/// <returns>The counterpart corresponding to the specified JSON payload.</returns>
 	public static explicit operator BankJournalEntry(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new BankJournalEntry() {
+		return new() {
 			AccountingAccountExternalId = Convert.ToString(json.accountingAccountExternalId) ?? "",
 			AccountingAccountNumber = Convert.ToString(json.accountingAccountNumber) ?? "",
 			AccountingCurrency = Convert.ToString(json.accountingCurrency) ?? RegionInfo.CurrentRegion.ISOCurrencySymbol,

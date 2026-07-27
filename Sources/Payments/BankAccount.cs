@@ -72,7 +72,7 @@ public class BankAccount: IEquatable<BankAccount> {
 	/// <returns>The bank account corresponding to the specified JSON payload.</returns>
 	public static explicit operator BankAccount(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new BankAccount() {
+		return new() {
 			BankName = Convert.ToString(json.bankName) ?? "",
 			Bic = Convert.ToString(json.bic) ?? "",
 			Country = Convert.ToString(json.country) ?? "",

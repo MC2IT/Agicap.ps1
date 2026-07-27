@@ -47,7 +47,7 @@ public sealed class Pagination {
 	/// <returns>The pagination corresponding to the specified JSON payload.</returns>
 	public static explicit operator Pagination(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new Pagination() {
+		return new() {
 			CurrentPageItemsCount = Convert.ToInt32(json.currentPageItemsCount) ?? 0,
 			CurrentPageNumber = Convert.ToInt32(json.currentPageNumber) ?? 1,
 			PagesCount = Convert.ToInt32(json.pagesCount) ?? 0,

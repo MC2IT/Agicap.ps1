@@ -47,7 +47,7 @@ public class Document {
 	/// <returns>The document corresponding to the specified JSON payload.</returns>
 	public static explicit operator Document(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new Document() {
+		return new() {
 			DocumentIssueDate = Convert.ToDateTime(json.documentIssueDate),
 			DocumentReference = Convert.ToString(json.documentReference) ?? "",
 			DocumentType = Convert.ToEnum<DocumentType>(json.documentType) ?? DocumentType.OTHER,

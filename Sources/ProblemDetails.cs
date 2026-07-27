@@ -51,7 +51,7 @@ public sealed class ProblemDetails {
 			.ToDictionary(property => property.Name, property => (object?) property.Value);
 
 		var json = (dynamic) psObject;
-		return new ProblemDetails() {
+		return new() {
 			Detail = Convert.ToString(json.detail) ?? "",
 			Extensions = extensions,
 			Instance = Convert.ToString(json.instance) ?? "",

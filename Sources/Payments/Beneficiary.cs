@@ -64,7 +64,7 @@ public class Beneficiary: IEquatable<Beneficiary> {
 		var bankAccount = json.bankAccount is PSObject psBankAccount ? (BankAccount) psBankAccount : new BankAccount();
 		var postalAddress = json.postalAddress is PSObject psPostalAddress ? (PostalAddress) psPostalAddress : new PostalAddress();
 
-		return new Beneficiary() {
+		return new() {
 			BankAccount = bankAccount.IsEmpty ? null : bankAccount,
 			Id = Convert.ToGuid(json.id) ?? Guid.Empty,
 			Name = Convert.ToString(json.name) ?? "",

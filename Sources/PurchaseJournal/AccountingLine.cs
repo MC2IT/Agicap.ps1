@@ -94,7 +94,7 @@ public class AccountingLine {
 	/// <returns>The accounting line corresponding to the specified JSON payload.</returns>
 	public static explicit operator AccountingLine(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new AccountingLine() {
+		return new() {
 			AccountingCurrency = Convert.ToString(json.accountingCurrency) ?? RegionInfo.CurrentRegion.ISOCurrencySymbol,
 			AccountNumber = Convert.ToString(json.accountNumber) ?? "",
 			AccountType = Convert.ToEnum<AccountingLineAccountType>(json.accountType) ?? AccountingLineAccountType.ExpenseAccount,

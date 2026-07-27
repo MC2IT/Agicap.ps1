@@ -97,7 +97,7 @@ public class PurchaseJournal {
 	/// <returns>The purchase journal corresponding to the specified JSON payload.</returns>
 	public static explicit operator PurchaseJournal(PSObject psObject) {
 		var json = (dynamic) psObject;
-		return new PurchaseJournal() {
+		return new() {
 			AccountingLines = Convert.ToList<AccountingLine>(json.accountingLines),
 			AgicapUniqueId = Convert.ToGuid(json.agicapUniqueId) ?? Guid.Empty,
 			BillingDate = Convert.ToDateTime(json.billingDate) ?? DateTime.MinValue,

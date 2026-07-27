@@ -15,6 +15,8 @@ public sealed class BadRequest {
 	/// </summary>
 	/// <param name="psObject">The JSON payload.</param>
 	/// <returns>The bad request corresponding to the specified JSON payload.</returns>
-	public static explicit operator BadRequest(PSObject psObject) =>
-		new() { Error = Convert.ToString(((dynamic) psObject).error) ?? "" };
+	public static explicit operator BadRequest(PSObject psObject) {
+		var json = (dynamic) psObject;
+		return new() { Error = Convert.ToString(json.error) ?? "" };
+	}
 }
