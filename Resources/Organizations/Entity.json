@@ -1,0 +1,21 @@
+{
+	"items": [
+		{
+			"id": 100000,
+			"name": "France",
+			"country": "FR"
+		},
+		{
+			"id": 200000,
+			"name": "Spain",
+			"country": "ES"
+		}
+	],
+	"pagination": {
+		"currentPageNumber": 1,
+		"currentPageItemsCount": 2,
+		"pageSize": 10,
+		"pagesCount": 1,
+		"totalItemsCount": 2
+	}
+}
