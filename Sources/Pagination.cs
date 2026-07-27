@@ -21,6 +21,11 @@ public sealed class Pagination {
 	public bool HasNextPage => CurrentPageNumber < PagesCount;
 
 	/// <summary>
+	/// Value indicating whether a previous page exists.
+	/// </summary>
+	public bool HasPreviousPage => CurrentPageNumber > 1;
+
+	/// <summary>
 	/// The total number of pages.
 	/// </summary>
 	public int PagesCount { get; set => field = Math.Max(0, value); }
@@ -29,11 +34,6 @@ public sealed class Pagination {
 	/// The number of items per page.
 	/// </summary>
 	public int PageSize { get; set => field = Math.Max(1, value); } = 100;
-
-	/// <summary>
-	/// Value indicating whether a previous page exists.
-	/// </summary>
-	public bool HasPreviousPage => CurrentPageNumber > 1;
 
 	/// <summary>
 	/// The total number of items.
