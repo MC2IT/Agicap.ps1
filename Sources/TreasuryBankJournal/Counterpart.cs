@@ -117,7 +117,7 @@ public class Counterpart {
 		return new Counterpart() {
 			AccountingAccountExternalId = Convert.ToString(json.accountingAccountExternalId) ?? "",
 			AccountingAccountNumber = Convert.ToString(json.accountingAccountNumber) ?? "",
-			AccountingAccountType = Convert.ToEnum<CounterpartAccountingAccountType>(json.taxKey) ?? CounterpartAccountingAccountType.OTHER,
+			AccountingAccountType = Convert.ToEnum<CounterpartAccountingAccountType>(json.accountingAccountType) ?? CounterpartAccountingAccountType.OTHER,
 			AccountingCurrency = Convert.ToString(json.accountingCurrency) ?? RegionInfo.CurrentRegion.ISOCurrencySymbol,
 			AnalyticalCodes = Convert.ToDictionary<string>(json.analyticalCodes),
 			CreditInAccountingCurrency = Convert.ToDecimal(json.creditInAccountingCurrency) ?? 0,
