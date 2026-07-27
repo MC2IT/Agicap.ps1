@@ -186,9 +186,10 @@ public static class Convert {
 	/// Converts the specified value to a URI.
 	/// </summary>
 	/// <param name="value">The value to convert.</param>
+	/// <param name="uriKind">The type of the URI.</param>
 	/// <returns>A URI that is equivalent to the specified value.</returns>
-	public static Uri? ToUri(object? value) => value switch {
-		string uri => Uri.TryCreate(uri, UriKind.Absolute, out var result) ? result : null,
+	public static Uri? ToUri(object? value, UriKind uriKind = UriKind.RelativeOrAbsolute) => value switch {
+		string uri => Uri.TryCreate(uri, uriKind, out var result) ? result : null,
 		Uri uri => uri,
 		PSObject psObject => ToUri(psObject.BaseObject),
 		_ => null
