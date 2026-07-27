@@ -1,4 +1,4 @@
-# Agicap SDK for PowerShell
+# Agicap for PowerShell
 TODO ! ...
 in [PowerShell](https://learn.microsoft.com/en-us/powershell).
 
@@ -11,4 +11,4 @@ in [PowerShell](https://learn.microsoft.com/en-us/powershell).
 - [Submit an issue](https://github.com/MC2IT/Agicap.ps1/issues)
 
 ## License
-[Agicap SDK for PowerShell](https://github.com/MC2IT/Agicap.ps1) is distributed under the MIT License.
+[Agicap for PowerShell](https://github.com/MC2IT/Agicap.ps1) is distributed under the MIT License.

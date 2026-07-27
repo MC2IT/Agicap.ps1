@@ -1,7 +1,7 @@
 namespace Mc2it.Agicap.Authentication;
 
 /// <summary>
-///	Represents an OAuth token and its metadata.
+///	Represents a bad request.
 /// </summary>
 public sealed class BadRequest {
 
