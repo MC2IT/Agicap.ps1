@@ -13,7 +13,7 @@ public class Entity {
 	/// <summary>
 	/// The entity identifier.
 	/// </summary>
-	public string Id { get; set; } = "";
+	public int Id { get; set; }
 
 	/// <summary>
 	/// The entity name.
@@ -29,7 +29,7 @@ public class Entity {
 		var json = (dynamic) psObject;
 		return new() {
 			Country = Convert.ToString(json.country) ?? "",
-			Id = Convert.ToString(json.id) ?? "",
+			Id = Convert.ToInt32(json.id) ?? 0,
 			Name = Convert.ToString(json.name) ?? ""
 		};
 	}

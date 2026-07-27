@@ -12,7 +12,7 @@ Describe "ProblemDetails" {
 	}
 
 	Context "FromPSObject" {
-		It "should create an access token from the specified JSON payload" {
+		It "should create problem details from the specified JSON payload" {
 			$problemDetails = [Mc2it.Agicap.ProblemDetails] $json
 
 			Should-BeString "The request body is invalid and not meeting business rules." $problemDetails.Detail -CaseSensitive
