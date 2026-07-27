@@ -22,10 +22,10 @@ public class PaginatedList<T> {
 	/// <typeparam name="TItem">The type of items in the list.</typeparam>
 	/// <param name="psObject">The JSON payload.</param>
 	/// <returns>The paginated list corresponding to the specified JSON payload.</returns>
-	public static PaginatedList<TItem> FromJson<TItem>(PSObject psObject) {
+	public static PaginatedList<T> FromPSObject(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new() {
-			Items = Convert.ToList<TItem>(json.items),
+			Items = Convert.ToList<T>(json.items),
 			Pagination = json.pagination is PSObject pagination ? (Pagination) pagination : new()
 		};
 	}

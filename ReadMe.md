@@ -3,8 +3,8 @@ TODO ! ...
 in [PowerShell](https://learn.microsoft.com/en-us/powershell).
 
 ## Documentation
-- [User guide](https://github.com/MC2IT/Agicap.ps1/tree/main/docs)
-- [Examples](https://github.com/MC2IT/Agicap.ps1/tree/main/example)
+- [User guide](https://github.com/MC2IT/Agicap.ps1/tree/main/Documentation)
+- [Examples](https://github.com/MC2IT/Agicap.ps1/tree/main/Examples)
 
 ## Development
 - [Git repository](https://github.com/MC2IT/Agicap.ps1)

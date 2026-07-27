@@ -12,7 +12,7 @@ Describe "Pagination" {
 	}
 
 	Context "FromPSObject" {
-		It "should create an access token from the specified JSON payload" {
+		It "should create a pagination from the specified JSON payload" {
 			$pagination = [Mc2it.Agicap.Pagination] $json
 			Should-Be 18 $pagination.CurrentPageItemsCount
 			Should-Be 2 $pagination.CurrentPageNumber
