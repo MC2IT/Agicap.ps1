@@ -8,7 +8,7 @@ public class Organization {
 	/// <summary>
 	/// The organization identifier.
 	/// </summary>
-	public string Id { get; set; } = "";
+	public Guid Id { get; set; } = Guid.Empty;
 
 	/// <summary>
 	/// The organization name.
@@ -23,7 +23,7 @@ public class Organization {
 	public static explicit operator Organization(PSObject psObject) {
 		var json = (dynamic) psObject;
 		return new() {
-			Id = Convert.ToString(json.id) ?? "",
+			Id = Convert.ToGuid(json.id) ?? Guid.Empty,
 			Name = Convert.ToString(json.name) ?? ""
 		};
 	}
