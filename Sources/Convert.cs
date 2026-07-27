@@ -6,7 +6,7 @@ using System.Globalization;
 /// <summary>
 /// Converts a data type to another data type.
 /// </summary>
-internal static class Convert {
+public static class Convert {
 
 	/// <summary>
 	/// Converts the specified value to a date and time.
