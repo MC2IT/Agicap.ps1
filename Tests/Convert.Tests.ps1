@@ -21,7 +21,7 @@ Describe "Convert" {
 			Should-Be $expected.Second $dateTime.Second
 		}
 
-		It "should return `$null if the conversion is not supported" -ForEach $null, 123, "abc", @(), @{} {
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, 123, "abc", @(), @{} {
 			Should-BeNull ([Mc2it.Agicap.Convert]::ToDateTime($_))
 		}
 	}
@@ -31,8 +31,8 @@ Describe "Convert" {
 			# TODO
 		}
 
-		It "should return `$null if the conversion is not supported" {
-			# TODO
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, "abc", @(), @{}, ([datetime]::Now) {
+			Should-BeNull ([Mc2it.Agicap.Convert]::ToDecimal($_))
 		}
 	}
 
@@ -45,8 +45,8 @@ Describe "Convert" {
 			# TODO
 		}
 
-		It "should return `$null if the conversion is not supported" {
-			# TODO
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, "abc", @(), @{}, ([datetime]::Now) {
+			Should-BeNull ([Mc2it.Agicap.Convert]::ToDouble($_))
 		}
 	}
 
@@ -55,8 +55,8 @@ Describe "Convert" {
 			# TODO
 		}
 
-		It "should return `$null if the conversion is not supported" {
-			# TODO
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, "abc", @(), @{}, ([datetime]::Now) {
+			Should-BeNull ([Mc2it.Agicap.Convert]::ToEnum[DayOfWeek]($_))
 		}
 	}
 
@@ -65,8 +65,8 @@ Describe "Convert" {
 			# TODO
 		}
 
-		It "should return `$null if the conversion is not supported" {
-			# TODO
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, "abc", @(), @{}, ([datetime]::Now) {
+			Should-BeNull ([Mc2it.Agicap.Convert]::ToGuid($_))
 		}
 	}
 
@@ -75,8 +75,8 @@ Describe "Convert" {
 			# TODO
 		}
 
-		It "should return `$null if the conversion is not supported" {
-			# TODO
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, 123.456, "abc", @(), @{}, ([datetime]::Now) {
+			Should-BeNull ([Mc2it.Agicap.Convert]::Toint32($_))
 		}
 	}
 
@@ -85,8 +85,8 @@ Describe "Convert" {
 			# TODO
 		}
 
-		It "should return `$null if the conversion is not supported" {
-			# TODO
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, 123.456, "abc", @(), @{}, ([datetime]::Now) {
+			Should-BeNull ([Mc2it.Agicap.Convert]::ToInt64($_))
 		}
 	}
 
@@ -109,8 +109,8 @@ Describe "Convert" {
 			# TODO
 		}
 
-		It "should return `$null if the conversion is not supported" {
-			# TODO
+		It "should return `$null if the conversion is not supported" -ForEach $null, $true, "abc", @(), @{}, ([datetime]::Now) {
+			Should-BeNull ([Mc2it.Agicap.Convert]::ToUri($_))
 		}
 	}
 }
