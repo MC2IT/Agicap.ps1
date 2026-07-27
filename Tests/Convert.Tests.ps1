@@ -110,7 +110,7 @@ Describe "Convert" {
 		}
 
 		It "should return `$null if the conversion is not supported" -ForEach $null, $true, "abc", @(), @{}, ([datetime]::Now) {
-			Should-BeNull ([Mc2it.Agicap.Convert]::ToUri($_))
+			Should-BeNull ([Mc2it.Agicap.Convert]::ToUri($_, [UriKind]::Absolute))
 		}
 	}
 }

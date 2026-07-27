@@ -1,0 +1,11 @@
+{
+	"code": "422-01",
+	"detail": "The request body is invalid and not meeting business rules.",
+	"status": 422,
+	"title": "Business Rule Violation",
+	"type": "https://problems-registry.smartbear.com/business-rule-violation",
+	"errors": {
+		"quantity": "maximum quantity is 999",
+		"shippingAddress.country": "we do not offer `next-day` delivery to non EU addresses"
+	}
+}
