@@ -28,7 +28,7 @@ public sealed class Pagination {
 	/// <summary>
 	/// The number of items per page.
 	/// </summary>
-	public int PageSize { get; set => field = Math.Max(1, value); } = 1_000;
+	public int PageSize { get; set => field = Math.Max(1, value); } = 100;
 
 	/// <summary>
 	/// Value indicating whether a previous page exists.
@@ -51,7 +51,7 @@ public sealed class Pagination {
 			CurrentPageItemsCount = Convert.ToInt32(json.currentPageItemsCount) ?? 0,
 			CurrentPageNumber = Convert.ToInt32(json.currentPageNumber) ?? 1,
 			PagesCount = Convert.ToInt32(json.pagesCount) ?? 0,
-			PageSize = Convert.ToInt32(json.pageSize) ?? 1_000,
+			PageSize = Convert.ToInt32(json.pageSize) ?? 100,
 			TotalItemsCount = Convert.ToInt32(json.totalItemsCount) ?? 0
 		};
 	}
