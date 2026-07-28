@@ -31,7 +31,7 @@ function Select-OrganizationEntity {
 		[ValidateRange("Positive")]
 		[int] $PageSize = 100,
 
-		# Value indicating whether to fetch all organizations.
+		# Value indicating whether to fetch all entities.
 		[Parameter(ParameterSetName = "All")]
 		[switch] $All
 	)
