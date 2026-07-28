@@ -1,6 +1,5 @@
 # Agicap for PowerShell
-TODO ! ...
-in [PowerShell](https://learn.microsoft.com/en-us/powershell).
+An [Agicap](https://agicap.com) API client library for [PowerShell](https://learn.microsoft.com/en-us/powershell).
 
 ## Documentation
 - [User guide](https://github.com/MC2IT/Agicap.ps1/tree/main/Documentation)
