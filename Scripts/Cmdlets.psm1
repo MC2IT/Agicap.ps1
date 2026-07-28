@@ -17,14 +17,6 @@ function Build-DotNetSolution {
 
 <#
 .SYNOPSIS
-	Applies style preferences and static analysis recommendations to the .NET solution.
-#>
-function Format-DotNetSolution {
-	dotnet format
-}
-
-<#
-.SYNOPSIS
 	Creates a new Git tag.
 #>
 function New-GitTag {
@@ -53,7 +45,6 @@ function Publish-PSGalleryModule {
 	Copy-Item $root/*.md $output
 	Copy-Item $root/Sources $output -Recurse
 	Remove-Item $output/Sources/*.cs*, $output/Sources/obj -Recurse
-	Remove-Item $output/Sources/*/*.cs
 	$module.RequiredAssemblies.ForEach{ "$root/$_" } | Copy-Item -Destination $output/Binaries
 
 	$output = "$root/Temp/PSGallery"
