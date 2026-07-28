@@ -1,4 +1,6 @@
 ﻿using namespace Mc2it.Agicap
+using namespace Mc2it.Agicap.Organizations
+using namespace System.Collections.Generic
 
 <#
 .SYNOPSIS
@@ -7,7 +9,8 @@
 	The entities of the organization with the specified identifier.
 #>
 function Select-OrganizationEntity {
-	[CmdletBinding()]
+	[CmdletBinding(DefaultParameterSetName = "Pagination")]
+	[OutputType([Mc2it.Agicap.Organizations.Entity])]
 	[OutputType([Mc2it.Agicap.PaginatedList[Mc2it.Agicap.Organizations.Entity]])]
 	param (
 		# The API client.
@@ -16,16 +19,31 @@ function Select-OrganizationEntity {
 
 		# The organization identifier.
 		[Parameter(Mandatory, Position = 2)]
-		[guid] $Organization,
+		[guid] $OrganizationÌd,
 
 		# The page number.
+		[Parameter(ParameterSetName = "Pagination")]
 		[ValidateRange("Positive")]
 		[int] $PageNumber = 1,
 
 		# The number of elements per page.
+		[Parameter(ParameterSetName = "Pagination")]
 		[ValidateRange("Positive")]
-		[int] $PageSize = 100
+		[int] $PageSize = 100,
+
+		# Value indicating whether to fetch all organizations.
+		[Parameter(ParameterSetName = "All")]
+		[switch] $All
 	)
 
-	$Client.Organizations.GetEntities($Organization, $PageNumber, $PageSize)
+	$list = $Client.Organizations.GetEntities($OrganizationÌd, $PageNumber, $PageSize)
+	if (-not $All) { return $list }
+
+	$items = [List[Entity]]::new($list.Items)
+	while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
+		$list = $Client.Organizations.GetEntities($OrganizationÌd, ++$PageNumber, $PageSize)
+		$items.AddRange($list.Items)
+	}
+
+	$items
 }

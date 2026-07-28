@@ -1,13 +1,16 @@
 ﻿using namespace Mc2it.Agicap
+using namespace Mc2it.Agicap.Organizations
+using namespace System.Collections.Generic
 
 <#
 .SYNOPSIS
-	Fetches the list of all organizations.
+	Fetches the organization list.
 .OUTPUTS
-	The list of all organizations.
+	The organization list.
 #>
 function Select-Organization {
-	[CmdletBinding()]
+	[CmdletBinding(DefaultParameterSetName = "Pagination")]
+	[OutputType([Mc2it.Agicap.Organizations.Organization])]
 	[OutputType([Mc2it.Agicap.PaginatedList[Mc2it.Agicap.Organizations.Organization]])]
 	param (
 		# The API client.
@@ -15,13 +18,28 @@ function Select-Organization {
 		[Client] $Client,
 
 		# The page number.
+		[Parameter(ParameterSetName = "Pagination")]
 		[ValidateRange("Positive")]
 		[int] $PageNumber = 1,
 
 		# The number of elements per page.
+		[Parameter(ParameterSetName = "Pagination")]
 		[ValidateRange("Positive")]
-		[int] $PageSize = 100
+		[int] $PageSize = 100,
+
+		# Value indicating whether to fetch all organizations.
+		[Parameter(ParameterSetName = "All")]
+		[switch] $All
 	)
 
-	$Client.Organizations.GetOrganizations($PageNumber, $PageSize)
+	$list = $Client.Organizations.GetOrganizations($PageNumber, $PageSize)
+	if (-not $All) { return $list }
+
+	$items = [List[Organization]]::new($list.Items)
+	while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
+		$list = $Client.Organizations.GetOrganizations(++$PageNumber, $PageSize)
+		$items.AddRange($list.Items)
+	}
+
+	$items
 }
