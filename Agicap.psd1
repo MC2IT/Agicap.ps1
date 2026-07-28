@@ -16,6 +16,7 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
+		"New-Client"
 		"Request-AccessToken"
 	)
 
