@@ -1,4 +1,4 @@
-### Connects to Agicap API with an authenticated account.
+### Generates a new access token.
 # @name auth
 POST {{baseUrl}}/auth/v1/token
 Accept: application/json
