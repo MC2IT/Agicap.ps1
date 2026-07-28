@@ -1,6 +1,4 @@
-﻿using namespace Mc2it.Agicap.Authentication
-
-<#
+﻿<#
 .SYNOPSIS
 	Tests the features of the `Request-AccessToken` cmdlet.
 #>

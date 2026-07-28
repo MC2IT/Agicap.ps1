@@ -19,6 +19,7 @@
 		"New-Client"
 		"Request-AccessToken"
 		"Select-Organization"
+		"Select-OrganizationEntity"
 	)
 
 	PrivateData = @{
