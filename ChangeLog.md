@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [0.3.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.2.0...v0.3.0)
+- Added the `New-AgicapClient` cmdlet.
+- Removed the `Get-AgicapApiUrl` cmdlet.
+
 ## Version [0.2.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.1.1...v0.2.0)
 - Added the `uriKind` parameter to the `Convert.ToUri()` method.
 - Changed the type of `Instance` and `Type` properties from the `ProblemDetails` class to `Uri`.
