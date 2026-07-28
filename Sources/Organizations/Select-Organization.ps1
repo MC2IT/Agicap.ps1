@@ -34,12 +34,13 @@ function Select-Organization {
 	)
 
 	try {
-		$list = $Client.Organizations.GetOrganizations($PageNumber, $PageSize)
+		$api = $Client.Organizations
+		$list = $api.GetAll($PageNumber, $PageSize)
 		if (-not $All) { return $list }
 
 		$items = [List[Organization]]::new($list.Items)
 		while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-			$list = $Client.Organizations.GetOrganizations(++$PageNumber, $PageSize)
+			$list = $api.GetAll(++$PageNumber, $PageSize)
 			$items.AddRange($list.Items)
 		}
 

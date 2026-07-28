@@ -38,12 +38,13 @@ function Select-OrganizationEntity {
 	)
 
 	try {
-		$list = $Client.Organizations.GetEntities($OrganizationÌd, $PageNumber, $PageSize)
+		$api = $Client.Organizations.Entities($OrganizationÌd)
+		$list = $api.GetAll($PageNumber, $PageSize)
 		if (-not $All) { return $list }
 
 		$items = [List[Entity]]::new($list.Items)
 		while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-			$list = $Client.Organizations.GetEntities($OrganizationÌd, ++$PageNumber, $PageSize)
+			$list = $api.GetAll(++$PageNumber, $PageSize)
 			$items.AddRange($list.Items)
 		}
 
