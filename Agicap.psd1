@@ -16,7 +16,6 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
-		"Get-ApiUrl"
 		"Request-AccessToken"
 	)
 
