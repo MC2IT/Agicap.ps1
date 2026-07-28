@@ -1,5 +1,6 @@
 ﻿using namespace Mc2it.Agicap
 using namespace Mc2it.Agicap.Authentication
+using namespace System.Net.Http
 
 <#
 .SYNOPSIS
@@ -21,5 +22,6 @@ function Request-AccessToken {
 		[string[]] $Scope = @([Scopes]::PublicApi)
 	)
 
-	$Client.Authenticate($Scope)
+	try { $Client.Authenticate($Scope) }
+	catch [HttpRequestException] { Write-Error $_ }
 }

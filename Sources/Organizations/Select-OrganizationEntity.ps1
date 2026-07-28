@@ -1,6 +1,7 @@
 ﻿using namespace Mc2it.Agicap
 using namespace Mc2it.Agicap.Organizations
 using namespace System.Collections.Generic
+using namespace System.Net.Http
 
 <#
 .SYNOPSIS
@@ -36,14 +37,19 @@ function Select-OrganizationEntity {
 		[switch] $All
 	)
 
-	$list = $Client.Organizations.GetEntities($OrganizationÌd, $PageNumber, $PageSize)
-	if (-not $All) { return $list }
+	try {
+		$list = $Client.Organizations.GetEntities($OrganizationÌd, $PageNumber, $PageSize)
+		if (-not $All) { return $list }
 
-	$items = [List[Entity]]::new($list.Items)
-	while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-		$list = $Client.Organizations.GetEntities($OrganizationÌd, ++$PageNumber, $PageSize)
-		$items.AddRange($list.Items)
+		$items = [List[Entity]]::new($list.Items)
+		while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
+			$list = $Client.Organizations.GetEntities($OrganizationÌd, ++$PageNumber, $PageSize)
+			$items.AddRange($list.Items)
+		}
+
+		$items
 	}
-
-	$items
+	catch [HttpRequestException] {
+		Write-Error $_
+	}
 }
