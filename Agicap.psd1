@@ -7,7 +7,7 @@
 	Author = "MC2IT <dev@mc2it.com>"
 	CompanyName = "MC2IT"
 	Copyright = "© MC2IT"
-	Description = "Agicap SDK for PowerShell."
+	Description = "An Agicap API client library for PowerShell."
 	GUID = "e6365c39-25a6-41c3-9300-e9b1e7d525c9"
 
 	AliasesToExport = @()

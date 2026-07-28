@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<Company>MC2IT</Company>
 		<Copyright>© MC2IT</Copyright>
-		<Description>Agicap SDK for PowerShell.</Description>
+		<Description>An Agicap API client library for PowerShell.</Description>
 		<Product>Agicap for PowerShell</Product>
 		<Version>0.3.0</Version>
 	</PropertyGroup>
