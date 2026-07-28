@@ -1,5 +1,5 @@
-﻿using namespace Mc2it.Agicap.Authentication
-using namespace System.Management.Automation
+﻿using namespace Mc2it.Agicap
+using namespace Mc2it.Agicap.Authentication
 
 <#
 .SYNOPSIS
@@ -11,21 +11,15 @@ function Request-AccessToken {
 	[CmdletBinding()]
 	[OutputType([Mc2it.Agicap.Authentication.AccessToken])]
 	param (
-		# The client identifier and secret.
+		# The API client.
 		[Parameter(Mandatory, Position = 1)]
-		[Credential()]
-		[pscredential] $Credential,
+		[Client] $Client,
 
 		# The delegated permissions to consent to.
 		[Parameter(Position = 2)]
 		[ValidateNotNullOrEmpty()]
-		[string[]] $Scope = @("agicap:public-api")
+		[string[]] $Scope = @([Scopes]::PublicApi)
 	)
 
-	return [AccessToken] (Invoke-RestMethod "$(Get-ApiUrl)/auth/v1/token" -Method Post -Body @{
-		client_id = $Credential.UserName
-		client_secret = $Credential.GetNetworkCredential().Password
-		grant_type = "client_credentials"
-		scope = $Scope -join " "
-	})
+	$Client.Authenticate($Scope)
 }

@@ -13,7 +13,7 @@ using namespace System.Management.Automation
 
 <#
 .SYNOPSIS
-	Creates a new Agicap client.
+	Creates a new Agicap API client.
 .INPUTS
 	The client identifier and secret.
 .OUTPUTS
