@@ -18,6 +18,7 @@
 	FunctionsToExport = @(
 		"New-Client"
 		"Request-AccessToken"
+		"Select-Organization"
 	)
 
 	PrivateData = @{
