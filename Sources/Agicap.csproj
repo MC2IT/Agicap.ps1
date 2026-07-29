@@ -21,5 +21,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Mc2it.Agicap" Version="0.*" />
+		<!-- TODO <ProjectReference Include="../../../net/Agicap/Sources/Agicap.csproj" /> -->
 	</ItemGroup>
 </Project>
