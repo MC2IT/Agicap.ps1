@@ -12,17 +12,18 @@ function New-Beneficiary {
 	[OutputType([Mc2it.Agicap.Payments.Beneficiary])]
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
-		# The bank account of the beneficiary.
-		[BankAccount] $BankAccount = $null,
-
 		# The name of the beneficiary.
-		[string] $Name = "",
+		[Parameter(Mandatory, Position = 1)]
+		[string] $Name,
+
+		# The bank account of the beneficiary.
+		[BankAccount] $BankAccount,
 
 		# The postal address of the beneficiary.
-		[PostalAddress] $PostalAddress = $null
+		[PostalAddress] $PostalAddress
 	)
 
-	[Beneficiary]@{
+	return [Beneficiary]@{
 		BankAccount = $BankAccount
 		Name = $Name
 		PostalAddress = $PostalAddress

@@ -13,30 +13,33 @@ function New-PostalAddress {
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The name of the city.
-		[string] $City = "",
+		[Parameter(Mandatory)]
+		[string] $City,
 
 		# The ISO 3166 alpha-2 code of the country in which the beneficiary is located.
-		[string] $Country = "",
+		[Parameter(Mandatory)]
+		[string] $Country,
 
 		# The number of the building.
-		[string] $Number = "",
+		[string] $Number,
 
 		# The state in which the beneficiary is located.
-		[string] $State = "",
+		[string] $State,
 
 		# The name of the street.
-		[string] $StreetName = "",
+		[Parameter(Mandatory)]
+		[string] $StreetName,
 
 		# The ZIP code of the beneficiary location.
-		[string] $ZipCode = ""
+		[string] $ZipCode
 	)
 
-	[PostalAddress]@{
+	return [PostalAddress]@{
 		City = $City
 		Country = $Country
-		Number = $Number
-		State = $State
+		Number = $Number ? $Number : [NullString]::Value
+		State = $State ? $State : [NullString]::Value
 		StreetName = $StreetName
-		ZipCode = $ZipCode
+		ZipCode = $ZipCode ? $ZipCode : [NullString]::Value
 	}
 }
