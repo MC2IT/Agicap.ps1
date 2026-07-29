@@ -15,4 +15,4 @@ $entityId = [int] ($Env:AGICAP_ENTITY ?? "000000")
 
 # The identifier of the test entity.
 [SuppressMessage("PSUseDeclaredVarsMoreThanAssignments", "organizationId")]
-$organizationId = [guid] ($Env:AGICAP_ORGANIZATION ?? "00000000-0000-0000-0000-000000000000")
+$organizationId = [guid]::new($Env:AGICAP_ORGANIZATION ?? "00000000-0000-0000-0000-000000000000")
