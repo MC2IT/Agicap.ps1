@@ -44,7 +44,8 @@ function New-Client {
 	)
 
 	process {
-		$client = [Client]::new($Credential, $Uri)
+		$client = [Client]::new($Credential)
+		$client.BaseUrl = $Uri
 		$client.DefaultScopes = $Scope
 		$client.UserAgent = $UserAgent
 		$client
