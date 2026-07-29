@@ -9,7 +9,7 @@ using namespace System.Net.Http
 .OUTPUTS
 	The entities of the organization with the specified identifier.
 #>
-function Select-OrganizationEntity {
+function Select-Entity {
 	[CmdletBinding(DefaultParameterSetName = "Pagination")]
 	[OutputType([Mc2it.Agicap.Organizations.Entity])]
 	[OutputType([Mc2it.Agicap.PaginatedList[Mc2it.Agicap.Organizations.Entity]])]

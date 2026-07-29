@@ -1,12 +1,12 @@
 ﻿<#
 .SYNOPSIS
-	Tests the features of the `Select-OrganizationEntity` cmdlet.
+	Tests the features of the `Select-Entity` cmdlet.
 #>
-Describe "Select-OrganizationEntity" -Skip:($Env:CI -eq "true") {
+Describe "Select-Entity" -Skip:($Env:CI -eq "true") {
 	BeforeAll { . "$PSScriptRoot/../BeforeAll.ps1" }
 
 	It "should return the entities of the organization with the specified identifier" {
-		$list = Select-AgicapOrganizationEntity $client $organizationId
+		$list = Select-AgicapEntity $client $organizationId
 		Should-BeGreaterThanOrEqual 1 $list.Items.Count
 		Should-Be $list.Items.Count $list.Pagination.TotalItemsCount
 
@@ -16,7 +16,7 @@ Describe "Select-OrganizationEntity" -Skip:($Env:CI -eq "true") {
 	}
 
 	It "should support fetching all entities in one pass" {
-		$list = @(Select-AgicapOrganizationEntity $client $organizationId -All)
+		$list = @(Select-AgicapEntity $client $organizationId -All)
 		Should-BeGreaterThanOrEqual 1 $list.Count
 
 		$entity = $list.Where{ $_.Id -eq $entityId }

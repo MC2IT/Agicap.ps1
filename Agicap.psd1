@@ -16,10 +16,13 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
+		"New-BankAccount"
+		"New-Beneficiary"
 		"New-Client"
+		"New-PostalAddress"
 		"Request-AccessToken"
+		"Select-Entity"
 		"Select-Organization"
-		"Select-OrganizationEntity"
 	)
 
 	PrivateData = @{
