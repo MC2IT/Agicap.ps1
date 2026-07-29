@@ -1,3 +1,5 @@
+@beneficiaryId = <GUID>
+
 ### Generates a new access token.
 # @name auth
 POST {{baseUrl}}/auth/v1/token
@@ -7,9 +9,51 @@ Content-Type: application/x-www-form-urlencoded
 client_id={{$processEnv %clientId}}
 &client_secret={{$processEnv %clientSecret}}
 &grant_type=client_credentials
-&scope=agicap:public-api
+&scope=agicap:public-api public-api:manage-payment-beneficiaries
 
 ### Fetches all beneficiaries.
 GET {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+
+### Creates a new beneficiary.
+POST {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+Content-Type: application/json
+
+{
+	"name": "MC2IT Service Développement",
+	"postalAddress": {
+		"city": "Fabrègues",
+		"country": "FR",
+		"streetName": "Rue Gine"
+	}
+}
+
+### Updates a beneficiary.
+PUT {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries/{{beneficiaryId}}
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+Content-Type: application/json
+
+{
+	"name": "MC2IT Service Développement",
+	"postalAddress": {
+		"city": "Fabrègues",
+		"country": "FR",
+		"number": "29",
+		"streetName": "Rue Gine",
+		"zipCode": "34690"
+	}
+}
+
+### Deletes the beneficiary with the specified identifier.
+DELETE {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries/{{beneficiaryId}}
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+
+### Deletes all beneficiaries.
+DELETE {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries
 Accept: application/json
 Authorization: Bearer {{auth.response.body.access_token}}
