@@ -33,20 +33,25 @@ function Select-Organization {
 		[switch] $All
 	)
 
-	try {
+	begin {
 		$api = $Client.Organizations
-		$list = $api.GetAll($PageNumber, $PageSize)
-		if (-not $All) { return $list }
-
-		$items = [List[Organization]]::new($list.Items)
-		while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-			$list = $api.GetAll(++$PageNumber, $PageSize)
-			$items.AddRange($list.Items)
-		}
-
-		$items
 	}
-	catch [HttpRequestException] {
-		Write-Error $_
+
+	process {
+		try {
+			$list = $api.GetAll($PageNumber, $PageSize)
+			if (-not $All) { return $list }
+
+			$items = [List[Organization]]::new($list.Items)
+			while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
+				$list = $api.GetAll(++$PageNumber, $PageSize)
+				$items.AddRange($list.Items)
+			}
+
+			$items
+		}
+		catch [HttpRequestException] {
+			Write-Error $_
+		}
 	}
 }

@@ -2,6 +2,7 @@
 
 ## Version [0.4.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.3.0...v0.4.0)
 - Added the `-Scope` parameter to the `New-AgicapClient` cmdlet.
+- **Payments:** added the `Remove-Beneficiary` and `Select-Beneficiary` cmdlets.
 
 ## Version [0.3.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.2.0...v0.3.0)
 - Added the `New-AgicapClient` cmdlet.

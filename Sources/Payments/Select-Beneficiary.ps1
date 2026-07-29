@@ -20,11 +20,12 @@ function Select-Beneficiary {
 		[int] $EntityId
 	)
 
-	try {
+	begin {
 		$api = $Client.Payments.Beneficiaries($EntityId)
-		$api.GetAll()
 	}
-	catch [HttpRequestException] {
-		Write-Error $_
+
+	process {
+		try { $api.GetAll() }
+		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

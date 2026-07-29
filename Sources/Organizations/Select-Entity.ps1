@@ -37,20 +37,25 @@ function Select-Entity {
 		[switch] $All
 	)
 
-	try {
+	begin {
 		$api = $Client.Organizations.Entities($OrganizationÌd)
-		$list = $api.GetAll($PageNumber, $PageSize)
-		if (-not $All) { return $list }
-
-		$items = [List[Entity]]::new($list.Items)
-		while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-			$list = $api.GetAll(++$PageNumber, $PageSize)
-			$items.AddRange($list.Items)
-		}
-
-		$items
 	}
-	catch [HttpRequestException] {
-		Write-Error $_
+
+	process {
+		try {
+			$list = $api.GetAll($PageNumber, $PageSize)
+			if (-not $All) { return $list }
+
+			$items = [List[Entity]]::new($list.Items)
+			while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
+				$list = $api.GetAll(++$PageNumber, $PageSize)
+				$items.AddRange($list.Items)
+			}
+
+			$items
+		}
+		catch [HttpRequestException] {
+			Write-Error $_
+		}
 	}
 }

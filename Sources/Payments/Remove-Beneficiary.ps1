@@ -1,31 +1,48 @@
-﻿using namespace Mc2it.Agicap.Payments
-using namespace System.Diagnostics.CodeAnalysis
+﻿using namespace Mc2it.Agicap
+using namespace Mc2it.Agicap.Payments
 
 <#
 .SYNOPSIS
-	Creates a new beneficiary.
-.OUTPUTS
-	The newly created beneficiary.
+	Deletes either the specified beneficiary, or all beneficiaries.
+.INPUTS
+	The beneficiary to delete.
 #>
-# function Remove-Beneficiary {
-# 	[CmdletBinding()]
-# 	[OutputType([Mc2it.Agicap.Payments.Beneficiary])]
-# 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
-# 	param (
-# 		# The name of the beneficiary.
-# 		[Parameter(Mandatory, Position = 1)]
-# 		[string] $Name,
+function Remove-Beneficiary {
+	[CmdletBinding(DefaultParameterSetName = "InputObject")]
+	[OutputType([void])]
+	param (
+		# The API client.
+		[Parameter(Mandatory, Position = 1)]
+		[Client] $Client,
 
-# 		# The bank account of the beneficiary.
-# 		[BankAccount] $BankAccount,
+		# The entity identifier.
+		[Parameter(Mandatory, Position = 2)]
+		[int] $EntityId,
 
-# 		# The postal address of the beneficiary.
-# 		[switch] $All
-# 	)
+		# The beneficiary to delete.
+		[Parameter(Mandatory, ParameterSetName = "BeneficiaryId", Position = 3)]
+		[guid] $BeneficiaryId,
 
-# 	return [Beneficiary]@{
-# 		BankAccount = $BankAccount
-# 		Name = $Name
-# 		PostalAddress = $PostalAddress
-# 	}
-# }
+		# The beneficiary to delete.
+		[Parameter(Mandatory, ParameterSetName = "InputObject", Position = 3, ValueFromPipeline)]
+		[Beneficiary] $InputObject,
+
+		# Value indicating whether to delete all beneficiaries.
+		[Parameter(ParameterSetName = "All")]
+		[switch] $All
+	)
+
+	begin {
+		$api = $Client.Payments.Beneficiaries($EntityId)
+	}
+
+	process {
+		try {
+			if ($All) { $api.DeleteAll() }
+			else { $api.Delete($InputObject ? $InputObject.Id : $BeneficiaryId) }
+		}
+		catch [HttpRequestException] {
+			Write-Error $_
+		}
+	}
+}
