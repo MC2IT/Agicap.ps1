@@ -21,6 +21,7 @@
 		"New-Client"
 		"New-PostalAddress"
 		"Request-AccessToken"
+		"Select-Beneficiary"
 		"Select-Entity"
 		"Select-Organization"
 	)

@@ -1,31 +1,30 @@
-﻿using namespace Mc2it.Agicap.Payments
-using namespace System.Diagnostics.CodeAnalysis
+﻿using namespace Mc2it.Agicap
+using namespace System.Net.Http
 
 <#
 .SYNOPSIS
-	Creates a new beneficiary.
+	Fetches the beneficiaries of the entity with the specified identifier.
 .OUTPUTS
-	The newly created beneficiary.
+	The beneficiaries of the entity with the specified identifier.
 #>
-# function Select-Beneficiary {
-# 	[CmdletBinding()]
-# 	[OutputType([Mc2it.Agicap.Payments.Beneficiary])]
-# 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
-# 	param (
-# 		# The name of the beneficiary.
-# 		[Parameter(Mandatory, Position = 1)]
-# 		[string] $Name,
+function Select-Beneficiary {
+	[CmdletBinding()]
+	[OutputType([Mc2it.Agicap.Payments.Beneficiary])]
+	param (
+		# The API client.
+		[Parameter(Mandatory, Position = 1)]
+		[Client] $Client,
 
-# 		# The bank account of the beneficiary.
-# 		[BankAccount] $BankAccount,
+		# The entity identifier.
+		[Parameter(Mandatory, Position = 2)]
+		[int] $EntityId
+	)
 
-# 		# The postal address of the beneficiary.
-# 		[switch] $All
-# 	)
-
-# 	return [Beneficiary]@{
-# 		BankAccount = $BankAccount
-# 		Name = $Name
-# 		PostalAddress = $PostalAddress
-# 	}
-# }
+	try {
+		$api = $Client.Payments.Beneficiaries($EntityId)
+		$api.GetAll()
+	}
+	catch [HttpRequestException] {
+		Write-Error $_
+	}
+}

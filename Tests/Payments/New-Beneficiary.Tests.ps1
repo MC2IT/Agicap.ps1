@@ -10,7 +10,7 @@ Describe "New-Beneficiary" {
 		$beneficiary = New-AgicapBeneficiary "My Company" -PostalAddress $postalAddress
 		Should-BeString "My Company" $beneficiary.Name -CaseSensitive
 		Should-BeNull $beneficiary.BankAccount
-		Should-BeNull $beneficiary.Id
+		Should-Be (New-Guid -Empty) $beneficiary.Id
 		Should-BeNull $beneficiary.PostalAddress
 	}
 }
