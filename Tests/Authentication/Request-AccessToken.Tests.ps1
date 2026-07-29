@@ -6,7 +6,7 @@ Describe "Request-AccessToken" {
 	BeforeAll { . "$PSScriptRoot/../BeforeAll.ps1" }
 
 	It "should return a new access token" -Skip:($Env:CI -eq "true") {
-		$scopes = [Mc2it.Agicap.Authentication.Scopes]::All
+		$scopes = "agicap:public-api", "public-api:manage-payment-beneficiaries", "public-api:manage-suppliers"
 		Should-BeFalse $client.IsAuthenticated
 
 		$accessToken = Request-AgicapAccessToken $client $scopes

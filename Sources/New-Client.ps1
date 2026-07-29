@@ -1,4 +1,5 @@
 ﻿using namespace Mc2it.Agicap
+using namespace Mc2it.Agicap.Authentication
 using namespace System.Diagnostics.CodeAnalysis
 using namespace System.Management.Automation
 
@@ -29,6 +30,10 @@ function New-Client {
 		[Credential()]
 		[pscredential] $Credential,
 
+		# The scopes to use by default when invoking the `Request-AccessToken` cmdlet.
+		[ValidateNotNullOrEmpty()]
+		[string[]] $Scope = @([Scopes]::PublicApi),
+
 		# The user agent string to use when making requests.
 		[ValidateNotNullOrWhiteSpace()]
 		[string] $UserAgent = "PowerShell/$($PSVersionTable.PSVersion) | Mc2it.Agicap/$Script:Version",
@@ -40,6 +45,7 @@ function New-Client {
 
 	process {
 		$client = [Client]::new($Credential, $Uri)
+		$client.DefaultScopes = $Scope
 		$client.UserAgent = $UserAgent
 		$client
 	}

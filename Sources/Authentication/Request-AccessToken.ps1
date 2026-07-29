@@ -18,8 +18,8 @@ function Request-AccessToken {
 
 		# The delegated permissions to consent to.
 		[Parameter(Position = 2)]
-		[ValidateNotNullOrEmpty()]
-		[string[]] $Scope = @([Scopes]::PublicApi)
+		[ValidateNotNull()]
+		[string[]] $Scope = @()
 	)
 
 	try { $Client.Authenticate($Scope) }
