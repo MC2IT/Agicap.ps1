@@ -3,7 +3,7 @@ using namespace Mc2it.Agicap.Payments
 
 <#
 .SYNOPSIS
-	Deletes either the specified beneficiary, or all beneficiaries.
+	Creates a new beneficiary.
 .INPUTS
 	The beneficiary to create.
 #>
