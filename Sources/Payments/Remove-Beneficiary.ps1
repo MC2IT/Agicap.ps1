@@ -1,5 +1,6 @@
 ﻿using namespace Mc2it.Agicap
 using namespace Mc2it.Agicap.Payments
+using namespace System.Net.Http
 
 <#
 .SYNOPSIS
