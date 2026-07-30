@@ -1,5 +1,6 @@
 ﻿using namespace Mc2it.Agicap
 using namespace Mc2it.Agicap.Payments
+using namespace System.Diagnostics.CodeAnalysis
 using namespace System.Net.Http
 
 <#
@@ -11,6 +12,7 @@ using namespace System.Net.Http
 function Remove-Beneficiary {
 	[CmdletBinding(DefaultParameterSetName = "InputObject")]
 	[OutputType([void])]
+	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The API client.
 		[Parameter(Mandatory, Position = 1)]

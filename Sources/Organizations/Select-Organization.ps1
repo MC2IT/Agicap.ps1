@@ -11,8 +11,8 @@ using namespace System.Net.Http
 #>
 function Select-Organization {
 	[CmdletBinding(DefaultParameterSetName = "Pagination")]
-	[OutputType([Mc2it.Agicap.Organizations.Organization])]
 	[OutputType([Mc2it.Agicap.PaginatedList[Mc2it.Agicap.Organizations.Organization]])]
+	[OutputType([System.Collections.Generic.List[Mc2it.Agicap.Organizations.Organization]])]
 	param (
 		# The API client.
 		[Parameter(Mandatory, Position = 1)]
