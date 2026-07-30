@@ -25,7 +25,7 @@ function Select-Beneficiary {
 	}
 
 	process {
-		try { $api.GetAll() }
+		try { $api.ReadAll() }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

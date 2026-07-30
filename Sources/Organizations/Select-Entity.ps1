@@ -43,12 +43,12 @@ function Select-Entity {
 
 	process {
 		try {
-			$list = $api.GetAll($PageNumber, $PageSize)
+			$list = $api.ReadAll($PageNumber, $PageSize)
 			if (-not $All) { return $list }
 
 			$items = [List[Entity]]::new($list.Items)
 			while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-				$list = $api.GetAll(++$PageNumber, $PageSize)
+				$list = $api.ReadAll(++$PageNumber, $PageSize)
 				$items.AddRange($list.Items)
 			}
 

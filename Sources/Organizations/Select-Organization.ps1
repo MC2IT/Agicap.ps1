@@ -39,12 +39,12 @@ function Select-Organization {
 
 	process {
 		try {
-			$list = $api.GetAll($PageNumber, $PageSize)
+			$list = $api.ReadAll($PageNumber, $PageSize)
 			if (-not $All) { return $list }
 
 			$items = [List[Organization]]::new($list.Items)
 			while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-				$list = $api.GetAll(++$PageNumber, $PageSize)
+				$list = $api.ReadAll(++$PageNumber, $PageSize)
 				$items.AddRange($list.Items)
 			}
 

@@ -23,6 +23,7 @@
 		"Remove-Beneficiary"
 		"Request-AccessToken"
 		"Select-Beneficiary"
+		"Submit-Beneficiary"
 		"Select-Entity"
 		"Select-Organization"
 	)
