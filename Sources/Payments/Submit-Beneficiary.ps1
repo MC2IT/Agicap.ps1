@@ -6,10 +6,12 @@ using namespace Mc2it.Agicap.Payments
 	Creates a new beneficiary.
 .INPUTS
 	The beneficiary to create.
+.OUTPUTS
+	The identifier of the newly created beneficiary.
 #>
 function Submit-Beneficiary {
 	[CmdletBinding()]
-	[OutputType([void])]
+	[OutputType([guid])]
 	param (
 		# The API client.
 		[Parameter(Mandatory, Position = 1)]
