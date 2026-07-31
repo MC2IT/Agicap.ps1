@@ -1,7 +1,7 @@
 # Changelog
 
 ## Version [0.5.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.4.0...v0.5.0)
-- **Payments:** added the `New-SynchronizedBeneficiary` cmdlets.
+- **Payments:** added the `New-SynchronizedBeneficiary`, `Sync-Beneficiary` cmdlets.
 
 ## Version [0.4.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.3.0...v0.4.0)
 - Added the `-Scope` parameter to the `New-Client` cmdlet.
