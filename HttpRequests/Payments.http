@@ -1,4 +1,5 @@
 @beneficiaryId = <GUID>
+@syncId = <GUID>
 
 ### Generates a new access token.
 # @name auth
@@ -47,6 +48,31 @@ Content-Type: application/json
 		"zipCode": "34690"
 	}
 }
+
+### Starts a bulk synchronization of beneficiaries from the ERP software.
+POST {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries/sync
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+Content-Type: application/json
+
+{
+	"items": [
+		{
+			"erpId": "MC2IT-DEVELOPMENT",
+			"name": "MC2IT Service Développement",
+			"postalAddress": {
+				"city": "Fabrègues",
+				"country": "FR",
+				"streetName": "Rue Gine"
+			}
+		}
+	]
+}
+
+### Fetches the synchronization report with the specified identifier.
+GET {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries/sync/{{syncId}}
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
 
 ### Deletes the beneficiary with the specified identifier.
 DELETE {{baseUrl}}/payments/v2/entities/{{$processEnv %entity}}/Beneficiaries/{{beneficiaryId}}
