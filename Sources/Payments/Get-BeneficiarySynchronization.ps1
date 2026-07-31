@@ -3,13 +3,13 @@ using namespace System.Net.Http
 
 <#
 .SYNOPSIS
-	Starts a bulk synchronization of beneficiaries from the ERP software.
+	Fetches the synchronization report with the specified identifier.
 .OUTPUTS
-	The identifier of the newly started synchronization.
+	The synchronization report with the specified identifier.
 #>
-function Sync-Beneficiary {
+function Get-BeneficiarySynchronization {
 	[CmdletBinding()]
-	[OutputType([guid])]
+	[OutputType([Mc2it.Agicap.Payments.BeneficiarySynchronization])]
 	param (
 		# The API client.
 		[Parameter(Mandatory, Position = 1)]
@@ -19,9 +19,9 @@ function Sync-Beneficiary {
 		[Parameter(Mandatory, Position = 2)]
 		[int] $EntityId,
 
-		# The beneficiaries to synchronize.
+		# The identifier of the synchronization report.
 		[Parameter(Mandatory, Position = 3)]
-		[SynchronizedBeneficiary[]] $Beneficiaries
+		[guid] $SyncId
 	)
 
 	begin {
@@ -29,7 +29,7 @@ function Sync-Beneficiary {
 	}
 
 	process {
-		try { $api.Create($Beneficiaries) }
+		try { $api.Read($SyncId) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

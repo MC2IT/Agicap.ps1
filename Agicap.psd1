@@ -16,6 +16,7 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
+		"Get-BeneficiarySynchronization"
 		"New-BankAccount"
 		"New-Beneficiary"
 		"New-Client"
