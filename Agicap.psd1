@@ -20,6 +20,7 @@
 		"New-Beneficiary"
 		"New-Client"
 		"New-PostalAddress"
+		"New-SynchronizedBeneficiary"
 		"Remove-Beneficiary"
 		"Request-AccessToken"
 		"Select-Beneficiary"
