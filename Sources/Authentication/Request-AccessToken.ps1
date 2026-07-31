@@ -1,5 +1,4 @@
 ﻿using namespace Mc2it.Agicap
-using namespace Mc2it.Agicap.Authentication
 using namespace System.Net.Http
 
 <#
