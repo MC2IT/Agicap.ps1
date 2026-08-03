@@ -22,10 +22,10 @@ function New-SynchronizedBeneficiary {
 
 		# The ERP identifiers of the suppliers to associate with this beneficiary.
 		[ValidateNotNull()]
-		[string[]] $SupplierErpId = @()
+		[string[]] $SupplierErpIds = @()
 	)
 
 	$synchronizedBeneficiary = [SynchronizedBeneficiary]::new($ErpId, $Beneficiary)
-	if ($SupplierErpId.Count) { $synchronizedBeneficiary.SupplierErpIds = $SupplierErpId }
+	if ($SupplierErpIds.Count) { $synchronizedBeneficiary.SupplierErpIds = $SupplierErpIds }
 	$synchronizedBeneficiary
 }

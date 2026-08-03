@@ -13,6 +13,7 @@ function New-BankAccount {
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The name of the bank the account is located.
+		[Parameter(Position = 1)]
 		[string] $BankName,
 
 		# The bank identifier code of the bank where the account is located.
