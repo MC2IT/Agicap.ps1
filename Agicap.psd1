@@ -28,6 +28,7 @@
 		"Select-Entity"
 		"Select-Organization"
 		"Submit-Beneficiary"
+		"Sync-Beneficiary"
 		"Update-Beneficiary"
 	)
 
