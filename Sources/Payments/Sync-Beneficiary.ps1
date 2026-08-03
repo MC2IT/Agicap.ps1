@@ -22,7 +22,10 @@ function Sync-Beneficiary {
 
 		# The beneficiaries to synchronize.
 		[Parameter(Mandatory, Position = 3)]
-		[SynchronizedBeneficiary[]] $Beneficiaries
+		[SynchronizedBeneficiary[]] $Beneficiaries,
+
+		# Value indicating whether to wait until the synchronization is complete.
+		[switch] $Wait
 	)
 
 	begin {
@@ -30,7 +33,18 @@ function Sync-Beneficiary {
 	}
 
 	process {
-		try { $api.Create($Beneficiaries) }
-		catch [HttpRequestException] { Write-Error $_ }
+		try {
+			$syncId = $api.Create($Beneficiaries)
+
+			if ($Wait) {
+				do { Start-Sleep 3; $synchronization = Get-BeneficiarySynchronization $Client $EntityId $syncId }
+				while ($synchronization.Status -eq [BeneficiarySynchronizationStatus]::Running)
+			}
+
+			$syncId
+		}
+		catch [HttpRequestException] {
+			Write-Error $_
+		}
 	}
 }
