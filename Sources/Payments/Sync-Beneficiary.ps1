@@ -37,7 +37,7 @@ function Sync-Beneficiary {
 			$syncId = $api.Create($Beneficiaries)
 
 			if ($Wait) {
-				do { Start-Sleep 3; $synchronization = Get-BeneficiarySynchronization $Client $EntityId $syncId }
+				do { Start-Sleep 5; $synchronization = Get-BeneficiarySynchronization $Client $EntityId $syncId }
 				while ($synchronization.Status -eq [BeneficiarySynchronizationStatus]::Running)
 			}
 
