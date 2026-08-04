@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [0.6.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.5.1...v0.6.0)
+- **Organizations:** removed the `-All` parameter from the `Select-Entity` and `Select-Organization` cmdlets.
+- **Payments:** removed the `-Wait` parameter from the `Sync-Beneficiary` cmdlet.
+
 ## Version [0.5.1](https://github.com/MC2IT/Agicap.ps1/compare/v0.5.0...v0.5.1)
 - **Payments:** allows empty strings for mandatory parameters of the `New-PostalAddress` cmdlet.
 
