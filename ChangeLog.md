@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [0.5.1](https://github.com/MC2IT/Agicap.ps1/compare/v0.5.0...v0.5.1)
+- **Payments:** allows empty strings for mandatory parameters of the `New-PostalAddress` cmdlet.
+
 ## Version [0.5.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.4.0...v0.5.0)
 - **Payments:** added the `Get-BeneficiarySynchronization`, `New-SynchronizedBeneficiary` and `Sync-Beneficiary` cmdlets.
 
