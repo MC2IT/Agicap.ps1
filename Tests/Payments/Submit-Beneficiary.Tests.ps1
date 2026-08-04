@@ -8,14 +8,14 @@ using namespace System.Net
 Describe "Submit-Beneficiary" -Skip:($Env:CI -eq "true") {
 	BeforeAll {
 		. "$PSScriptRoot/../BeforeAll.ps1"
-		$postalAddress = New-AgicapPostalAddress -City "Fabrègues" -Country "FR" -StreetName "Rue Gine"
+		$postalAddress = New-AgicapPostalAddress -City "Fabrègues" -Country FR -StreetName "Rue Gine"
 		[SuppressMessage("PSUseDeclaredVarsMoreThanAssignments", "beneficiary")]
-		$beneficiary = New-AgicapBeneficiary "MC2IT Service Développement" -PostalAddress $postalAddress
+		$beneficiary = New-AgicapBeneficiary "MC2IT Continuous integration" -PostalAddress $postalAddress
 	}
 
 	It "should create the specified beneficiary" {
 		Should-Be (New-Guid -Empty) $beneficiary.Id
-		$beneficiary | Submit-AgicapBeneficiary $client $entityId | Out-Null
+		$beneficiary | Submit-AgicapBeneficiary $client $entityId -ErrorAction Stop | Out-Null
 		Should-NotBe (New-Guid -Empty) $beneficiary.Id
 	}
 
