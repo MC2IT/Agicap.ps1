@@ -14,13 +14,4 @@ Describe "Select-Entity" -Skip:($Env:CI -eq "true") {
 		Should-BeString FR $entity.Country -CaseSensitive
 		Should-BeString MC2IT $entity.Name -CaseSensitive
 	}
-
-	It "should support fetching all entities in one pass" {
-		$list = @(Select-AgicapEntity $client $organizationId -All)
-		Should-BeGreaterThanOrEqual 1 $list.Count
-
-		$entity = $list.Where{ $_.Id -eq $entityId }
-		Should-BeString FR $entity.Country -CaseSensitive
-		Should-BeString MC2IT $entity.Name -CaseSensitive
-	}
 }

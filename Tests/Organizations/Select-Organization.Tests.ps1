@@ -14,13 +14,4 @@ Describe "Select-Organization" -Skip:($Env:CI -eq "true") {
 		Should-Be $organizationId $organization.Id
 		Should-BeString MC2IT $organization.Name -CaseSensitive
 	}
-
-	It "should support fetching all organizations in one pass" {
-		$list = @(Select-AgicapOrganization $client -All)
-		Should-BeCollection $list -Count 1
-
-		$organization = $list[0]
-		Should-Be $organizationId $organization.Id
-		Should-BeString MC2IT $organization.Name -CaseSensitive
-	}
 }

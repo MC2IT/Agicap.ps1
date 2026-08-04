@@ -26,11 +26,7 @@ function Select-Organization {
 		# The number of elements per page.
 		[Parameter(ParameterSetName = "Pagination")]
 		[ValidateRange("Positive")]
-		[int] $PageSize = 100,
-
-		# Value indicating whether to fetch all organizations.
-		[Parameter(ParameterSetName = "All")]
-		[switch] $All
+		[int] $PageSize = 100
 	)
 
 	begin {
@@ -38,20 +34,7 @@ function Select-Organization {
 	}
 
 	process {
-		try {
-			$list = $api.ReadAll($PageNumber, $PageSize)
-			if (-not $All) { return $list }
-
-			$items = [List[Organization]]::new($list.Items)
-			while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-				$list = $api.ReadAll(++$PageNumber, $PageSize)
-				$items.AddRange($list.Items)
-			}
-
-			$items
-		}
-		catch [HttpRequestException] {
-			Write-Error $_
-		}
+		try { $api.ReadAll($PageNumber, $PageSize) }
+		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

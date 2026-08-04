@@ -30,11 +30,7 @@ function Select-Entity {
 		# The number of elements per page.
 		[Parameter(ParameterSetName = "Pagination")]
 		[ValidateRange("Positive")]
-		[int] $PageSize = 100,
-
-		# Value indicating whether to fetch all entities.
-		[Parameter(ParameterSetName = "All")]
-		[switch] $All
+		[int] $PageSize = 100
 	)
 
 	begin {
@@ -42,20 +38,7 @@ function Select-Entity {
 	}
 
 	process {
-		try {
-			$list = $api.ReadAll($PageNumber, $PageSize)
-			if (-not $All) { return $list }
-
-			$items = [List[Entity]]::new($list.Items)
-			while ($list.Pagination.CurrentPageNumber -lt $list.Pagination.PagesCount) {
-				$list = $api.ReadAll(++$PageNumber, $PageSize)
-				$items.AddRange($list.Items)
-			}
-
-			$items
-		}
-		catch [HttpRequestException] {
-			Write-Error $_
-		}
+		try { $api.ReadAll($PageNumber, $PageSize) }
+		catch [HttpRequestException] { Write-Error $_ }
 	}
 }
