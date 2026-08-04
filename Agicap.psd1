@@ -1,6 +1,6 @@
 @{
 	DefaultCommandPrefix = "Agicap"
-	ModuleVersion = "0.6.0"
+	ModuleVersion = "0.5.1"
 	PowerShellVersion = "7.6"
 	RootModule = "Sources/Main.psm1"
 
