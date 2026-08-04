@@ -14,10 +14,12 @@ function New-PostalAddress {
 	param (
 		# The name of the city.
 		[Parameter(Mandatory)]
+		[AllowEmptyString()]
 		[string] $City,
 
 		# The ISO 3166 alpha-2 code of the country in which the beneficiary is located.
 		[Parameter(Mandatory)]
+		[AllowEmptyString()]
 		[string] $Country,
 
 		# The number of the building.
@@ -28,6 +30,7 @@ function New-PostalAddress {
 
 		# The name of the street.
 		[Parameter(Mandatory)]
+		[AllowEmptyString()]
 		[string] $StreetName,
 
 		# The ZIP code of the beneficiary location.
