@@ -10,7 +10,7 @@ Describe "Submit-Beneficiary" -Skip:($Env:CI -eq "true") {
 		. "$PSScriptRoot/../BeforeAll.ps1"
 		$postalAddress = New-AgicapPostalAddress -City "Fabrègues" -Country FR -StreetName "Rue Gine"
 		[SuppressMessage("PSUseDeclaredVarsMoreThanAssignments", "beneficiary")]
-		$beneficiary = New-AgicapBeneficiary "MC2IT Continuous integration" -PostalAddress $postalAddress
+		$beneficiary = New-AgicapBeneficiary "MC2IT Test Runner" -PostalAddress $postalAddress
 	}
 
 	It "should create the specified beneficiary" {
