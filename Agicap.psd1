@@ -22,6 +22,7 @@
 		"New-Client"
 		"New-PostalAddress"
 		"New-SynchronizedBeneficiary"
+		"Remove-AccountingAccount"
 		"Remove-Beneficiary"
 		"Request-AccessToken"
 		"Select-Beneficiary"
