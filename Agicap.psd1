@@ -24,6 +24,7 @@
 		"New-SynchronizedBeneficiary"
 		"Remove-AccountingAccount"
 		"Remove-Beneficiary"
+		"Remove-ThirdParty"
 		"Request-AccessToken"
 		"Select-Beneficiary"
 		"Select-Entity"
