@@ -1,4 +1,5 @@
 ﻿using namespace Mc2it.Agicap
+using namespace Mc2it.Agicap.ChartOfAccounts
 using namespace System.Diagnostics.CodeAnalysis
 using namespace System.Net.Http
 
@@ -6,10 +7,10 @@ using namespace System.Net.Http
 .SYNOPSIS
 	Deletes the third-parties with the specified codes.
 .INPUTS
-	The codes of third-parties to delete.
+	The third-parties to delete.
 #>
 function Remove-ThirdParty {
-	[CmdletBinding()]
+	[CmdletBinding(DefaultParameterSetName = "InputObject")]
 	[OutputType([void])]
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
@@ -21,9 +22,13 @@ function Remove-ThirdParty {
 		[Parameter(Mandatory, Position = 2)]
 		[int] $EntityId,
 
+		# The third-parties to delete.
+		[Parameter(Mandatory, ParameterSetName = "InputObject", Position = 3, ValueFromPipeline)]
+		[ThirdParty[]] $InputObject,
+
 		# The codes of third-parties to delete.
-		[Parameter(Mandatory, Position = 3, ValueFromPipeline)]
-		[string[]] $InputObject
+		[Parameter(Mandatory, ParameterSetName = "Code", Position = 3)]
+		[string[]] $Code
 	)
 
 	begin {
@@ -31,7 +36,7 @@ function Remove-ThirdParty {
 	}
 
 	process {
-		try { $api.Delete($InputObject) }
+		try { $api.Delete($InputObject ?? $Code) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

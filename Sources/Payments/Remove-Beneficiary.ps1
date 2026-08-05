@@ -23,12 +23,12 @@ function Remove-Beneficiary {
 		[int] $EntityId,
 
 		# The beneficiary to delete.
-		[Parameter(Mandatory, ParameterSetName = "BeneficiaryId", Position = 3)]
-		[guid] $BeneficiaryId,
-
-		# The beneficiary to delete.
 		[Parameter(Mandatory, ParameterSetName = "InputObject", Position = 3, ValueFromPipeline)]
 		[Beneficiary] $InputObject,
+
+		# The identifier of the beneficiary to delete.
+		[Parameter(Mandatory, ParameterSetName = "BeneficiaryId", Position = 3)]
+		[guid] $BeneficiaryId,
 
 		# Value indicating whether to delete all beneficiaries.
 		[Parameter(ParameterSetName = "All")]
@@ -42,7 +42,7 @@ function Remove-Beneficiary {
 	process {
 		try {
 			if ($All) { $api.DeleteAll() }
-			else { $api.Delete($InputObject ? $InputObject.Id : $BeneficiaryId) }
+			else { $api.Delete($InputObject ?? $BeneficiaryId) }
 		}
 		catch [HttpRequestException] {
 			Write-Error $_

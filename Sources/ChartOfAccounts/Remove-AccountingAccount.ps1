@@ -1,4 +1,5 @@
 ﻿using namespace Mc2it.Agicap
+using namespace Mc2it.Agicap.ChartOfAccounts
 using namespace System.Diagnostics.CodeAnalysis
 using namespace System.Net.Http
 
@@ -6,10 +7,10 @@ using namespace System.Net.Http
 .SYNOPSIS
 	Deletes the accounting accounts with the specified numbers.
 .INPUTS
-	The numbers of accounting accounts to delete.
+	The accounting accounts to delete.
 #>
 function Remove-AccountingAccount {
-	[CmdletBinding()]
+	[CmdletBinding(DefaultParameterSetName = "InputObject")]
 	[OutputType([void])]
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
@@ -21,9 +22,13 @@ function Remove-AccountingAccount {
 		[Parameter(Mandatory, Position = 2)]
 		[int] $EntityId,
 
+		# The accounting accounts to delete.
+		[Parameter(Mandatory, ParameterSetName = "InputObject", Position = 3, ValueFromPipeline)]
+		[AccountingAccount[]] $InputObject,
+
 		# The numbers of accounting accounts to delete.
-		[Parameter(Mandatory, Position = 3, ValueFromPipeline)]
-		[string[]] $InputObject
+		[Parameter(Mandatory, ParameterSetName = "Number", Position = 3)]
+		[string[]] $Number
 	)
 
 	begin {
@@ -31,7 +36,7 @@ function Remove-AccountingAccount {
 	}
 
 	process {
-		try { $api.Delete($InputObject) }
+		try { $api.Delete($InputObject ?? $Number) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }
