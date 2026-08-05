@@ -9,6 +9,25 @@ client_id={{$processEnv %clientId}}
 &grant_type=client_credentials
 &scope=agicap:public-api
 
+### Creates new accounting accounts.
+POST {{baseUrl}}/chart-of-accounts/v1/entities/{{$processEnv %entity}}/accounting-accounts/import/{{$guid}}
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+Content-Type: application/json
+
+{
+	"accountingAccounts": [
+		{
+			"accountingAccountName": "MC2IT Development Department",
+			"accountingAccountNumber": "99999999",
+			"accountingAccountType": "Other",
+			"externalId": null,
+			"taxKey": null,
+			"vatRate": null
+		}
+	]
+}
+
 ### Deletes the accounting accounts with the specified numbers.
 POST {{baseUrl}}/chart-of-accounts/v1/entities/{{$processEnv %entity}}/accounting-accounts/delete
 Accept: application/json
@@ -18,6 +37,23 @@ Content-Type: application/json
 {
 	"accountingAccountNumbers": [
 		"99999999"
+	]
+}
+
+### Creates new third-parties.
+POST {{baseUrl}}/chart-of-accounts/v1/entities/{{$processEnv %entity}}/third-parties/import/{{$guid}}
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+Content-Type: application/json
+
+{
+	"thirdParties": [
+		{
+			"accountingAccountNumber": "40100000",
+			"externalId": null,
+			"thirdPartyCode": "MC2IT-DEVELOPMENT",
+			"thirdPartyName": "MC2IT Development Department"
+		}
 	]
 }
 
