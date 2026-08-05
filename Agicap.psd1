@@ -29,7 +29,9 @@
 		"Select-Beneficiary"
 		"Select-Entity"
 		"Select-Organization"
+		"Submit-AccountingAccount"
 		"Submit-Beneficiary"
+		"Submit-ThirdParty"
 		"Sync-Beneficiary"
 		"Update-Beneficiary"
 	)

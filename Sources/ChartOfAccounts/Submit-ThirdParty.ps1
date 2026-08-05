@@ -1,17 +1,18 @@
 ﻿using namespace Mc2it.Agicap
-using namespace System.Diagnostics.CodeAnalysis
+using namespace Mc2it.Agicap.ChartOfAccounts
 using namespace System.Net.Http
 
 <#
 .SYNOPSIS
-	Deletes the third-parties with the specified codes.
+	Creates new third-parties.
 .INPUTS
-	The codes of third-parties to delete.
+	The third-parties to create.
+.OUTPUTS
+	Metrics about the import of third-parties.
 #>
-function Remove-ThirdParty {
+function Submit-ThirdParty {
 	[CmdletBinding()]
-	[OutputType([void])]
-	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
+	[OutputType([Mc2it.Agicap.ChartOfAccounts.ImportResponse])]
 	param (
 		# The API client.
 		[Parameter(Mandatory, Position = 1)]
@@ -21,9 +22,9 @@ function Remove-ThirdParty {
 		[Parameter(Mandatory, Position = 2)]
 		[int] $EntityId,
 
-		# The codes of third-parties to delete.
+		# The third-parties to create.
 		[Parameter(Mandatory, Position = 3, ValueFromPipeline)]
-		[string[]] $InputObject
+		[ThirdParty[]] $InputObject
 	)
 
 	begin {
@@ -31,7 +32,7 @@ function Remove-ThirdParty {
 	}
 
 	process {
-		try { $api.Delete($InputObject) }
+		try { $api.Create($InputObject) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }
