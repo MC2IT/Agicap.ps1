@@ -9,7 +9,7 @@ using namespace System.Diagnostics.CodeAnalysis
 #>
 function New-AccountingAccount {
 	[CmdletBinding()]
-	[OutputType([Mc2it.Agicap.Payments.AccountingAccount])]
+	[OutputType([Mc2it.Agicap.ChartOfAccounts.AccountingAccount])]
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The accounting account number.

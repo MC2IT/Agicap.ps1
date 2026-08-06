@@ -9,22 +9,19 @@ using namespace System.Diagnostics.CodeAnalysis
 #>
 function New-ThirdParty {
 	[CmdletBinding()]
-	[OutputType([Mc2it.Agicap.Payments.ThirdParty])]
+	[OutputType([Mc2it.Agicap.ChartOfAccounts.ThirdParty])]
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The code of the third-party.
 		[Parameter(Mandatory, Position = 1)]
-		[AllowEmptyString()]
 		[string] $ThirdPartyCode,
 
 		# The name of the third-party.
 		[Parameter(Mandatory, Position = 2)]
-		[AllowEmptyString()]
 		[string] $ThirdPartyName,
 
 		# The accounting account number.
 		[Parameter(Mandatory)]
-		[AllowEmptyString()]
 		[string] $AccountingAccountNumber,
 
 		# An optional ERP-specific external identifier.
