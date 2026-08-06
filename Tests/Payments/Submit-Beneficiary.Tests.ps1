@@ -33,10 +33,10 @@ Describe "Submit-Beneficiary" -Skip:($Env:CI -eq "true") {
 	It "should update the specified beneficiary" {
 		$beneficiary.PostalAddress.Number = "29"
 		$beneficiary.PostalAddress.ZipCode = "34690"
-		$beneficiary | Update-AgicapBeneficiary $client $entityId
+		$beneficiary | Update-AgicapBeneficiary $client $entityId -ErrorAction Stop
 	}
 
 	It "should delete the specified beneficiary" {
-		$beneficiary | Remove-AgicapBeneficiary $client $entityId
+		$beneficiary | Remove-AgicapBeneficiary $client $entityId -ErrorAction Stop
 	}
 }

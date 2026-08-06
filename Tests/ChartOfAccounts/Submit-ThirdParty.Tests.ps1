@@ -23,6 +23,6 @@ Describe "Submit-ThirdParty" -Skip:($Env:CI -eq "true") {
 	}
 
 	It "should delete the specified third party" {
-		$thirdParty | Remove-AgicapThirdParty $client $entityId
+		$thirdParty | Remove-AgicapThirdParty $client $entityId -ErrorAction Stop
 	}
 }
