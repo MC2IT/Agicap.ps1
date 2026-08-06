@@ -17,11 +17,13 @@
 
 	FunctionsToExport = @(
 		"Get-BeneficiarySynchronization"
+		"New-AccountingAccount"
 		"New-BankAccount"
 		"New-Beneficiary"
 		"New-Client"
 		"New-PostalAddress"
 		"New-SynchronizedBeneficiary"
+		"New-ThirdParty"
 		"Remove-AccountingAccount"
 		"Remove-Beneficiary"
 		"Remove-ThirdParty"

@@ -16,11 +16,11 @@ function New-BankAccount {
 		[Parameter(Position = 1)]
 		[string] $BankName,
 
-		# The bank identifier code of the bank where the account is located.
-		[string] $Bic,
-
 		# The ISO 3166 alpha-2 code of the country of the bank where the account is located.
 		[string] $Country,
+
+		# The bank identifier code of the bank where the account is located.
+		[string] $Bic,
 
 		# The bank account number (IBAN/BBAN/Other).
 		[string] $Identifier,
