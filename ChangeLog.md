@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version [0.6.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.5.1...v0.6.0)
+- **Chart of accounts:** added the `New-AccountingAccount`, `Remove-AccountingAccount`, `Submit-AccountingAccount`, `New-ThirdParty`, `Remove-ThirdParty` and `Submit-ThirdParty` cmdlets.
 - **Organizations:** removed the `-All` parameter from the `Select-Entity` and `Select-Organization` cmdlets.
 - **Payments:** removed the `-Wait` parameter from the `Sync-Beneficiary` cmdlet.
 
