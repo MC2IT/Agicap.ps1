@@ -24,7 +24,10 @@ function Submit-ThirdParty {
 
 		# The third-parties to create.
 		[Parameter(Mandatory, Position = 3, ValueFromPipeline)]
-		[ThirdParty[]] $InputObject
+		[ThirdParty[]] $InputObject,
+
+		# The identifier to assign to the import.
+		[guid] $ImportId = (New-Guid)
 	)
 
 	begin {
@@ -32,7 +35,7 @@ function Submit-ThirdParty {
 	}
 
 	process {
-		try { $api.Create($InputObject) }
+		try { $api.Create($InputObject, $ImportId) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

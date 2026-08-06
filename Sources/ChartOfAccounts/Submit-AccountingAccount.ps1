@@ -24,7 +24,10 @@ function Submit-AccountingAccount {
 
 		# The accounting accounts to create.
 		[Parameter(Mandatory, Position = 3, ValueFromPipeline)]
-		[AccountingAccount[]] $InputObject
+		[AccountingAccount[]] $InputObject,
+
+		# The identifier to assign to the import.
+		[guid] $ImportId = (New-Guid)
 	)
 
 	begin {
@@ -32,7 +35,7 @@ function Submit-AccountingAccount {
 	}
 
 	process {
-		try { $api.Create($InputObject) }
+		try { $api.Create($InputObject, $ImportId) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }
