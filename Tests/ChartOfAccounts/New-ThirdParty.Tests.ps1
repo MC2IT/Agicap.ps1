@@ -6,8 +6,8 @@ Describe "New-ThirdParty" {
 	BeforeAll { . "$PSScriptRoot/../BeforeAll.ps1" }
 
 	It "should return a new third-party" {
-		$thirdParty = New-AgicapThirdParty "MC2IT-DEVELOPMENT" "MC2IT Development Department" -AccountingAccountNumber 40100000
-		Should-BeString 40100000 $thirdParty.AccountingAccountNumber
+		$thirdParty = New-AgicapThirdParty "MC2IT-DEVELOPMENT" "MC2IT Development Department" -AccountingAccountNumber 41100000
+		Should-BeString 41100000 $thirdParty.AccountingAccountNumber
 		Should-BeNull $thirdParty.ExternalId
 		Should-BeString "MC2IT-DEVELOPMENT" $thirdParty.ThirdPartyCode -CaseSensitive
 		Should-BeString "MC2IT Development Department" $thirdParty.ThirdPartyName -CaseSensitive
