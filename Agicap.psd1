@@ -21,6 +21,7 @@
 		"New-BankAccount"
 		"New-Beneficiary"
 		"New-Client"
+		"New-Contact"
 		"New-LegalAddress"
 		"New-PostalAddress"
 		"New-SynchronizedBeneficiary"
