@@ -17,5 +17,6 @@ Describe "New-SynchronizedBeneficiary" {
 		Should-BeString "MC2IT-DEVELOPMENT" $synchronizedBeneficiary.ErpId -CaseSensitive
 		Should-BeString "My Company" $synchronizedBeneficiary.Name -CaseSensitive
 		Should-BeString "FR" $synchronizedBeneficiary.PostalAddress.Country -CaseSensitive
+		Should-BeNull $synchronizedBeneficiary.SupplierErpIds
 	}
 }

@@ -26,6 +26,6 @@ function New-SynchronizedBeneficiary {
 	)
 
 	$synchronizedBeneficiary = [SynchronizedBeneficiary]::new($ErpId, $Beneficiary)
-	if ($SupplierErpIds.Count) { $synchronizedBeneficiary.SupplierErpIds = $SupplierErpIds }
+	$synchronizedBeneficiary.SupplierErpIds = $SupplierErpIds.Count ? $SupplierErpIds : $null
 	$synchronizedBeneficiary
 }
