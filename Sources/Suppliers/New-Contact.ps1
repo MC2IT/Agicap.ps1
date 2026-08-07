@@ -10,7 +10,7 @@ using namespace System.Diagnostics.CodeAnalysis
 function New-Contact {
 	[CmdletBinding()]
 	[OutputType([Mc2it.Agicap.Suppliers.Contact])]
-	[SuppressMessage("PSUseShouldProcessForRoleChangingFunctions", "")]
+	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The street name.
 		[Parameter(Position = 1)]

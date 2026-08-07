@@ -24,6 +24,7 @@
 		"New-Contact"
 		"New-LegalAddress"
 		"New-PostalAddress"
+		"New-Supplier"
 		"New-SynchronizedBeneficiary"
 		"New-ThirdParty"
 		"Remove-AccountingAccount"
