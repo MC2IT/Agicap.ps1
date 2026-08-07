@@ -12,10 +12,10 @@ function New-PostalAddress {
 	[OutputType([Mc2it.Agicap.Payments.PostalAddress])]
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
-		# The number of the building.
+		# The address number.
 		[string] $Number,
 
-		# The name of the street.
+		# The street name.
 		[Parameter(Mandatory)]
 		[AllowEmptyString()]
 		[string] $StreetName,
@@ -25,7 +25,7 @@ function New-PostalAddress {
 		[AllowEmptyString()]
 		[string] $City,
 
-		# The ZIP code of the beneficiary location.
+		# The postal code of the beneficiary location.
 		[string] $ZipCode,
 
 		# The state in which the beneficiary is located.
