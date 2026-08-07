@@ -1,6 +1,6 @@
 @{
 	DefaultCommandPrefix = "Agicap"
-	ModuleVersion = "0.6.0"
+	ModuleVersion = "0.7.0"
 	PowerShellVersion = "7.6"
 	RootModule = "Sources/Main.psm1"
 
@@ -21,6 +21,7 @@
 		"New-BankAccount"
 		"New-Beneficiary"
 		"New-Client"
+		"New-LegalAddress"
 		"New-PostalAddress"
 		"New-SynchronizedBeneficiary"
 		"New-ThirdParty"
