@@ -40,8 +40,7 @@ function Select-AccountingPurchase {
 	}
 
 	process {
-		$date = ${LastSynchronizationDate}?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
-		try { $api.ReadAll($date, $PageNumber, $PageSize, $Include ? $Include : [NullString]::Value) }
+		try { $api.ReadAll($LastSynchronizationDate, $PageNumber, $PageSize, $Include ? $Include : [NullString]::Value) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }
