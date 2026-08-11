@@ -16,6 +16,7 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
+		"Deny-AccountingPurchase"
 		"Get-BeneficiarySynchronization"
 		"New-AccountingAccount"
 		"New-BankAccount"
@@ -31,6 +32,7 @@
 		"Remove-Beneficiary"
 		"Remove-ThirdParty"
 		"Request-AccessToken"
+		"Select-AccountingPurchase"
 		"Select-Beneficiary"
 		"Select-Entity"
 		"Select-Organization"
