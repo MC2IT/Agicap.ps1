@@ -3,9 +3,9 @@ using namespace System.Net.Http
 
 <#
 .SYNOPSIS
-	Fetches the list of entries in the purchase journal.
+	Fetches the entries of the purchase journal.
 .OUTPUTS
-	The list of entries in the purchase journal.
+	The entries of the purchase journal.
 #>
 function Select-AccountingPurchase {
 	[CmdletBinding()]
@@ -28,7 +28,7 @@ function Select-AccountingPurchase {
 		[int] $PageNumber = 1,
 
 		# The number of elements per page.
-		[ValidateRange("Positive")]
+		[ValidateRange(2, 100)]
 		[int] $PageSize = 100,
 
 		# An opt-in enrichment selector.

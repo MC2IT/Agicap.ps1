@@ -24,7 +24,7 @@ function Select-Entity {
 		[int] $PageNumber = 1,
 
 		# The number of elements per page.
-		[ValidateRange("Positive")]
+		[ValidateRange(2, 100)]
 		[int] $PageSize = 100
 	)
 
