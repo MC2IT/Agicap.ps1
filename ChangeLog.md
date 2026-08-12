@@ -1,6 +1,8 @@
 # Changelog
 
 ## Version [0.7.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.6.0...v0.7.0)
+- **Payments:** renamed the `-SupplierErpIds` parameter of the `New-SynchronizedBeneficiary` cmdlet to `-SupplierErpId`.
+- **Payments:** renamed the `-Beneficiaries` parameter of the `Sync-Beneficiary` cmdlet to `-Beneficiary`.
 - **Purchase journal:** added the `Deny-AccountingPurchase`, `New-NotImportedEntry`, `New-NotImportedEntryError` and `Select-AccountingPurchase` cmdlets.
 - **Suppliers:** added the `New-Contact`, `New-LegalAddress` and `New-Supplier` cmdlets.
 
