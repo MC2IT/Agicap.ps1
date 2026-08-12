@@ -5,7 +5,7 @@
 Describe "New-NotImportedEntryError" {
 	BeforeAll { . "$PSScriptRoot/BeforeAll.ps1" }
 
-	It "should return a new entry error" {
+	It "should return a new entry import error" {
 		$notImportedEntryError = New-AgicapNotImportedEntryError UNKNOWN_CURRENCY
 		Should-BeNull $notImportedEntryError.ErrorMessage
 		Should-BeString ([Mc2it.Agicap.NotImportedEntryErrorTypes]::UnknownCurrency) $notImportedEntryError.ErrorType -CaseSensitive

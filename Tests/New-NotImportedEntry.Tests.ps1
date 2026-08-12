@@ -5,7 +5,7 @@
 Describe "New-NotImportedEntry" {
 	BeforeAll { . "$PSScriptRoot/BeforeAll.ps1" }
 
-	It "should return a new entry" {
+	It "should return a new entry marked as not imported" {
 		$guid = New-Guid
 		$importErrror = New-AgicapNotImportedEntryError UNKNOWN_VAT_ACCOUNT "An error occurred."
 
