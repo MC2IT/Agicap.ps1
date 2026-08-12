@@ -1,5 +1,4 @@
 ﻿using namespace Mc2it.Agicap
-using namespace Mc2it.Agicap.PurchaseJournal
 using namespace System.Net.Http
 
 <#
@@ -22,7 +21,7 @@ function Deny-AccountingPurchase {
 
 		# The purchase journal entry to mark as not imported.
 		[Parameter(Mandatory, Position = 3, ValueFromPipeline)]
-		[PurchaseJournalEntry[]] $InputObject
+		[NotImportedEntry[]] $InputObject
 	)
 
 	begin {
