@@ -53,7 +53,7 @@ function New-Supplier {
 		[string] $VatCode
 	)
 
-	return [Contact]@{
+	return [Supplier]@{
 		Contacts = $Contacts.Count ? $Contacts : $null
 		ErpId = $ErpId ? $ErpId : [NullString]::Value
 		Language = $Language ? $Language : [NullString]::Value

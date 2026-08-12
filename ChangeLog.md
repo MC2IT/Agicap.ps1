@@ -2,6 +2,7 @@
 
 ## Version [0.7.1](https://github.com/MC2IT/Agicap.ps1/compare/v0.7.0...v0.7.1)
 - **Purchase journal:** fixed the data type of the `-InputObject` parameter of the `Deny-AccountingPurchase` cmdlet.
+- **Suppliers:** fixed the object returned by the `New-Supplier` cmdlet.
 
 ## Version [0.7.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.6.0...v0.7.0)
 - **Payments:** renamed the `-SupplierErpIds` parameter of the `New-SynchronizedBeneficiary` cmdlet to `-SupplierErpId`.
