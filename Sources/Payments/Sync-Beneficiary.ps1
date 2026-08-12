@@ -22,7 +22,7 @@ function Sync-Beneficiary {
 
 		# The beneficiaries to synchronize.
 		[Parameter(Mandatory, Position = 3)]
-		[SynchronizedBeneficiary[]] $Beneficiaries
+		[SynchronizedBeneficiary[]] $Beneficiary
 	)
 
 	begin {
@@ -30,7 +30,7 @@ function Sync-Beneficiary {
 	}
 
 	process {
-		try { $api.Create($Beneficiaries) }
+		try { $api.Create($Beneficiary) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

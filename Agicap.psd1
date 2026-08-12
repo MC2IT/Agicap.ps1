@@ -24,6 +24,7 @@
 		"New-Client"
 		"New-Contact"
 		"New-LegalAddress"
+		"New-NotImportedEntry"
 		"New-NotImportedEntryError"
 		"New-PostalAddress"
 		"New-Supplier"
