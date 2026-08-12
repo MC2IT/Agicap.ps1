@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version [0.7.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.6.0...v0.7.0)
+- **Purchase journal:** added the `Deny-AccountingPurchase`, `New-NotImportedEntry`, `New-NotImportedEntryError` and `Select-AccountingPurchase` cmdlets.
 - **Suppliers:** added the `New-Contact`, `New-LegalAddress` and `New-Supplier` cmdlets.
 
 ## Version [0.6.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.5.1...v0.6.0)
