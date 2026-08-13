@@ -14,12 +14,12 @@ function New-BankJournalExportRequest {
 	param (
 		# The number of bank journal entries previously created (starts at 1).
 		[Parameter(Mandatory)]
-		[ValidateRange("Positiive")]
+		[ValidateRange("Positive")]
 		[int] $CurrentBankJournalEntriesCountInYear,
 
 		# The number of bank journal previously created (starts at 1).
 		[Parameter(Mandatory)]
-		[ValidateRange("Positiive")]
+		[ValidateRange("Positive")]
 		[int] $CurrentBankJournalsCountInYear
 	)
 
