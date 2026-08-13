@@ -1,7 +1,7 @@
 # Changelog
 
 ## Version [0.8.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.7.1...v0.8.0)
-- **Treasury bank journal:** added the `Deny-BankJournalEntry`, `Get-BankJournalExport`, `New-BankJournalExportCounts` and `Select-BankJournalExport` cmdlets.
+- **Treasury bank journal:** added the `Approve-BankJournalEntry`, `Deny-BankJournalEntry`, `Get-BankJournalExport`, `New-BankJournalExportCounts`, `Select-BankJournalExport` and `Submit-BankJournalExport` cmdlets.
 
 ## Version [0.7.1](https://github.com/MC2IT/Agicap.ps1/compare/v0.7.0...v0.7.1)
 - **Purchase journal:** fixed the data type of the `-InputObject` parameter of the `Deny-AccountingPurchase` cmdlet.
