@@ -7,10 +7,11 @@ using namespace System.Diagnostics.CodeAnalysis
 .OUTPUTS
 	The newly created bank journal export request.
 #>
-function New-BankJournalExportRequest {
+function New-BankJournalExportCounts {
 	[CmdletBinding()]
-	[OutputType([Mc2it.Agicap.TreasuryBankJournal.BankJournalExportRequest])]
+	[OutputType([Mc2it.Agicap.TreasuryBankJournal.BankJournalExportCounts])]
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
+	[SuppressMessage("PSUseSingularNouns", "")]
 	param (
 		# The number of bank journal entries previously created (starts at 1).
 		[Parameter(Mandatory)]
@@ -23,7 +24,7 @@ function New-BankJournalExportRequest {
 		[int] $CurrentBankJournalsCountInYear
 	)
 
-	return [BankJournalExportRequest]@{
+	return [BankJournalExportCounts]@{
 		CurrentBankJournalEntriesCountInYear = $CurrentBankJournalEntriesCountInYear
 		CurrentBankJournalsCountInYear = $CurrentBankJournalsCountInYear
 	}

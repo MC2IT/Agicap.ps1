@@ -20,7 +20,7 @@
 		"Get-BeneficiarySynchronization"
 		"New-AccountingAccount"
 		"New-BankAccount"
-		"New-BankJournalExportRequest"
+		"New-BankJournalExportCounts"
 		"New-Beneficiary"
 		"New-Client"
 		"New-Contact"
