@@ -1,4 +1,4 @@
-@entryAgicapUniqueId = <GUID>
+@entryAgicapUniqueId = {{$guid}}
 
 ### Generates a new access token.
 # @name auth

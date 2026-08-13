@@ -1,0 +1,22 @@
+@exportId = {{$guid}}
+
+### Generates a new access token.
+# @name auth
+POST {{baseUrl}}/auth/v1/token
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+client_id={{$processEnv %clientId}}
+&client_secret={{$processEnv %clientSecret}}
+&grant_type=client_credentials
+&scope=agicap:public-api
+
+### Fetches a list of short summaries of bank journal entries from previous exports.
+GET {{baseUrl}}/treasury-bank-journal/v1/entities/{{$processEnv %entity}}/exports?after=2026-01-01T00:00:00&size=100
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
+
+### Fetches the bank journal export with the specified identifier.
+GET {{baseUrl}}/treasury-bank-journal/v1/entities/{{$processEnv %entity}}/exports/{{exportId}}
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}

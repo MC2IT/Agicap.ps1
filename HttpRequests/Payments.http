@@ -1,5 +1,5 @@
-@beneficiaryId = <GUID>
-@syncId = <GUID>
+@beneficiaryId = {{$guid}}
+@syncId = {{$guid}}
 
 ### Generates a new access token.
 # @name auth
