@@ -28,7 +28,7 @@ function Remove-AccountingAccount {
 
 		# The numbers of accounting accounts to delete.
 		[Parameter(Mandatory, ParameterSetName = "Number", Position = 3)]
-		[string[]] $Number
+		[string[]] $AccountingAccountNumber
 	)
 
 	begin {
@@ -36,7 +36,7 @@ function Remove-AccountingAccount {
 	}
 
 	process {
-		try { $api.Delete($InputObject ?? $Number) }
+		try { $api.Delete($InputObject ?? $AccountingAccountNumber) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }
