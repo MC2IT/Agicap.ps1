@@ -7,10 +7,10 @@ Describe "New-NotImportedEntry" {
 
 	It "should return a new entry marked as not imported" {
 		$guid = New-Guid
-		$importErrror = New-AgicapNotImportedEntryError UNKNOWN_VAT_ACCOUNT "An error occurred."
+		$notImportedEntryError = New-AgicapNotImportedEntryError UNKNOWN_VAT_ACCOUNT "An error occurred."
 
-		$notImportedEntry = New-AgicapNotImportedEntry $guid $importErrror
+		$notImportedEntry = New-AgicapNotImportedEntry $guid $notImportedEntryError
 		Should-Be $guid $notImportedEntry.EntryAgicapUniqueId
-		Should-BeCollection @($importErrror) $notImportedEntry.Errors
+		Should-BeCollection @($notImportedEntryError) $notImportedEntry.Errors
 	}
 }

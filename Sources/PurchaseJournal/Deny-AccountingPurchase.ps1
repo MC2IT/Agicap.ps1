@@ -3,7 +3,7 @@ using namespace System.Net.Http
 
 <#
 .SYNOPSIS
-	Reports errors on exported purchase journal entries.
+	Notifies Agicap that the specified purchase journal entries were not correctly imported in the client accounting system.
 .INPUTS
 	The purchase journal entry to mark as not imported.
 #>

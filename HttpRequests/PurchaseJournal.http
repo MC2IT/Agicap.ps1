@@ -16,7 +16,7 @@ GET {{baseUrl}}/purchase-journal/v1/entities/{{$processEnv %entity}}/accounting-
 Accept: application/json
 Authorization: Bearer {{auth.response.body.access_token}}
 
-### Reports errors on exported purchase journal entries.
+### Notifies Agicap that the specified purchase journal entries were not correctly imported in the client accounting system.
 POST {{baseUrl}}/purchase-journal/v1/entities/{{$processEnv %entity}}/accounting-purchases/exported/mark-as-not-imported
 Accept: application/json
 Authorization: Bearer {{auth.response.body.access_token}}
