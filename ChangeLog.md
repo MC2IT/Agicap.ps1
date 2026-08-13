@@ -1,6 +1,8 @@
 # Changelog
 
 ## Version [0.8.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.7.1...v0.8.0)
+- **Chart of accounts:** renamed the `-Number` parameter of the `Remove-AccountingAccount` cmdlet to `-AccountingAccountNumber`.
+- **Chart of accounts:** renamed the `-Code` parameter of the `Remove-ThirdParty` cmdlet to `-ThirdPartyCode`.
 - **Treasury bank journal:** added the `Approve-BankJournalEntry`, `Deny-BankJournalEntry`, `Get-BankJournalExport`, `New-BankJournalExportCounts`, `Select-BankJournalExport` and `Submit-BankJournalExport` cmdlets.
 
 ## Version [0.7.1](https://github.com/MC2IT/Agicap.ps1/compare/v0.7.0...v0.7.1)
