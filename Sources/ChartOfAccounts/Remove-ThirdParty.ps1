@@ -27,8 +27,8 @@ function Remove-ThirdParty {
 		[ThirdParty[]] $InputObject,
 
 		# The codes of third-parties to delete.
-		[Parameter(Mandatory, ParameterSetName = "Code", Position = 3)]
-		[string[]] $Code
+		[Parameter(Mandatory, ParameterSetName = "ThirdPartyCode", Position = 3)]
+		[string[]] $ThirdPartyCode
 	)
 
 	begin {
@@ -36,7 +36,7 @@ function Remove-ThirdParty {
 	}
 
 	process {
-		try { $api.Delete($InputObject ?? $Code) }
+		try { $api.Delete($InputObject ?? $ThirdPartyCode) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
 }

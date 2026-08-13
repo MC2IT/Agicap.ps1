@@ -27,7 +27,7 @@ function Remove-AccountingAccount {
 		[AccountingAccount[]] $InputObject,
 
 		# The numbers of accounting accounts to delete.
-		[Parameter(Mandatory, ParameterSetName = "Number", Position = 3)]
+		[Parameter(Mandatory, ParameterSetName = "AccountingAccountNumber", Position = 3)]
 		[string[]] $AccountingAccountNumber
 	)
 
