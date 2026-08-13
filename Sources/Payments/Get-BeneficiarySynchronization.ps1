@@ -4,6 +4,8 @@ using namespace System.Net.Http
 <#
 .SYNOPSIS
 	Fetches the synchronization report with the specified identifier.
+.INPUTS
+	The identifier of the synchronization report.
 .OUTPUTS
 	The synchronization report with the specified identifier.
 #>
@@ -20,7 +22,7 @@ function Get-BeneficiarySynchronization {
 		[int] $EntityId,
 
 		# The identifier of the synchronization report.
-		[Parameter(Mandatory, Position = 3)]
+		[Parameter(Mandatory, Position = 3, ValueFromPipeline)]
 		[guid] $SyncId
 	)
 

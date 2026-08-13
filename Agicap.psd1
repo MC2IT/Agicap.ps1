@@ -17,6 +17,7 @@
 
 	FunctionsToExport = @(
 		"Deny-AccountingPurchase"
+		"Get-BankJournalExport"
 		"Get-BeneficiarySynchronization"
 		"New-AccountingAccount"
 		"New-BankAccount"
@@ -36,6 +37,7 @@
 		"Remove-ThirdParty"
 		"Request-AccessToken"
 		"Select-AccountingPurchase"
+		"Select-BankJournalExport"
 		"Select-Beneficiary"
 		"Select-Entity"
 		"Select-Organization"
