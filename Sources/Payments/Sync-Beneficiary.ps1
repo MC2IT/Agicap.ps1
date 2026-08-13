@@ -29,7 +29,7 @@ function Sync-Beneficiary {
 		$api = $Client.Payments.Beneficiaries($EntityId).Synchronization
 	}
 
-	process {
+	end {
 		try { $api.Create($Beneficiary) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}

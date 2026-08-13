@@ -28,7 +28,7 @@ function Select-Organization {
 		$api = $Client.Organizations
 	}
 
-	process {
+	end {
 		try { $api.ReadAll($PageNumber, $PageSize) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}

@@ -32,7 +32,7 @@ function Select-Entity {
 		$api = $Client.Organizations.Entities($OrganizationÌd)
 	}
 
-	process {
+	end {
 		try { $api.ReadAll($PageNumber, $PageSize) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}

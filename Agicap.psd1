@@ -44,6 +44,7 @@
 		"Select-Entity"
 		"Select-Organization"
 		"Submit-AccountingAccount"
+		"Submit-BankJournalExport"
 		"Submit-Beneficiary"
 		"Submit-ThirdParty"
 		"Sync-Beneficiary"

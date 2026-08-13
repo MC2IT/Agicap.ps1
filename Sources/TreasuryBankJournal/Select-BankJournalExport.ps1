@@ -36,7 +36,7 @@ function Select-BankJournalExport {
 		$api = $Client.TreasuryBankJournal.Exports($EntityId)
 	}
 
-	process {
+	end {
 		try { $api.ReadAll($Size, $After, $Before) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}

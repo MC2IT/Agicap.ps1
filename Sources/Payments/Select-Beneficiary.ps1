@@ -24,7 +24,7 @@ function Select-Beneficiary {
 		$api = $Client.Payments.Beneficiaries($EntityId)
 	}
 
-	process {
+	end {
 		try { $api.ReadAll() }
 		catch [HttpRequestException] { Write-Error $_ }
 	}

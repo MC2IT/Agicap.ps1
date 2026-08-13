@@ -39,7 +39,7 @@ function Select-AccountingPurchase {
 		$api = $Client.PurchaseJournal.AccountingPurchases($EntityId)
 	}
 
-	process {
+	end {
 		try { $api.ReadAll($LastSynchronizationDate, $PageNumber, $PageSize, $Include ? $Include : [NullString]::Value) }
 		catch [HttpRequestException] { Write-Error $_ }
 	}
