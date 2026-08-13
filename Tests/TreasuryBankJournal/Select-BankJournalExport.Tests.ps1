@@ -6,7 +6,7 @@ Describe "Select-BankJournalExport" -Skip:($Env:CI -eq "true") {
 	BeforeAll { . "$PSScriptRoot/../BeforeAll.ps1" }
 
 	It "should return a paginated list of bank journal exports" {
-		$list = Select-AgicapBankJournalExport $client $entityId -Before ([datetime] "2026-07-21T23:59:59Z")
+		$list = Select-AgicapBankJournalExport $client $entityId -Before "2026-07-21T23:59:59Z"
 		Should-BeCollection $list.Items -Count 3
 
 		$exportSummary = $list.Items[0]
