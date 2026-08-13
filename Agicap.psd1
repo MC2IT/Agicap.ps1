@@ -16,7 +16,9 @@
 	VariablesToExport = @()
 
 	FunctionsToExport = @(
+		"Approve-BankJournalEntry"
 		"Deny-AccountingPurchase"
+		"Deny-BankJournalEntry"
 		"Get-BankJournalExport"
 		"Get-BeneficiarySynchronization"
 		"New-AccountingAccount"
