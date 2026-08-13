@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [0.8.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.7.1...v0.8.0)
+- **Treasury bank journal:** TODO.
+
 ## Version [0.7.1](https://github.com/MC2IT/Agicap.ps1/compare/v0.7.0...v0.7.1)
 - **Purchase journal:** fixed the data type of the `-InputObject` parameter of the `Deny-AccountingPurchase` cmdlet.
 - **Suppliers:** fixed the object returned by the `New-Supplier` cmdlet.
