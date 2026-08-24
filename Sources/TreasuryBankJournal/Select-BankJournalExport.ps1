@@ -3,9 +3,9 @@ using namespace System.Net.Http
 
 <#
 .SYNOPSIS
-	Fetches the beneficiaries of the entity with the specified identifier.
+	Fetches the exports of the treasury bank journal.
 .OUTPUTS
-	The beneficiaries of the entity with the specified identifier.
+	The exports of the treasury bank journal.
 #>
 function Select-BankJournalExport {
 	[CmdletBinding()]
