@@ -20,3 +20,8 @@ Authorization: Bearer {{auth.response.body.access_token}}
 GET {{baseUrl}}/treasury-bank-journal/v1/entities/{{$processEnv %entity}}/exports/{{exportId}}
 Accept: application/json
 Authorization: Bearer {{auth.response.body.access_token}}
+
+### Exports all bank journal entries ready to be exported.
+POST {{baseUrl}}/treasury-bank-journal/v1/entities/{{$processEnv %entity}}/exports/{{exportId}}
+Accept: application/json
+Authorization: Bearer {{auth.response.body.access_token}}
