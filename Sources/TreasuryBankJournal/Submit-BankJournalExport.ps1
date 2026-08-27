@@ -6,7 +6,7 @@ using namespace System.Net.Http
 .SYNOPSIS
 	Exports all bank journal entries ready to be exported.
 .OUTPUTS
-	The bank journal export.
+	The bank journal entries ready to be exported, or `$null` if there are no entries.
 #>
 function Submit-BankJournalExport {
 	[CmdletBinding()]
