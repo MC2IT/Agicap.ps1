@@ -1,5 +1,6 @@
 ﻿using namespace Mc2it.Agicap
 using namespace Mc2it.Agicap.TreasuryBankJournal
+using namespace System.Diagnostics.CodeAnalysis
 using namespace System.Net.Http
 
 <#
