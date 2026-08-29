@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [0.8.2](https://github.com/MC2IT/Agicap.ps1/compare/v0.8.1...v0.8.2)
+- Optimized the packaging.
+
 ## Version [0.8.1](https://github.com/MC2IT/Agicap.ps1/compare/v0.8.0...v0.8.1)
 - **Treasury bank journal:** fixed the `Submit-BankJournalExport` cmdlet when the API returns no content.
 
