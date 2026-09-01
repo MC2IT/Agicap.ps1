@@ -12,7 +12,7 @@ client_id={{$processEnv %clientId}}
 &scope=agicap:public-api
 
 ### Fetches a list of short summaries of bank journal entries from previous exports.
-GET {{baseUrl}}/treasury-bank-journal/v1/entities/{{$processEnv %entity}}/exports?before=2026-07-21T23:59:59Z&size=100
+GET {{baseUrl}}/treasury-bank-journal/v1/entities/{{$processEnv %entity}}/exports?after=2026-01-01T00:00:00Z&size=100
 Accept: application/json
 Authorization: Bearer {{auth.response.body.access_token}}
 

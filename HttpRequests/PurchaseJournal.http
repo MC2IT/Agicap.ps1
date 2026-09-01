@@ -12,7 +12,7 @@ client_id={{$processEnv %clientId}}
 &scope=agicap:public-api
 
 ### Fetches the entries of the purchase journal.
-GET {{baseUrl}}/purchase-journal/v1/entities/{{$processEnv %entity}}/accounting-purchases?LastSynchronizationDate=2026-01-01T00:00:00Z&PageSize=2
+GET {{baseUrl}}/purchase-journal/v1/entities/{{$processEnv %entity}}/accounting-purchases?LastSynchronizationDate=2026-01-01T00:00:00Z&PageSize=100
 Accept: application/json
 Authorization: Bearer {{auth.response.body.access_token}}
 
