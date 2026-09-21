@@ -5,7 +5,7 @@ An [Agicap](https://agicap.com) API client library for [PowerShell](https://lear
 Install the latest version of **Agicap for PowerShell**
 with [PSResourceGet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.psresourceget) package manager:
 
-```shell
+```powershell
 Install-PSResource Mc2it.Agicap
 ```
 
