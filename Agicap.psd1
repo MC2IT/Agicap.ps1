@@ -17,6 +17,7 @@
 
 	FunctionsToExport = @(
 		"Approve-BankJournalEntry"
+		"Close-Client"
 		"Deny-AccountingPurchase"
 		"Deny-BankJournalEntry"
 		"Get-BankJournalExport"

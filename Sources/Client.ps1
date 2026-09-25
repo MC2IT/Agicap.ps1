@@ -14,6 +14,26 @@ using namespace System.Management.Automation
 
 <#
 .SYNOPSIS
+	Releases the resources associated with the specified client.
+.INPUTS
+	The Agicap client to dispose.
+#>
+function Close-Client {
+	[CmdletBinding()]
+	[OutputType([void])]
+	param (
+		# The Agicap client to dispose.
+		[Parameter(Mandatory, Position = 1, ValueFromPipeline)]
+		[Client] $InputObject
+	)
+
+	process {
+		$InputObject.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
 	Creates a new Agicap API client.
 .INPUTS
 	The client identifier and secret.
