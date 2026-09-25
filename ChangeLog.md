@@ -1,6 +1,11 @@
 # Changelog
 
-## Version [0.8.3](https://github.com/MC2IT/Agicap.ps1/compare/v0.8.2...v0.8.3)
+## Version [0.9.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.8.2...v0.9.0)
+- Breaking change: the underlying `Client` class now implements the `IDisposable` interface.
+- Added the `Close-Client` cmdlet.
+- Updated the package dependencies.
+
+## Version [0.8.3](https://github.com/MC2IT/Agicap.ps1/compare/v0.8.3...v0.8.3)
 - Excluded the `IsEmpty` properties from the JSON serialization.
 
 ## Version [0.8.2](https://github.com/MC2IT/Agicap.ps1/compare/v0.8.1...v0.8.2)
