@@ -20,7 +20,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Mc2it.Agicap" Version="0.9.*" />
+		<InternalsVisibleTo Include="$(RootNamespace).Tests" />
+		<PackageReference Include="Mc2it.Agicap" Version="0.9.0" />
 		<!-- TODO <ProjectReference Include="../../../net/Agicap/Sources/Agicap.csproj" /> -->
 	</ItemGroup>
 </Project>
