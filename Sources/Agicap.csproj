@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(RootNamespace).Tests" />
+		<PackageReference Update="FSharp.Core" Version="10.1.401" />
 		<PackageReference Include="Mc2it.Agicap" Version="0.9.0" />
 		<!-- TODO <ProjectReference Include="../../../net/Agicap/Sources/Agicap.csproj" /> -->
 	</ItemGroup>
