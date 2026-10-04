@@ -2,7 +2,8 @@
 	DefaultCommandPrefix = "Agicap"
 	ModuleVersion = "0.9.0"
 	PowerShellVersion = "7.6"
-	RootModule = "Sources/Main.psm1"
+	RootModule = "Binaries/Mc2it.Agicap.PowerShell.dll"
+	NestedModules = , "Sources/Main.psm1"
 
 	Author = "MC2IT <dev@mc2it.com>"
 	CompanyName = "MC2IT"
@@ -11,9 +12,13 @@
 	GUID = "e6365c39-25a6-41c3-9300-e9b1e7d525c9"
 
 	AliasesToExport = @()
-	CmdletsToExport = @()
 	RequiredAssemblies = , "Binaries/Mc2it.Agicap.dll"
 	VariablesToExport = @()
+
+	CmdletsToExport = @(
+		"New-NotImportedEntry"
+		"New-NotImportedEntryError"
+	)
 
 	FunctionsToExport = @(
 		"Approve-BankJournalEntry"
@@ -29,8 +34,6 @@
 		"New-Client"
 		"New-Contact"
 		"New-LegalAddress"
-		"New-NotImportedEntry"
-		"New-NotImportedEntryError"
 		"New-PostalAddress"
 		"New-Supplier"
 		"New-SynchronizedBeneficiary"

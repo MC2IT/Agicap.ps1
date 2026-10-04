@@ -10,8 +10,8 @@ Describe "New-NotImportedEntry" {
 		$notImportedEntryError = New-AgicapNotImportedEntryError UNKNOWN_VAT_ACCOUNT "An error occurred."
 
 		$notImportedEntry = New-AgicapNotImportedEntry $guid $notImportedEntryError
-		Should-Be $guid $notImportedEntry.EntryAgicapUniqueId
-		Should-BeCollection @($notImportedEntryError) $notImportedEntry.Errors
+		$notImportedEntry.EntryAgicapUniqueId | Should-Be $guid
+		$notImportedEntry.Errors | Should-BeCollection @($notImportedEntryError)
 	}
 }
 
@@ -24,11 +24,11 @@ Describe "New-NotImportedEntryError" {
 
 	It "should return a new entry import error" {
 		$notImportedEntryError = New-AgicapNotImportedEntryError UNKNOWN_CURRENCY
-		Should-BeNull $notImportedEntryError.ErrorMessage
-		Should-BeString ([Mc2it.Agicap.NotImportedEntryErrorTypes]::UnknownCurrency) $notImportedEntryError.ErrorType -CaseSensitive
+		$notImportedEntryError.ErrorMessage | Should-BeNull
+		$notImportedEntryError.ErrorType | Should-BeString ([Mc2it.Agicap.NotImportedEntryErrorTypes]::UnknownCurrency) -CaseSensitive
 
 		$notImportedEntryError = New-AgicapNotImportedEntryError UNKNOWN_THIRD_PARTY "An error occurred."
-		Should-BeString "An error occurred." $notImportedEntryError.ErrorMessage -CaseSensitive
-		Should-BeString ([Mc2it.Agicap.NotImportedEntryErrorTypes]::UnknownThirdParty) $notImportedEntryError.ErrorType -CaseSensitive
+		$notImportedEntryError.ErrorMessage | Should-BeString "An error occurred." -CaseSensitive
+		$notImportedEntryError.ErrorType | Should-BeString ([Mc2it.Agicap.NotImportedEntryErrorTypes]::UnknownThirdParty) -CaseSensitive
 	}
 }

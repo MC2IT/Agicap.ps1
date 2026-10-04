@@ -27,4 +27,8 @@
 		<PackageReference Include="System.Management.Automation" Version="7.6.6" />
 		<!-- TODO <ProjectReference Include="../../../net/Agicap/Sources/Agicap.csproj" /> -->
 	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="NotImportedEntry.fs" />
+	</ItemGroup>
 </Project>
