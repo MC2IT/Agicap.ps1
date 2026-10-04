@@ -13,10 +13,10 @@ Describe "New-SynchronizedBeneficiary" {
 		Should-BeString "FR7630006000011234567890189" $synchronizedBeneficiary.AccountNumber -CaseSensitive
 		Should-BeString "BNPAFRPPXXX" $synchronizedBeneficiary.BankIdentifier -CaseSensitive
 		Should-BeString "My Bank" $synchronizedBeneficiary.BankName -CaseSensitive
-		Should-BeNull $synchronizedBeneficiary.CompanyLegalId
+		$synchronizedBeneficiary.CompanyLegalId | Should-BeNull
 		Should-BeString "MC2IT-DEVELOPMENT" $synchronizedBeneficiary.ErpId -CaseSensitive
 		Should-BeString "My Company" $synchronizedBeneficiary.Name -CaseSensitive
 		Should-BeString "FR" $synchronizedBeneficiary.PostalAddress.Country -CaseSensitive
-		Should-BeNull $synchronizedBeneficiary.SupplierErpIds
+		$synchronizedBeneficiary.SupplierErpIds | Should-BeNull
 	}
 }

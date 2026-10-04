@@ -11,10 +11,10 @@ Describe "New-AccountingAccount" {
 		$accountingAccount = New-AgicapAccountingAccount 99999999 "MC2IT Development Department"
 		Should-BeString "MC2IT Development Department" $accountingAccount.AccountingAccountName -CaseSensitive
 		Should-BeString "99999999" $accountingAccount.AccountingAccountNumber
-		Should-BeNull $accountingAccount.AccountingAccountType
-		Should-BeNull $accountingAccount.ExternalId
-		Should-BeNull $accountingAccount.TaxKey
-		Should-BeNull $accountingAccount.VatRate
+		$accountingAccount.AccountingAccountType | Should-BeNull
+		$accountingAccount.ExternalId | Should-BeNull
+		$accountingAccount.TaxKey | Should-BeNull
+		$accountingAccount.VatRate | Should-BeNull
 
 		$accountingAccount.AccountingAccountType = "Vat"
 		$accountingAccount.VatRate = 0

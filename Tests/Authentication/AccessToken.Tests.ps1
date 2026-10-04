@@ -7,18 +7,18 @@ Describe "Request-AccessToken" {
 
 	It "should return a new access token" -Skip:($Env:CI -eq "true") {
 		$scopes = "agicap:public-api", "public-api:manage-payment-beneficiaries", "public-api:manage-suppliers"
-		Should-BeFalse $client.IsAuthenticated
+		$client.IsAuthenticated | Should-BeFalse
 
 		$accessToken = Request-AgicapAccessToken $client $scopes
-		Should-BeTrue $client.IsAuthenticated
-		Should-BeFalse $accessToken.HasExpired
-		Should-BeCollection $scopes $accessToken.Scopes
-		Should-BeString Bearer $accessToken.Type -CaseSensitive
-		Should-MatchString "^[A-Z\d]{64,}" $accessToken.Value -CaseSensitive
+		$client.IsAuthenticated | Should-BeTrue
+		$accessToken.HasExpired | Should-BeFalse
+		$accessToken.Scopes | Should-BeCollection $scopes
+		$accessToken.Type | Should-BeString Bearer -CaseSensitive
+		$accessToken.Value | Should-MatchString "^[A-Z\d]{64,}" -CaseSensitive
 	}
 
 	It "should throw an exception when the credentials are invalid" {
 		$client = New-AgicapClient ([pscredential]::new("FooBar", (ConvertTo-SecureString "BazQux" -AsPlainText)))
-		Should-Throw -ScriptBlock { Request-AgicapAccessToken $client -ErrorAction Stop }
+		{ Request-AgicapAccessToken $client -ErrorAction Stop } | Should-Throw
 	}
 }

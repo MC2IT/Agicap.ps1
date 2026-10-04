@@ -18,6 +18,7 @@
 	CmdletsToExport = @(
 		"New-NotImportedEntry"
 		"New-NotImportedEntryError"
+		"Request-AccessToken"
 	)
 
 	FunctionsToExport = @(
@@ -41,7 +42,6 @@
 		"Remove-AccountingAccount"
 		"Remove-Beneficiary"
 		"Remove-ThirdParty"
-		"Request-AccessToken"
 		"Select-AccountingPurchase"
 		"Select-BankJournalExport"
 		"Select-Beneficiary"

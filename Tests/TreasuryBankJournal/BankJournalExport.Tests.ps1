@@ -13,10 +13,10 @@ Describe "Get-BankJournalExport" -Skip:($Env:CI -eq "true") {
 
 		$bankJournalEntry = $bankJournalExport.Entries[-1]
 		Should-BeString "EUR" $bankJournalEntry.AccountingCurrency -CaseSensitive
-		Should-BeNull $bankJournalEntry.Causale
+		$bankJournalEntry.Causale | Should-BeNull
 		Should-BeCollection $bankJournalEntry.Counterparts -Count 1
 		Should-BeLikeString "MC2IT*" $bankJournalEntry.Counterparts[0].Name -CaseSensitive
-		Should-BeNull $bankJournalEntry.EntryMemo
+		$bankJournalEntry.EntryMemo | Should-BeNull
 		Should-BeLikeString "MC2IT*" $bankJournalEntry.Name -CaseSensitive
 		Should-BeString "EUR" $bankJournalEntry.OriginalCurrency -CaseSensitive
 	}
