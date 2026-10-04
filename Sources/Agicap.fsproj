@@ -31,5 +31,6 @@
 	<ItemGroup>
 		<Compile Include="NotImportedEntry.fs" />
 		<Compile Include="Authentication/AccessToken.fs" />
+		<Compile Include="Organizations/Organization.fs" />
 	</ItemGroup>
 </Project>

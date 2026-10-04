@@ -19,6 +19,7 @@
 		"New-NotImportedEntry"
 		"New-NotImportedEntryError"
 		"Request-AccessToken"
+		"Select-Organization"
 	)
 
 	FunctionsToExport = @(
@@ -46,7 +47,6 @@
 		"Select-BankJournalExport"
 		"Select-Beneficiary"
 		"Select-Entity"
-		"Select-Organization"
 		"Submit-AccountingAccount"
 		"Submit-BankJournalExport"
 		"Submit-Beneficiary"
