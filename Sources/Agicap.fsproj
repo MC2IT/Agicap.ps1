@@ -16,6 +16,7 @@
 		<Nullable>enable</Nullable>
 		<OutDir>../Binaries</OutDir>
 		<RootNamespace>Mc2it.Agicap</RootNamespace>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
 		<TargetFramework>net10.0</TargetFramework>
 	</PropertyGroup>
 
@@ -23,6 +24,7 @@
 		<InternalsVisibleTo Include="$(RootNamespace).Tests" />
 		<PackageReference Update="FSharp.Core" Version="10.1.401" />
 		<PackageReference Include="Mc2it.Agicap" Version="0.9.0" />
+		<PackageReference Include="System.Management.Automation" Version="7.6.6" />
 		<!-- TODO <ProjectReference Include="../../../net/Agicap/Sources/Agicap.csproj" /> -->
 	</ItemGroup>
 </Project>
