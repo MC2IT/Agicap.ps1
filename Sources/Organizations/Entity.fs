@@ -1,20 +1,25 @@
 namespace Mc2it.Agicap.Organizations
 
 open Mc2it.Agicap
+open System
 open System.Management.Automation
 open System.Net.Http
 
-/// Fetches the organization list.
-[<Cmdlet(VerbsCommon.Select, "Organization"); OutputType(typeof<PaginatedList<Organization>>)>]
-type SelectOrganizationCommand() =
+/// Fetches the entities of the organization with the specified identifier.
+[<Cmdlet(VerbsCommon.Select, "Entity"); OutputType(typeof<PaginatedList<Entity>>)>]
+type SelectEntityCommand() =
   inherit Cmdlet()
 
-  /// Manages the organizations.
-  let mutable api: OrganizationApi | null = null
+  /// Manages the entities of the organization with the specified identifier.
+  let mutable api: EntityApi | null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
   member val Client: Client | null = null with get, set
+
+  /// The organization identifier.
+  [<Parameter(Mandatory = true, Position = 2)>]
+  member val OrganizationÌd = Guid.Empty with get, set
 
   /// The page number.
   [<Parameter; ValidateRange(ValidateRangeKind.Positive)>]
@@ -26,10 +31,10 @@ type SelectOrganizationCommand() =
 
   /// Performs initialization of command execution.
   override this.BeginProcessing () =
-    api <- (nonNull this.Client).Organizations
+    api <- (nonNull this.Client).Organizations.Entities this.OrganizationÌd
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
     let client = nonNull api
     try this.WriteObject (client.ReadAll(this.PageNumber, this.PageSize))
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "OrganizationApi.ReadAll", ErrorCategory.ReadError, client))
+    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "EntityApi.ReadAll", ErrorCategory.ReadError, client))

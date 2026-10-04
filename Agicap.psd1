@@ -19,6 +19,7 @@
 		"New-NotImportedEntry"
 		"New-NotImportedEntryError"
 		"Request-AccessToken"
+		"Select-Entity"
 		"Select-Organization"
 	)
 
@@ -46,7 +47,6 @@
 		"Select-AccountingPurchase"
 		"Select-BankJournalExport"
 		"Select-Beneficiary"
-		"Select-Entity"
 		"Submit-AccountingAccount"
 		"Submit-BankJournalExport"
 		"Submit-Beneficiary"

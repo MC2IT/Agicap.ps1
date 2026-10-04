@@ -7,11 +7,11 @@ Describe "Select-Organization" -Skip:($Env:CI -eq "true") {
 
 	It "should return the organization list" {
 		$list = Select-AgicapOrganization $client
-		Should-BeCollection $list.Items -Count 1
-		Should-Be $list.Items.Count $list.Pagination.TotalItemsCount
+		$list.Items | Should-BeCollection -Count 1
+		$list.Pagination.TotalItemsCount | Should-Be $list.Items.Count
 
 		$organization = $list.Items[0]
-		Should-Be $organizationId $organization.Id
-		Should-BeString MC2IT $organization.Name -CaseSensitive
+		$organization.Id | Should-Be $organizationId
+		$organization.Name | Should-BeString MC2IT -CaseSensitive
 	}
 }
