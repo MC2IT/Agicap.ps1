@@ -16,7 +16,9 @@
 	VariablesToExport = @()
 
 	CmdletsToExport = @(
+		"Close-Client"
 		"New-AccountingAccount"
+		"New-Client"
 		"New-NotImportedEntry"
 		"New-NotImportedEntryError"
 		"New-ThirdParty"
@@ -31,7 +33,6 @@
 
 	FunctionsToExport = @(
 		"Approve-BankJournalEntry"
-		"Close-Client"
 		"Deny-AccountingPurchase"
 		"Deny-BankJournalEntry"
 		"Get-BankJournalExport"
@@ -39,7 +40,6 @@
 		"New-BankAccount"
 		"New-BankJournalExportCounts"
 		"New-Beneficiary"
-		"New-Client"
 		"New-Contact"
 		"New-LegalAddress"
 		"New-PostalAddress"
