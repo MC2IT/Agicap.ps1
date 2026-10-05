@@ -9,13 +9,13 @@ Describe "New-ThirdParty" {
 
 	It "should return a new third-party" {
 		$thirdParty = New-AgicapThirdParty "MC2IT-DEVELOPMENT" "MC2IT Development Department" -AccountingAccountNumber 41100000
-		Should-BeString 41100000 $thirdParty.AccountingAccountNumber
+		$thirdParty.AccountingAccountNumber | Should-BeString "41100000"
 		$thirdParty.ExternalId | Should-BeNull
-		Should-BeString "MC2IT-DEVELOPMENT" $thirdParty.ThirdPartyCode -CaseSensitive
-		Should-BeString "MC2IT Development Department" $thirdParty.ThirdPartyName -CaseSensitive
+		$thirdParty.ThirdPartyCode | Should-BeString "MC2IT-DEVELOPMENT" -CaseSensitive
+		$thirdParty.ThirdPartyName | Should-BeString "MC2IT Development Department" -CaseSensitive
 
 		$thirdParty.ExternalId = 123456
-		Should-BeString "123456" $thirdParty.ExternalId
+		$thirdParty.ExternalId | Should-BeString "123456"
 	}
 }
 
@@ -37,8 +37,8 @@ Describe "Submit-ThirdParty" -Skip:($Env:CI -eq "true") {
 			$importResponse = $thirdParty | Submit-AgicapThirdParty $client $entityId -ImportId $importResponse.ImportId -ErrorAction Stop
 		}
 
-		Should-Be ([Mc2it.Agicap.ChartOfAccounts.ImportStatus]::Done) $importResponse.ImportStatus
-		Should-Be 0 $importResponse.ImportSummary?.NotImportedCount
+		$importResponse.ImportStatus | Should-Be ([Mc2it.Agicap.ChartOfAccounts.ImportStatus]::Done)
+		$importResponse.ImportSummary.NotImportedCount | Should-Be 0
 	}
 
 	It "should delete the specified third party" {

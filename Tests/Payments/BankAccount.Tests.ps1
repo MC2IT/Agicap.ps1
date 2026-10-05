@@ -13,7 +13,7 @@ Describe "New-BankAccount" {
 
 		$bankAccount = New-AgicapBankAccount -BankName "My Bank" -Identifier "FR7630006000011234567890189"
 		$bankAccount.IsEmpty | Should-BeFalse
-		Should-BeString "My Bank" $bankAccount.BankName -CaseSensitive
-		Should-BeString "FR7630006000011234567890189" $bankAccount.Identifier -CaseSensitive
+		$bankAccount.BankName | Should-BeString "My Bank" -CaseSensitive
+		$bankAccount.Identifier | Should-BeString "FR7630006000011234567890189" -CaseSensitive
 	}
 }

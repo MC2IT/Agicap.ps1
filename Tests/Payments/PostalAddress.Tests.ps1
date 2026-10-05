@@ -13,8 +13,8 @@ Describe "New-PostalAddress" {
 
 		$postalAddress = New-AgicapPostalAddress -City "Paris" -Country "FR" -StreetName "Rue de la Paix" -ZipCode 75000
 		$postalAddress.IsEmpty | Should-BeFalse
-		Should-BeString "Paris" $postalAddress.City -CaseSensitive
-		Should-BeString "Rue de la Paix" $postalAddress.StreetName -CaseSensitive
-		Should-BeString 75000 $postalAddress.ZipCode
+		$postalAddress.City | Should-BeString "Paris" -CaseSensitive
+		$postalAddress.StreetName | Should-BeString "Rue de la Paix" -CaseSensitive
+		$postalAddress.ZipCode | Should-BeString "75000"
 	}
 }

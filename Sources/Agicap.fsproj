@@ -34,5 +34,6 @@
 		<Compile Include="Authentication/*.fs" />
 		<Compile Include="ChartOfAccounts/*.fs" />
 		<Compile Include="Organizations/*.fs" />
+		<Compile Include="Suppliers/*.fs" />
 	</ItemGroup>
 </Project>
