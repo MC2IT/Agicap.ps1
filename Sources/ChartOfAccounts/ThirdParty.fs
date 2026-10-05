@@ -69,7 +69,8 @@ type RemoveThirdPartyCommand() =
       match this.ParameterSetName with
       | "ThirdPartyCode" -> client.Delete this.ThirdPartyCode
       | _ -> client.Delete this.InputObject
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "ThirdPartyApi.Delete", ErrorCategory.WriteError, client))
+    with :? HttpRequestException as ex ->
+      this.WriteError (ErrorRecord(ex, "ThirdPartyApi.Delete", ErrorCategory.WriteError, client))
 
 /// Creates new third-parties.
 /// Returns metrics about the import of third-parties.
@@ -104,4 +105,5 @@ type SubmitThirdPartyCommand() =
   override this.ProcessRecord () =
     let client = nonNull api
     try this.WriteObject (client.Create(this.InputObject, this.ImportId))
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "ThirdPartyApi.Create", ErrorCategory.WriteError, client))
+    with :? HttpRequestException as ex ->
+      this.WriteError (ErrorRecord(ex, "ThirdPartyApi.Create", ErrorCategory.WriteError, client))

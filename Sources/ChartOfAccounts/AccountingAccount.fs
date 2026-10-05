@@ -79,7 +79,8 @@ type RemoveAccountingAccountCommand() =
       match this.ParameterSetName with
       | "AccountingAccountNumber" -> client.Delete this.AccountingAccountNumber
       | _ -> client.Delete this.InputObject
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "AccountingAccountApi.Delete", ErrorCategory.WriteError, client))
+    with :? HttpRequestException as ex ->
+      this.WriteError (ErrorRecord(ex, "AccountingAccountApi.Delete", ErrorCategory.WriteError, client))
 
 /// Creates new accounting accounts.
 /// Returns metrics about the import of accounting accounts.
@@ -114,4 +115,5 @@ type SubmitAccountingAccountCommand() =
   override this.ProcessRecord () =
     let client = nonNull api
     try this.WriteObject (client.Create(this.InputObject, this.ImportId))
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "AccountingAccountApi.Create", ErrorCategory.WriteError, client))
+    with :? HttpRequestException as ex ->
+      this.WriteError (ErrorRecord(ex, "AccountingAccountApi.Create", ErrorCategory.WriteError, client))

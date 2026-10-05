@@ -17,6 +17,7 @@
 
 	CmdletsToExport = @(
 		"Close-Client"
+		"Deny-AccountingPurchase"
 		"New-AccountingAccount"
 		"New-Client"
 		"New-Contact"
@@ -28,6 +29,7 @@
 		"Remove-AccountingAccount"
 		"Remove-ThirdParty"
 		"Request-AccessToken"
+		"Select-AccountingPurchase"
 		"Select-Entity"
 		"Select-Organization"
 		"Submit-AccountingAccount"
@@ -36,7 +38,6 @@
 
 	FunctionsToExport = @(
 		"Approve-BankJournalEntry"
-		"Deny-AccountingPurchase"
 		"Deny-BankJournalEntry"
 		"Get-BankJournalExport"
 		"Get-BeneficiarySynchronization"
@@ -46,7 +47,6 @@
 		"New-PostalAddress"
 		"New-SynchronizedBeneficiary"
 		"Remove-Beneficiary"
-		"Select-AccountingPurchase"
 		"Select-BankJournalExport"
 		"Select-Beneficiary"
 		"Submit-BankJournalExport"

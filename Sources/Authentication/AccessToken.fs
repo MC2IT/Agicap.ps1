@@ -21,4 +21,5 @@ type RequestAccessTokenCommand() =
   override this.ProcessRecord () =
     let client = nonNull this.Client
     try this.WriteObject (client.Authenticate this.Scope)
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "Client.Authenticate", ErrorCategory.AuthenticationError, client))
+    with :? HttpRequestException as ex ->
+      this.WriteError (ErrorRecord(ex, "Client.Authenticate", ErrorCategory.AuthenticationError, client))

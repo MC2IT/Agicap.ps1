@@ -37,4 +37,5 @@ type SelectEntityCommand() =
   override this.ProcessRecord () =
     let client = nonNull api
     try this.WriteObject (client.ReadAll(this.PageNumber, this.PageSize))
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "EntityApi.ReadAll", ErrorCategory.ReadError, client))
+    with :? HttpRequestException as ex ->
+      this.WriteError (ErrorRecord(ex, "EntityApi.ReadAll", ErrorCategory.ReadError, client))

@@ -20,13 +20,13 @@ Describe "Select-AccountingPurchase" -Skip:($Env:CI -eq "true") {
 	It "should return the entries of the purchase journal" {
 		$lastSynchronizationDate = [datetime] "2026-01-01T00:00:00Z"
 		$purchaseJournalEntries = (Select-AgicapAccountingPurchase $client $entityId $lastSynchronizationDate -PageSize 2).Items
-		Should-BeCollection $purchaseJournalEntries -Count 2
+		$purchaseJournalEntries | Should-BeCollection -Count 2
 
 		foreach ($purchaseJournalEntry in $purchaseJournalEntries) {
-			Should-NotBe ([guid]::Empty) $purchaseJournalEntry.AgicapUniqueId
-			Should-BeGreaterThanOrEqual 1 $purchaseJournalEntry.AccountingLines.Count
-			Should-Be 0 ($purchaseJournalEntry.AccountingLines | Measure-Object -Sum { $_.Credit - $_.Debit }).Sum
-			Should-Be $purchaseJournalEntry.AccountingLines.Count $purchaseJournalEntry.AccountingLines.Where{ $_.Currency -eq "EUR" }.Count
+			$purchaseJournalEntry.AgicapUniqueId | Should-NotBe ([guid]::Empty)
+			$purchaseJournalEntry.AccountingLines.Count | Should-BeGreaterThanOrEqual 1
+			($purchaseJournalEntry.AccountingLines | Measure-Object -Sum { $_.Credit - $_.Debit }).Sum | Should-Be 0
+			($purchaseJournalEntry.AccountingLines | Where-Object { $_.Currency -eq "EUR" }).Count | Should-Be $purchaseJournalEntry.AccountingLines.Count
 		}
 	}
 }

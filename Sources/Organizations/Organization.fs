@@ -32,4 +32,5 @@ type SelectOrganizationCommand() =
   override this.ProcessRecord () =
     let client = nonNull api
     try this.WriteObject (client.ReadAll(this.PageNumber, this.PageSize))
-    with :? HttpRequestException as ex -> this.WriteError (ErrorRecord(ex, "OrganizationApi.ReadAll", ErrorCategory.ReadError, client))
+    with :? HttpRequestException as ex ->
+      this.WriteError (ErrorRecord(ex, "OrganizationApi.ReadAll", ErrorCategory.ReadError, client))
