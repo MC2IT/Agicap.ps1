@@ -3,7 +3,6 @@
 	ModuleVersion = "0.9.0"
 	PowerShellVersion = "7.6"
 	RootModule = "Binaries/Mc2it.Agicap.PowerShell.dll"
-	NestedModules = , "Sources/Main.psm1"
 
 	Author = "MC2IT <dev@mc2it.com>"
 	CompanyName = "MC2IT"
@@ -12,15 +11,22 @@
 	GUID = "e6365c39-25a6-41c3-9300-e9b1e7d525c9"
 
 	AliasesToExport = @()
+	NestedModules = , "Sources/Main.psm1"
 	RequiredAssemblies = , "Binaries/Mc2it.Agicap.dll"
 	VariablesToExport = @()
 
 	CmdletsToExport = @(
+		"New-AccountingAccount"
 		"New-NotImportedEntry"
 		"New-NotImportedEntryError"
+		"New-ThirdParty"
+		"Remove-AccountingAccount"
+		"Remove-ThirdParty"
 		"Request-AccessToken"
 		"Select-Entity"
 		"Select-Organization"
+		"Submit-AccountingAccount"
+		"Submit-ThirdParty"
 	)
 
 	FunctionsToExport = @(
@@ -30,7 +36,6 @@
 		"Deny-BankJournalEntry"
 		"Get-BankJournalExport"
 		"Get-BeneficiarySynchronization"
-		"New-AccountingAccount"
 		"New-BankAccount"
 		"New-BankJournalExportCounts"
 		"New-Beneficiary"
@@ -40,17 +45,12 @@
 		"New-PostalAddress"
 		"New-Supplier"
 		"New-SynchronizedBeneficiary"
-		"New-ThirdParty"
-		"Remove-AccountingAccount"
 		"Remove-Beneficiary"
-		"Remove-ThirdParty"
 		"Select-AccountingPurchase"
 		"Select-BankJournalExport"
 		"Select-Beneficiary"
-		"Submit-AccountingAccount"
 		"Submit-BankJournalExport"
 		"Submit-Beneficiary"
-		"Submit-ThirdParty"
 		"Sync-Beneficiary"
 		"Update-Beneficiary"
 	)

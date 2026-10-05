@@ -31,6 +31,7 @@
 	<ItemGroup>
 		<Compile Include="NotImportedEntry.fs" />
 		<Compile Include="Authentication/*.fs" />
+		<Compile Include="ChartOfAccounts/*.fs" />
 		<Compile Include="Organizations/*.fs" />
 	</ItemGroup>
 </Project>
