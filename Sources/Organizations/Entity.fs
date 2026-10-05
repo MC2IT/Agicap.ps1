@@ -19,7 +19,7 @@ type SelectEntityCommand() =
 
   /// The organization identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
-  member val OrganizationÌd = Guid.Empty with get, set
+  member val OrganizationId = Guid.Empty with get, set
 
   /// The page number.
   [<Parameter; ValidateRange(ValidateRangeKind.Positive)>]
@@ -31,7 +31,7 @@ type SelectEntityCommand() =
 
   /// Performs initialization of command execution.
   override this.BeginProcessing () =
-    api <- (nonNull this.Client).Organizations.Entities this.OrganizationÌd
+    api <- (nonNull this.Client).Organizations.Entities this.OrganizationId
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
