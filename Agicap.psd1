@@ -16,9 +16,13 @@
 	VariablesToExport = @()
 
 	CmdletsToExport = @(
+		"Approve-BankJournalEntry"
 		"Close-Client"
 		"Deny-AccountingPurchase"
+		"Deny-BankJournalEntry"
+		"Get-BankJournalExport"
 		"New-AccountingAccount"
+		"New-BankJournalExportCounts"
 		"New-Client"
 		"New-Contact"
 		"New-LegalAddress"
@@ -30,26 +34,22 @@
 		"Remove-ThirdParty"
 		"Request-AccessToken"
 		"Select-AccountingPurchase"
+		"Select-BankJournalExport"
 		"Select-Entity"
 		"Select-Organization"
 		"Submit-AccountingAccount"
+		"Submit-BankJournalExport"
 		"Submit-ThirdParty"
 	)
 
 	FunctionsToExport = @(
-		"Approve-BankJournalEntry"
-		"Deny-BankJournalEntry"
-		"Get-BankJournalExport"
 		"Get-BeneficiarySynchronization"
 		"New-BankAccount"
-		"New-BankJournalExportCounts"
 		"New-Beneficiary"
 		"New-PostalAddress"
 		"New-SynchronizedBeneficiary"
 		"Remove-Beneficiary"
-		"Select-BankJournalExport"
 		"Select-Beneficiary"
-		"Submit-BankJournalExport"
 		"Submit-Beneficiary"
 		"Sync-Beneficiary"
 		"Update-Beneficiary"

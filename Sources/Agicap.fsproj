@@ -36,5 +36,6 @@
 		<Compile Include="Organizations/*.fs" />
 		<Compile Include="PurchaseJournal/*.fs" />
 		<Compile Include="Suppliers/*.fs" />
+		<Compile Include="TreasuryBankJournal/*.fs" />
 	</ItemGroup>
 </Project>
