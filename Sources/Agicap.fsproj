@@ -34,6 +34,7 @@
 		<Compile Include="Authentication/*.fs" />
 		<Compile Include="ChartOfAccounts/*.fs" />
 		<Compile Include="Organizations/*.fs" />
+		<Compile Include="Payments/*.fs" />
 		<Compile Include="PurchaseJournal/*.fs" />
 		<Compile Include="Suppliers/*.fs" />
 		<Compile Include="TreasuryBankJournal/*.fs" />

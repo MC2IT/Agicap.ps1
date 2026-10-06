@@ -11,7 +11,7 @@
 	GUID = "e6365c39-25a6-41c3-9300-e9b1e7d525c9"
 
 	AliasesToExport = @()
-	NestedModules = , "Sources/Main.psm1"
+	FunctionsToExport = @()
 	RequiredAssemblies = , "Binaries/Mc2it.Agicap.dll"
 	VariablesToExport = @()
 
@@ -40,9 +40,6 @@
 		"Submit-AccountingAccount"
 		"Submit-BankJournalExport"
 		"Submit-ThirdParty"
-	)
-
-	FunctionsToExport = @(
 		"Get-BeneficiarySynchronization"
 		"New-BankAccount"
 		"New-Beneficiary"
