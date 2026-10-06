@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [0.10.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.9.0...v0.10.0)
+- Ported the cmdlets to [F#](https://learn.microsoft.com/en-us/dotnet/fsharp).
+
 ## Version [0.9.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.8.3...v0.9.0)
 - Breaking change: the underlying `Client` class now implements the `IDisposable` interface.
 - Added the `Close-Client` cmdlet.
