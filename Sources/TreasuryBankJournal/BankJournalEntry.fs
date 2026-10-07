@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Notifies Agicap that the specified bank journal entries were successfully imported in the client accounting system.
 [<Cmdlet(VerbsLifecycle.Approve, "BankJournalEntry", DefaultParameterSetName = "InputObject"); OutputType(typeof<Void>)>]
-type ApproveBankJournalEntryCommand() =
+type ApproveBankJournalEntry() =
   inherit PSCmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
@@ -45,7 +45,7 @@ type ApproveBankJournalEntryCommand() =
 
 /// Notifies Agicap that the specified bank journal entries were not correctly imported in the client accounting system.
 [<Cmdlet(VerbsLifecycle.Deny, "BankJournalEntry"); OutputType(typeof<Void>)>]
-type DenyBankJournalEntryCommand() =
+type DenyBankJournalEntry() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.

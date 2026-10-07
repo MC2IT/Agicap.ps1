@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new supplier.
 [<Cmdlet(VerbsCommon.New, "Supplier"); OutputType(typeof<Supplier>)>]
-type NewSupplierCommand() =
+type NewSupplier() =
   inherit Cmdlet()
 
   /// The identifier of the supplier in the ERP software.

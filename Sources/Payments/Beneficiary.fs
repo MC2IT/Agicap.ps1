@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Creates a new beneficiary.
 [<Cmdlet(VerbsCommon.New, "Beneficiary"); OutputType(typeof<Beneficiary>)>]
-type NewBeneficiaryCommand() =
+type NewBeneficiary() =
   inherit Cmdlet()
 
   /// The name of the beneficiary.
@@ -31,7 +31,7 @@ type NewBeneficiaryCommand() =
 
 /// Deletes either the specified beneficiary, or all beneficiaries.
 [<Cmdlet(VerbsCommon.Remove, "Beneficiary", DefaultParameterSetName = "InputObject"); OutputType(typeof<Void>)>]
-type RemoveBeneficiaryCommand() =
+type RemoveBeneficiary() =
   inherit PSCmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.
@@ -74,7 +74,7 @@ type RemoveBeneficiaryCommand() =
 
 /// Fetches the beneficiaries of the entity with the specified identifier.
 [<Cmdlet(VerbsCommon.Select, "Beneficiary"); OutputType(typeof<Beneficiary>)>]
-type SelectBeneficiaryCommand() =
+type SelectBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.
@@ -102,7 +102,7 @@ type SelectBeneficiaryCommand() =
 /// Creates a new beneficiary.
 /// Returns the identifier of the newly created beneficiary.
 [<Cmdlet(VerbsLifecycle.Submit, "Beneficiary"); OutputType(typeof<Guid>)>]
-type SubmitBeneficiaryCommand() =
+type SubmitBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.
@@ -134,7 +134,7 @@ type SubmitBeneficiaryCommand() =
 /// Starts a bulk synchronization of beneficiaries from the ERP software.
 /// Returns the identifier of the newly started synchronization.
 [<Cmdlet(VerbsData.Sync, "Beneficiary"); OutputType(typeof<Guid>)>]
-type SyncBeneficiaryCommand() =
+type SyncBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the sychronization of beneficiaries of the entity with the specified identifier.
@@ -165,7 +165,7 @@ type SyncBeneficiaryCommand() =
 
 /// Updates the specified beneficiary.
 [<Cmdlet(VerbsData.Update, "Beneficiary"); OutputType(typeof<Void>)>]
-type UpdateBeneficiaryCommand() =
+type UpdateBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.

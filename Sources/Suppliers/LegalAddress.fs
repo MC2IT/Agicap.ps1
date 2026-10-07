@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new legal address.
 [<Cmdlet(VerbsCommon.New, "LegalAddress"); OutputType(typeof<LegalAddress>)>]
-type NewLegalAddressCommand() =
+type NewLegalAddress() =
   inherit Cmdlet()
 
   /// The address number.

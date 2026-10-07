@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new contact.
 [<Cmdlet(VerbsCommon.New, "Contact"); OutputType(typeof<Contact>)>]
-type NewContactCommand() =
+type NewContact() =
   inherit Cmdlet()
 
   /// The street name.

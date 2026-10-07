@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Fetches the entities of the organization with the specified identifier.
 [<Cmdlet(VerbsCommon.Select, "Entity"); OutputType(typeof<PaginatedList<Entity>>)>]
-type SelectEntityCommand() =
+type SelectEntity() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.

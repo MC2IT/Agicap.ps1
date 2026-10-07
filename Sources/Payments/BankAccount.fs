@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new bank account.
 [<Cmdlet(VerbsCommon.New, "BankAccount"); OutputType(typeof<BankAccount>)>]
-type NewBankAccountCommand() =
+type NewBankAccount() =
   inherit Cmdlet()
 
   /// The name of the bank the account is located.

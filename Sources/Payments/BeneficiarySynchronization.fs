@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Fetches the synchronization report with the specified identifier.
 [<Cmdlet(VerbsCommon.Get, "BeneficiarySynchronization"); OutputType(typeof<BeneficiarySynchronization>)>]
-type GetBeneficiarySynchronizationCommand() =
+type GetBeneficiarySynchronization() =
   inherit Cmdlet()
 
   /// Manages the sychronization of beneficiaries of the entity with the specified identifier.

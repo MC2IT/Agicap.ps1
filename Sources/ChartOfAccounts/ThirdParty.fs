@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Creates a new third-party.
 [<Cmdlet(VerbsCommon.New, "ThirdParty"); OutputType(typeof<ThirdParty>)>]
-type NewThirdPartyCommand() =
+type NewThirdParty() =
   inherit Cmdlet()
 
   /// The code of the third-party.
@@ -36,7 +36,7 @@ type NewThirdPartyCommand() =
 
 /// Deletes the third-parties with the specified codes.
 [<Cmdlet(VerbsCommon.Remove, "ThirdParty", DefaultParameterSetName = "InputObject"); OutputType(typeof<Void>)>]
-type RemoveThirdPartyCommand() =
+type RemoveThirdParty() =
   inherit PSCmdlet()
 
   /// Manages the third-parties of the chart of accounts.
@@ -75,7 +75,7 @@ type RemoveThirdPartyCommand() =
 /// Creates new third-parties.
 /// Returns metrics about the import of third-parties.
 [<Cmdlet(VerbsLifecycle.Submit, "ThirdParty"); OutputType(typeof<ImportResponse>)>]
-type SubmitThirdPartyCommand() =
+type SubmitThirdParty() =
   inherit Cmdlet()
 
   /// Manages the third-parties of the chart of accounts.

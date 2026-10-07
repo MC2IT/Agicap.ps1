@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Creates a new accounting account.
 [<Cmdlet(VerbsCommon.New, "AccountingAccount"); OutputType(typeof<AccountingAccount>)>]
-type NewAccountingAccountCommand() =
+type NewAccountingAccount() =
   inherit Cmdlet()
 
   /// The accounting account number.
@@ -46,7 +46,7 @@ type NewAccountingAccountCommand() =
 
 /// Deletes the accounting accounts with the specified numbers.
 [<Cmdlet(VerbsCommon.Remove, "AccountingAccount", DefaultParameterSetName = "InputObject"); OutputType(typeof<Void>)>]
-type RemoveAccountingAccountCommand() =
+type RemoveAccountingAccount() =
   inherit PSCmdlet()
 
   /// Manages the accounting accounts of the chart of accounts.
@@ -85,7 +85,7 @@ type RemoveAccountingAccountCommand() =
 /// Creates new accounting accounts.
 /// Returns metrics about the import of accounting accounts.
 [<Cmdlet(VerbsLifecycle.Submit, "AccountingAccount"); OutputType(typeof<ImportResponse>)>]
-type SubmitAccountingAccountCommand() =
+type SubmitAccountingAccount() =
   inherit Cmdlet()
 
   /// Manages the accounting accounts of the chart of accounts.

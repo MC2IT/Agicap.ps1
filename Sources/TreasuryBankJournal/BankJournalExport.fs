@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Fetches the bank journal export with the specified identifier.
 [<Cmdlet(VerbsCommon.Get, "BankJournalExport"); OutputType(typeof<BankJournalExport>)>]
-type GetBankJournalExportCommand() =
+type GetBankJournalExport() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
@@ -38,7 +38,7 @@ type GetBankJournalExportCommand() =
 
 /// Creates a new bank journal export request.
 [<Cmdlet(VerbsCommon.New, "BankJournalExportCounts"); OutputType(typeof<BankJournalExportCounts>)>]
-type NewBankJournalExportCountsCommand() =
+type NewBankJournalExportCounts() =
   inherit Cmdlet()
 
   /// The number of bank journal entries previously created (starts at 1).
@@ -57,7 +57,7 @@ type NewBankJournalExportCountsCommand() =
 
 /// Fetches the exports of the treasury bank journal.
 [<Cmdlet(VerbsCommon.Select, "BankJournalExport"); OutputType(typeof<CursorPaginatedList<BankJournalExportSummary>>)>]
-type SelectBankJournalExportCommand() =
+type SelectBankJournalExport() =
   inherit PSCmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
@@ -96,7 +96,7 @@ type SelectBankJournalExportCommand() =
 
 /// Exports all bank journal entries ready to be exported.
 [<Cmdlet(VerbsLifecycle.Submit, "BankJournalExport"); OutputType(typeof<BankJournalExport>)>]
-type SubmitBankJournalExportCommand() =
+type SubmitBankJournalExport() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.

@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new postal address.
 [<Cmdlet(VerbsCommon.New, "PostalAddress"); OutputType(typeof<PostalAddress>)>]
-type NewPostalAddressCommand() =
+type NewPostalAddress() =
   inherit Cmdlet()
 
   /// The address number.

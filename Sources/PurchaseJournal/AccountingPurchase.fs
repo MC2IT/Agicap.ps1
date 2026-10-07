@@ -7,7 +7,7 @@ open System.Net.Http
 
 /// Notifies Agicap that the specified purchase journal entries were not correctly imported in the client accounting system.
 [<Cmdlet(VerbsLifecycle.Deny, "AccountingPurchase"); OutputType(typeof<Void>)>]
-type DenyAccountingPurchaseCommand() =
+type DenyAccountingPurchase() =
   inherit Cmdlet()
 
   /// Manages the purchase journal.
@@ -38,7 +38,7 @@ type DenyAccountingPurchaseCommand() =
 
 /// Fetches the entries of the purchase journal.
 [<Cmdlet(VerbsCommon.Select, "AccountingPurchase"); OutputType(typeof<PaginatedList<PurchaseJournalEntry>>)>]
-type SelectAccountingPurchaseCommand() =
+type SelectAccountingPurchase() =
   inherit Cmdlet()
 
   /// Manages the purchase journal.

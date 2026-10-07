@@ -6,7 +6,7 @@ open System.Net.Http
 
 /// Requests a new access token.
 [<Cmdlet(VerbsLifecycle.Request, "AccessToken"); OutputType(typeof<AccessToken>)>]
-type RequestAccessTokenCommand() =
+type RequestAccessToken() =
   inherit Cmdlet()
 
   /// The API client.

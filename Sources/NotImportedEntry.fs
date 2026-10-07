@@ -5,7 +5,7 @@ open System.Management.Automation
 
 /// Creates a new journal entry that was not imported in the client accounting system.
 [<Cmdlet(VerbsCommon.New, "NotImportedEntry"); OutputType(typeof<NotImportedEntry>)>]
-type NewNotImportedEntryCommand() =
+type NewNotImportedEntry() =
   inherit Cmdlet()
 
   /// A unique identifier from Agicap.
@@ -24,7 +24,7 @@ type NewNotImportedEntryCommand() =
 
 /// Creates a new import error for a journal entry.
 [<Cmdlet(VerbsCommon.New, "NotImportedEntryError"); OutputType(typeof<NotImportedEntryError>)>]
-type NewNotImportedEntryErrorCommand() =
+type NewNotImportedEntryError() =
   inherit Cmdlet()
 
   /// The error type.

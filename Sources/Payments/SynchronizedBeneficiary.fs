@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new beneficiary for a synchronization request.
 [<Cmdlet(VerbsCommon.New, "SynchronizedBeneficiary"); OutputType(typeof<SynchronizedBeneficiary>)>]
-type NewSynchronizedBeneficiaryCommand() =
+type NewSynchronizedBeneficiary() =
   inherit Cmdlet()
 
   /// The identifier of the beneficiary in the ERP software.

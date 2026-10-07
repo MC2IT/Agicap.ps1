@@ -6,7 +6,7 @@ open System.Net.Http
 
 /// Fetches the organization list.
 [<Cmdlet(VerbsCommon.Select, "Organization"); OutputType(typeof<PaginatedList<Organization>>)>]
-type SelectOrganizationCommand() =
+type SelectOrganization() =
   inherit Cmdlet()
 
   /// Manages the organizations.
