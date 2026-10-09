@@ -29,7 +29,7 @@ Describe "Select-Beneficiary" -Skip:($Env:CI -eq "true") {
 		$list = Select-AgicapBeneficiary $client $entityId
 		Should-BeGreaterThan 1 $list.Count
 
-		$beneficiary = $list.Where{ $_.Name -like "Agicap*" }
+		$beneficiary = $list | Where-Object { $_.Name -like "Agicap*" }
 		Should-NotBeNull $beneficiary.PostalAddress
 		Should-BeString Lyon $beneficiary.PostalAddress.City
 		Should-BeString FR $beneficiary.PostalAddress.Country -CaseSensitive

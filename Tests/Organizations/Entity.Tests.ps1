@@ -10,7 +10,7 @@ Describe "Select-Entity" -Skip:($Env:CI -eq "true") {
 		$list.Items.Count | Should-BeGreaterThanOrEqual 1
 		$list.Pagination.TotalItemsCount | Should-Be $list.Items.Count
 
-		$entity = $list.Items.Where{ $_.Id -eq $entityId }
+		$entity = $list.Items | Where-Object { $_.Id -eq $entityId }
 		$entity.Country | Should-BeString FR -CaseSensitive
 		$entity.Name | Should-BeString MC2IT -CaseSensitive
 	}

@@ -22,11 +22,11 @@ Describe "Select-AccountingPurchase" -Skip:($Env:CI -eq "true") {
 		$purchaseJournalEntries = Select-AgicapAccountingPurchase $client -EntityId $entityId -LastSynchronizationDate $lastSynchronizationDate -PageSize 2
 		$purchaseJournalEntries.Items | Should-BeCollection -Count 2
 
-		foreach ($purchaseJournalEntry in $purchaseJournalEntries.Items) {
-			$purchaseJournalEntry.AgicapUniqueId | Should-NotBe ([guid]::Empty)
-			$purchaseJournalEntry.AccountingLines.Count | Should-BeGreaterThanOrEqual 1
-			($purchaseJournalEntry.AccountingLines | Measure-Object -Sum { $_.Credit - $_.Debit }).Sum | Should-Be 0
-			($purchaseJournalEntry.AccountingLines | Where-Object { $_.Currency -eq "EUR" }).Count | Should-Be $purchaseJournalEntry.AccountingLines.Count
+		$purchaseJournalEntries.Items | ForEach-Object {
+			$_.AgicapUniqueId | Should-NotBe ([guid]::Empty)
+			$_.AccountingLines.Count | Should-BeGreaterThanOrEqual 1
+			($_.AccountingLines | Measure-Object -Sum { $_.Credit - $_.Debit }).Sum | Should-Be 0
+			($_.AccountingLines | Where-Object { $_.Currency -eq "EUR" }).Count | Should-Be $_.AccountingLines.Count
 		}
 	}
 }
