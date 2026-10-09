@@ -10,13 +10,13 @@ Describe "New-SynchronizedBeneficiary" {
 		$postalAddress = New-AgicapPostalAddress -City Paris -Country FR -StreetName "Rue de la Paix" -ZipCode 75000
 		$synchronizedBeneficiary = New-AgicapSynchronizedBeneficiary "MC2IT-DEVELOPMENT" (New-AgicapBeneficiary "My Company" -BankAccount $bankAccount -PostalAddress $postalAddress)
 
-		Should-BeString "FR7630006000011234567890189" $synchronizedBeneficiary.AccountNumber -CaseSensitive
-		Should-BeString "BNPAFRPPXXX" $synchronizedBeneficiary.BankIdentifier -CaseSensitive
-		Should-BeString "My Bank" $synchronizedBeneficiary.BankName -CaseSensitive
+		$synchronizedBeneficiary.AccountNumber | Should-BeString "FR7630006000011234567890189" -CaseSensitive
+		$synchronizedBeneficiary.BankIdentifier | Should-BeString "BNPAFRPPXXX" -CaseSensitive
+		$synchronizedBeneficiary.BankName | Should-BeString "My Bank" -CaseSensitive
 		$synchronizedBeneficiary.CompanyLegalId | Should-BeNull
-		Should-BeString "MC2IT-DEVELOPMENT" $synchronizedBeneficiary.ErpId -CaseSensitive
-		Should-BeString "My Company" $synchronizedBeneficiary.Name -CaseSensitive
-		Should-BeString "FR" $synchronizedBeneficiary.PostalAddress.Country -CaseSensitive
+		$synchronizedBeneficiary.ErpId | Should-BeString "MC2IT-DEVELOPMENT" -CaseSensitive
+		$synchronizedBeneficiary.Name | Should-BeString "My Company" -CaseSensitive
+		$synchronizedBeneficiary.PostalAddress.Country | Should-BeString "FR" -CaseSensitive
 		$synchronizedBeneficiary.SupplierErpIds | Should-BeNull
 	}
 }

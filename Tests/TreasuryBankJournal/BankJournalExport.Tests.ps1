@@ -7,18 +7,18 @@ Describe "Get-BankJournalExport" -Skip:($Env:CI -eq "true") {
 
 	It "should return the bank journal export with the given identifier" {
 		$bankJournalExport = Get-AgicapBankJournalExport $client -EntityId $entityId -ExportId "575d62e4-e965-49fd-9a2d-b53bb1ad5434"
-		Should-BeString "MC2IT" $bankJournalExport.EntityName -CaseSensitive
-		Should-BeCollection $bankJournalExport.Entries -Count 5
-		Should-Be 2026 $bankJournalExport.Year
+		$bankJournalExport.EntityName | Should-BeString "MC2IT" -CaseSensitive
+		$bankJournalExport.Entries | Should-BeCollection -Count 5
+		$bankJournalExport.Year | Should-Be 2026
 
 		$bankJournalEntry = $bankJournalExport.Entries[-1]
-		Should-BeString "EUR" $bankJournalEntry.AccountingCurrency -CaseSensitive
+		$bankJournalEntry.AccountingCurrency | Should-BeString "EUR" -CaseSensitive
 		$bankJournalEntry.Causale | Should-BeNull
-		Should-BeCollection $bankJournalEntry.Counterparts -Count 1
-		Should-BeLikeString "MC2IT*" $bankJournalEntry.Counterparts[0].Name -CaseSensitive
+		$bankJournalEntry.Counterparts | Should-BeCollection -Count 1
+		$bankJournalEntry.Counterparts[0].Name | Should-BeLikeString "MC2IT*" -CaseSensitive
 		$bankJournalEntry.EntryMemo | Should-BeNull
-		Should-BeLikeString "MC2IT*" $bankJournalEntry.Name -CaseSensitive
-		Should-BeString "EUR" $bankJournalEntry.OriginalCurrency -CaseSensitive
+		$bankJournalEntry.Name | Should-BeLikeString "MC2IT*" -CaseSensitive
+		$bankJournalEntry.OriginalCurrency | Should-BeString "EUR" -CaseSensitive
 	}
 }
 
@@ -31,8 +31,8 @@ Describe "New-BankJournalExportCounts" {
 
 	It "should return new bank journal export counts" {
 		$exportCounts = New-AgicapBankJournalExportCounts -CurrentBankJournalEntriesCountInYear 666 -CurrentBankJournalsCountInYear 123
-		Should-Be 666 $exportCounts.CurrentBankJournalEntriesCountInYear
-		Should-Be 123 $exportCounts.CurrentBankJournalsCountInYear
+		$exportCounts.CurrentBankJournalEntriesCountInYear | Should-Be 666
+		$exportCounts.CurrentBankJournalsCountInYear | Should-Be 123
 	}
 }
 
@@ -45,16 +45,16 @@ Describe "Select-BankJournalExport" -Skip:($Env:CI -eq "true") {
 
 	It "should return a paginated list of bank journal exports" {
 		$list = Select-AgicapBankJournalExport $client $entityId -Before "2026-07-21T23:59:59Z"
-		Should-BeCollection $list.Items -Count 3
+		$list.Items | Should-BeCollection -Count 3
 
 		$exportSummary = $list.Items[0]
-		Should-Be ([datetime] "2026-07-21T13:52:44.861Z").ToUniversalTime() $exportSummary.ExportDateUtc
-		Should-NotBe (New-Guid -Empty) $exportSummary.ExportId
-		Should-BeGreaterThan 1 $exportSummary.ExportIndexInYear
-		Should-Be 2026 $exportSummary.ExportYear
-		Should-BeGreaterThan 1 $exportSummary.IndexInYearOfFirstEntryInBankJournal
-		Should-BeGreaterThan 1 $exportSummary.IndexInYearOfLastEntryInBankJournal
-		Should-Be 222 $exportSummary.NumberOfEntries
+		$exportSummary.ExportDateUtc | Should-Be ([datetime] "2026-07-21T13:52:44.861Z").ToUniversalTime()
+		$exportSummary.ExportId | Should-NotBe (New-Guid -Empty)
+		$exportSummary.ExportIndexInYear | Should-BeGreaterThan 1
+		$exportSummary.ExportYear | Should-Be 2026
+		$exportSummary.IndexInYearOfFirstEntryInBankJournal | Should-BeGreaterThan 1
+		$exportSummary.IndexInYearOfLastEntryInBankJournal | Should-BeGreaterThan 1
+		$exportSummary.NumberOfEntries | Should-Be 222
 	}
 }
 

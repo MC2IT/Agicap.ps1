@@ -11,9 +11,9 @@ Describe "New-Beneficiary" {
 	It "should return a new beneficiary" {
 		$postalAddress = New-AgicapPostalAddress -City " " -Country " " -StreetName " "
 		$beneficiary = New-AgicapBeneficiary "My Company" -PostalAddress $postalAddress
-		Should-BeString "My Company" $beneficiary.Name -CaseSensitive
+		$beneficiary.Name | Should-BeString "My Company" -CaseSensitive
 		$beneficiary.BankAccount | Should-BeNull
-		Should-Be (New-Guid -Empty) $beneficiary.Id
+		$beneficiary.Id | Should-Be (New-Guid -Empty)
 		$beneficiary.PostalAddress | Should-BeNull
 	}
 }
@@ -27,12 +27,12 @@ Describe "Select-Beneficiary" -Skip:($Env:CI -eq "true") {
 
 	It "should return the beneficiaries of the entity with the specified identifier" {
 		$list = Select-AgicapBeneficiary $client $entityId
-		Should-BeGreaterThan 1 $list.Count
+		$list.Count | Should-BeGreaterThan 1
 
 		$beneficiary = $list | Where-Object { $_.Name -like "Agicap*" }
 		Should-NotBeNull $beneficiary.PostalAddress
-		Should-BeString Lyon $beneficiary.PostalAddress.City
-		Should-BeString FR $beneficiary.PostalAddress.Country -CaseSensitive
+		$beneficiary.PostalAddress.City | Should-BeString Lyon
+		$beneficiary.PostalAddress.Country | Should-BeString FR -CaseSensitive
 	}
 }
 
@@ -49,9 +49,9 @@ Describe "Submit-Beneficiary" -Skip:($Env:CI -eq "true") {
 	}
 
 	It "should create the specified beneficiary" {
-		Should-Be (New-Guid -Empty) $beneficiary.Id
+		$beneficiary.Id | Should-Be (New-Guid -Empty)
 		$beneficiary | Submit-AgicapBeneficiary $client $entityId -ErrorAction Stop | Out-Null
-		Should-NotBe (New-Guid -Empty) $beneficiary.Id
+		$beneficiary.Id | Should-NotBe (New-Guid -Empty)
 	}
 
 	It "should throw an exception if the beneficiary already exists" {
@@ -60,8 +60,8 @@ Describe "Submit-Beneficiary" -Skip:($Env:CI -eq "true") {
 			throw "The exception was not thrown as planned."
 		}
 		catch [Mc2it.Agicap.HttpResponseException] {
-			Should-Be ([HttpStatusCode]::Conflict) $_.Exception.StatusCode
-			Should-BeLikeString "*beneficiary*MC2IT*exists*" $_.Exception.ProblemDetails?.Title
+			$_.Exception.StatusCode | Should-Be ([HttpStatusCode]::Conflict)
+			$_.Exception.ProblemDetails.Title | Should-BeLikeString "*beneficiary*MC2IT*exists*"
 		}
 	}
 
