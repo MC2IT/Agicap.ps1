@@ -6,7 +6,7 @@ Describe "Get-BankJournalExport" -Skip:($Env:CI -eq "true") {
 	BeforeAll { . "$PSScriptRoot/../BeforeAll.ps1" }
 
 	It "should return the bank journal export with the given identifier" {
-		$bankJournalExport = Get-AgicapBankJournalExport $client $entityId "575d62e4-e965-49fd-9a2d-b53bb1ad5434"
+		$bankJournalExport = Get-AgicapBankJournalExport $client -EntityId $entityId -ExportId "575d62e4-e965-49fd-9a2d-b53bb1ad5434"
 		Should-BeString "MC2IT" $bankJournalExport.EntityName -CaseSensitive
 		Should-BeCollection $bankJournalExport.Entries -Count 5
 		Should-Be 2026 $bankJournalExport.Year

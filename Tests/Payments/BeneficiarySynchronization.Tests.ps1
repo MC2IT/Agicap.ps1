@@ -8,7 +8,7 @@ Describe "Get-BeneficiarySynchronization" -Skip:($Env:CI -eq "true") {
 	It "should return a beneficiary synchronization report" {
 		$syncId = New-Guid "3c648676-e07e-4aca-8e63-ce0802221b57"
 
-		$synchronization = Get-AgicapBeneficiarySynchronization $client $entityId $syncId
+		$synchronization = Get-AgicapBeneficiarySynchronization $client -EntityId $entityId -SyncId $syncId
 		Should-Be (Get-Date "2026-08-03T08:21:47.346206+00:00").Date $synchronization.CreatedAt.Date
 		Should-BeCollection $synchronization.Errors -Count 1
 		Should-Be ([Mc2it.Agicap.Payments.BeneficiarySynchronizationStatus]::CompletedWithErrors) $synchronization.Status
