@@ -1,6 +1,6 @@
 @{
 	DefaultCommandPrefix = "Agicap"
-	ModuleVersion = "0.10.0"
+	ModuleVersion = "0.11.0"
 	PowerShellVersion = "7.6"
 	RootModule = "Binaries/Mc2it.Agicap.PowerShell.dll"
 
