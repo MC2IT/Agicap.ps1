@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [0.11.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.10.0...v0.11.0)
+- **Payments:** added the `-NoEnumerate` parameter to the `Select-Beneficiary` cmdlet.
+
 ## Version [0.10.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.9.0...v0.10.0)
 - Ported the cmdlets to [F#](https://learn.microsoft.com/en-us/dotnet/fsharp).
 
