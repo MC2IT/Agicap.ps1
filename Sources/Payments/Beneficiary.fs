@@ -88,6 +88,10 @@ type SelectBeneficiary() =
   [<Parameter(Mandatory = true, Position = 2)>]
   member val EntityId = 0 with get, set
 
+  /// Value indicating whether to prevent this cmdlet from enumerating its output.
+  [<Parameter>]
+  member val NoEnumerate = SwitchParameter false with get, set
+
   /// Performs initialization of command execution.
   override this.BeginProcessing () =
     api <- (nonNull this.Client).Payments.Beneficiaries this.EntityId
@@ -95,7 +99,8 @@ type SelectBeneficiary() =
   /// Performs execution of this command.
   override this.ProcessRecord () =
     let client = nonNull api
-    try this.WriteObject (client.ReadAll())
+    let enumerateCollection = not this.NoEnumerate.IsPresent
+    try this.WriteObject (client.ReadAll(), enumerateCollection)
     with :? HttpRequestException as ex ->
       this.WriteError (ErrorRecord(ex, "BeneficiaryApi.ReadAll", ErrorCategory.ReadError, client))
 
