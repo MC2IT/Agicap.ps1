@@ -22,9 +22,9 @@
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(RootNamespace).Tests" />
-		<PackageReference Update="FSharp.Core" Version="10.1.401" />
+		<PackageReference Update="FSharp.Core" Version="10.1.402" />
 		<PackageReference Include="Mc2it.Agicap" Version="0.9.0" />
-		<PackageReference Include="System.Management.Automation" Version="7.6.6" />
+		<PackageReference Include="System.Management.Automation" Version="7.6.7" />
 		<!-- <ProjectReference Include="../../../DotNet/Agicap/Sources/Agicap.csproj" /> -->
 	</ItemGroup>
 
