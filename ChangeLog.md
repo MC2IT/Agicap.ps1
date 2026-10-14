@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [2026.11.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.11.0...v2026.11.0)
+- Switched to a year-based versioning.
+- Updated the package dependencies.
+
 ## Version [0.11.0](https://github.com/MC2IT/Agicap.ps1/compare/v0.10.0...v0.11.0)
 - **Payments:** added the `-NoEnumerate` parameter to the `Select-Beneficiary` cmdlet.
 

@@ -4,7 +4,7 @@
 		<Copyright>© MC2IT</Copyright>
 		<Description>An Agicap API client library for PowerShell.</Description>
 		<Product>Agicap for PowerShell</Product>
-		<Version>0.11.0</Version>
+		<Version>2026.11.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -23,7 +23,7 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(RootNamespace).Tests" />
 		<PackageReference Update="FSharp.Core" Version="10.1.402" />
-		<PackageReference Include="Mc2it.Agicap" Version="0.9.0" />
+		<PackageReference Include="Mc2it.Agicap" Version="2026.11.0" />
 		<PackageReference Include="System.Management.Automation" Version="7.6.7" />
 		<!-- <ProjectReference Include="../../../DotNet/Agicap/Sources/Agicap.csproj" /> -->
 	</ItemGroup>
