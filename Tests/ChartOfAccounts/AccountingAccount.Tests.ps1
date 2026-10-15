@@ -9,7 +9,7 @@ Describe "New-AccountingAccount" {
 
 	It "should return a new accounting account" {
 		$accountingAccount = New-AgicapAccountingAccount 99999999 "MC2IT Development Department"
-		$accountingAccount.AccountingAccountName  | Should-BeString "MC2IT Development Department" -CaseSensitive
+		$accountingAccount.AccountingAccountName | Should-BeString "MC2IT Development Department" -CaseSensitive
 		$accountingAccount.AccountingAccountNumber | Should-BeString "99999999"
 		$accountingAccount.AccountingAccountType | Should-BeNull
 		$accountingAccount.ExternalId | Should-BeNull
