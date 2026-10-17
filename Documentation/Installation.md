@@ -24,5 +24,5 @@ Install-PSResource Mc2it.Agicap -Repository PSGallery
 Now in your [PowerShell](https://learn.microsoft.com/en-us/powershell) code, you can use:
 
 ```powershell
-using module Mc2it.Agicap
+Import-Module Mc2it.Agicap
 ```
