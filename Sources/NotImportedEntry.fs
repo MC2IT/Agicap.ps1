@@ -19,7 +19,7 @@ type NewNotImportedEntry() =
   /// Performs execution of this command.
   override this.ProcessRecord () = this.WriteObject (NotImportedEntry (
     EntryAgicapUniqueId = this.EntryAgicapUniqueId,
-    Errors = this.Errors
+    Errors = ResizeArray this.Errors
   ))
 
 /// Creates a new import error for a journal entry.

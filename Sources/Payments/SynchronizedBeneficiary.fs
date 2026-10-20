@@ -23,5 +23,5 @@ type NewSynchronizedBeneficiary() =
   override this.ProcessRecord () = this.WriteObject (SynchronizedBeneficiary (
     this.ErpId,
     nonNull this.Beneficiary,
-    SupplierErpIds = (if this.SupplierErpId.Length > 0 then withNull this.SupplierErpId else null)
+    SupplierErpIds = (if Array.isEmpty this.SupplierErpId then null else ResizeArray this.SupplierErpId )
   ))

@@ -44,6 +44,6 @@ type NewClient() =
   override this.ProcessRecord () = this.WriteObject (new Client(
     (nonNull this.Credential).GetNetworkCredential(),
     BaseUrl = this.Uri,
-    DefaultScopes = this.Scope,
+    DefaultScopes = ResizeArray this.Scope,
     UserAgent = this.UserAgent
   ))

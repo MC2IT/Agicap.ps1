@@ -57,7 +57,7 @@ type NewSupplier() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () = this.WriteObject (Supplier (
-    Contacts = (if this.Contacts.Length > 0 then withNull this.Contacts else null),
+    Contacts = (if Array.isEmpty this.Contacts then null else ResizeArray this.Contacts),
     ErpId = (if this.ErpId.Length > 0 then this.ErpId else null),
     Language = (if this.Language.Length > 0 then this.Language else null),
     LegalAddress = this.LegalAddress,
@@ -66,7 +66,7 @@ type NewSupplier() =
     Name = (if this.Name.Length > 0 then this.Name else null),
     PrimaryContact = this.PrimaryContact,
     Status = (if this.Status.Length > 0 then this.Status else null),
-    Tags = (if this.Tags.Length > 0 then withNull this.Tags else null),
+    Tags = (if Array.isEmpty this.Tags then null else ResizeArray this.Tags),
     ThirdPartyCode = (if this.ThirdPartyCode.Length > 0 then this.ThirdPartyCode else null),
     VatCode = (if this.VatCode.Length > 0 then this.VatCode else null)
   ))
