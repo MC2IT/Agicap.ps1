@@ -1,7 +1,7 @@
 @{
 	DefaultCommandPrefix = "Agicap"
 	ModuleVersion = "2026.12.0"
-	PowerShellVersion = "7.6"
+	PowerShellVersion = "7.7"
 	RootModule = "Binaries/Mc2it.Agicap.PowerShell.dll"
 
 	Author = "MC2IT <dev@mc2it.com>"
@@ -53,7 +53,7 @@
 	)
 
 	RequiredModules = @(
-		@{ ModuleName = "Belin.FSharp"; ModuleVersion = "10.1.403" }
+		@{ ModuleName = "Belin.FSharp"; ModuleVersion = "11.0.101" }
 	)
 
 	PrivateData = @{
