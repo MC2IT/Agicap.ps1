@@ -50,11 +50,11 @@ type RemoveAccountingAccount() =
   inherit PSCmdlet()
 
   /// Manages the accounting accounts of the chart of accounts.
-  let mutable api: AccountingAccountApi | null = null
+  let mutable api: AccountingAccountApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -89,11 +89,11 @@ type SubmitAccountingAccount() =
   inherit Cmdlet()
 
   /// Manages the accounting accounts of the chart of accounts.
-  let mutable api: AccountingAccountApi | null = null
+  let mutable api: AccountingAccountApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]

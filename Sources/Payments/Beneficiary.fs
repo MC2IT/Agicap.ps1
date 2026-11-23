@@ -16,11 +16,11 @@ type NewBeneficiary() =
 
   /// The bank account of the beneficiary.
   [<Parameter>]
-  member val BankAccount: BankAccount | null = null with get, set
+  member val BankAccount: BankAccount|null = null with get, set
 
   /// The postal address of the beneficiary.
   [<Parameter>]
-  member val PostalAddress: PostalAddress | null = null with get, set
+  member val PostalAddress: PostalAddress|null = null with get, set
 
   /// Performs execution of this command.
   override this.ProcessRecord () = this.WriteObject (Beneficiary (
@@ -35,11 +35,11 @@ type RemoveBeneficiary() =
   inherit PSCmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.
-  let mutable api: BeneficiaryApi | null = null
+  let mutable api: BeneficiaryApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -47,7 +47,7 @@ type RemoveBeneficiary() =
 
   /// The beneficiary to delete.
   [<Parameter(Mandatory = true, ParameterSetName = "InputObject", Position = 3, ValueFromPipeline = true)>]
-  member val InputObject: Beneficiary | null = null with get, set
+  member val InputObject: Beneficiary|null = null with get, set
 
   /// The identifier of the beneficiary to delete.
   [<Parameter(Mandatory = true, ParameterSetName = "BeneficiaryId", Position = 3)>]
@@ -78,11 +78,11 @@ type SelectBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.
-  let mutable api: BeneficiaryApi | null = null
+  let mutable api: BeneficiaryApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -111,11 +111,11 @@ type SubmitBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.
-  let mutable api: BeneficiaryApi | null = null
+  let mutable api: BeneficiaryApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -123,7 +123,7 @@ type SubmitBeneficiary() =
 
   /// The beneficiary to create.
   [<Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true)>]
-  member val InputObject: Beneficiary | null = null with get, set
+  member val InputObject: Beneficiary|null = null with get, set
 
   /// Performs initialization of command execution.
   override this.BeginProcessing () =
@@ -143,11 +143,11 @@ type SyncBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the sychronization of beneficiaries of the entity with the specified identifier.
-  let mutable api: BeneficiarySynchronizationApi | null = null
+  let mutable api: BeneficiarySynchronizationApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -174,11 +174,11 @@ type UpdateBeneficiary() =
   inherit Cmdlet()
 
   /// Manages the beneficiaries of the entity with the specified identifier.
-  let mutable api: BeneficiaryApi | null = null
+  let mutable api: BeneficiaryApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -186,7 +186,7 @@ type UpdateBeneficiary() =
 
   /// The beneficiary to update.
   [<Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true)>]
-  member val InputObject: Beneficiary | null = null with get, set
+  member val InputObject: Beneficiary|null = null with get, set
 
   /// Performs initialization of command execution.
   override this.BeginProcessing () =

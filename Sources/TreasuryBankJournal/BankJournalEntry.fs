@@ -11,11 +11,11 @@ type ApproveBankJournalEntry() =
   inherit PSCmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
-  let mutable api: ExportApi | null = null
+  let mutable api: ExportApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -49,11 +49,11 @@ type DenyBankJournalEntry() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
-  let mutable api: ExportApi | null = null
+  let mutable api: ExportApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]

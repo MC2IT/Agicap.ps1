@@ -11,11 +11,11 @@ type GetBankJournalExport() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
-  let mutable api: ExportApi | null = null
+  let mutable api: ExportApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -61,11 +61,11 @@ type SelectBankJournalExport() =
   inherit PSCmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
-  let mutable api: ExportApi | null = null
+  let mutable api: ExportApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -100,11 +100,11 @@ type SubmitBankJournalExport() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
-  let mutable api: ExportApi | null = null
+  let mutable api: ExportApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -116,7 +116,7 @@ type SubmitBankJournalExport() =
 
   /// Optional export parameters allowing to set where to start.
   [<Parameter>]
-  member val CurrentExportCounts: BankJournalExportCounts | null = null with get, set
+  member val CurrentExportCounts: BankJournalExportCounts|null = null with get, set
 
   /// Performs initialization of command execution.
   override this.BeginProcessing () =

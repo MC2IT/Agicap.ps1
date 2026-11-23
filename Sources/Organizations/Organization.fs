@@ -10,11 +10,11 @@ type SelectOrganization() =
   inherit Cmdlet()
 
   /// Manages the organizations.
-  let mutable api: OrganizationApi | null = null
+  let mutable api: OrganizationApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The page number.
   [<Parameter; ValidateRange(ValidateRangeKind.Positive)>]

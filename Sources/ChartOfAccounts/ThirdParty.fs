@@ -40,11 +40,11 @@ type RemoveThirdParty() =
   inherit PSCmdlet()
 
   /// Manages the third-parties of the chart of accounts.
-  let mutable api: ThirdPartyApi | null = null
+  let mutable api: ThirdPartyApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -79,11 +79,11 @@ type SubmitThirdParty() =
   inherit Cmdlet()
 
   /// Manages the third-parties of the chart of accounts.
-  let mutable api: ThirdPartyApi | null = null
+  let mutable api: ThirdPartyApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]

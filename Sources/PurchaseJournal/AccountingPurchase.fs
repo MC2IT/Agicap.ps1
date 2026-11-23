@@ -11,11 +11,11 @@ type DenyAccountingPurchase() =
   inherit Cmdlet()
 
   /// Manages the purchase journal.
-  let mutable api: AccountingPurchaseApi | null = null
+  let mutable api: AccountingPurchaseApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
@@ -42,11 +42,11 @@ type SelectAccountingPurchase() =
   inherit Cmdlet()
 
   /// Manages the purchase journal.
-  let mutable api: AccountingPurchaseApi | null = null
+  let mutable api: AccountingPurchaseApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]

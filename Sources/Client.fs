@@ -11,7 +11,7 @@ type CloseClient() =
 
   /// The Free Mobile client to dispose.
   [<Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)>]
-  member val InputObject: Client | null = null with get, set
+  member val InputObject: Client|null = null with get, set
 
   /// Performs execution of this command.
   override this.ProcessRecord () = (nonNull this.InputObject).Dispose()
@@ -26,7 +26,7 @@ type NewClient() =
 
   /// The client identifier and secret.
   [<Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true); Credential>]
-  member val Credential: PSCredential | null = null with get, set
+  member val Credential: PSCredential|null = null with get, set
 
   /// The scopes to use by default when invoking the `Request-AccessToken` cmdlet.
   [<Parameter; ValidateNotNullOrEmpty>]

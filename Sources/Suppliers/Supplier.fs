@@ -25,7 +25,7 @@ type NewSupplier() =
 
   /// The legal address of this supplier.
   [<Parameter>]
-  member val LegalAddress: LegalAddress | null = null with get, set
+  member val LegalAddress: LegalAddress|null = null with get, set
 
   /// The legal registration identifier (e.g. LEI, SIRET, company number...).
   [<Parameter>]
@@ -37,7 +37,7 @@ type NewSupplier() =
 
   /// The primary contact of this supplier.
   [<Parameter>]
-  member val PrimaryContact: Contact | null = null with get, set
+  member val PrimaryContact: Contact|null = null with get, set
 
   /// The lifecycle status of this supplier, as pushed by the ERP software.
   [<Parameter>]

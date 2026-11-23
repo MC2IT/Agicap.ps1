@@ -11,11 +11,11 @@ type GetBeneficiarySynchronization() =
   inherit Cmdlet()
 
   /// Manages the sychronization of beneficiaries of the entity with the specified identifier.
-  let mutable api: BeneficiarySynchronizationApi | null = null
+  let mutable api: BeneficiarySynchronizationApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The entity identifier.
   [<Parameter(Mandatory = true, Position = 2)>]

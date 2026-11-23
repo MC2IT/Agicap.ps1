@@ -11,7 +11,7 @@ type RequestAccessToken() =
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The delegated permissions to consent to.
   [<Parameter(Position = 2); ValidateNotNull>]

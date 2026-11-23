@@ -13,7 +13,7 @@ type NewSynchronizedBeneficiary() =
 
   /// The beneficiary to synchronize.
   [<Parameter(Mandatory = true, Position = 2)>]
-  member val Beneficiary: Beneficiary | null = null with get, set
+  member val Beneficiary: Beneficiary|null = null with get, set
 
   /// The ERP identifiers of the suppliers to associate with this beneficiary.
   [<Parameter; ValidateNotNull>]

@@ -11,11 +11,11 @@ type SelectEntity() =
   inherit Cmdlet()
 
   /// Manages the entities of the organization with the specified identifier.
-  let mutable api: EntityApi | null = null
+  let mutable api: EntityApi|null = null
 
   /// The API client.
   [<Parameter(Mandatory = true, Position = 1)>]
-  member val Client: Client | null = null with get, set
+  member val Client: Client|null = null with get, set
 
   /// The organization identifier.
   [<Parameter(Mandatory = true, Position = 2)>]
